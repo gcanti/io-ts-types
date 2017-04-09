@@ -1,0 +1,53 @@
+{
+  "name": "types-io-ts",
+  "version": "0.0.1",
+  "description": "A collection of runtime types for use with io-ts",
+  "files": [
+    "lib",
+    "lib-jsnext"
+  ],
+  "main": "lib/index.js",
+  "jsnext:main": "lib-jsnext/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
+    "mocha": "mocha -r ts-node/register test/*.ts",
+    "test": "npm run lint && npm run typings-checker && npm run mocha",
+    "clean": "rm -rf lib/* && rm -rf lib-jsnext/*",
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-jsnext"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gcanti/types-io-ts.git"
+  },
+  "author": "Giulio Canti <giulio.canti@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcanti/types-io-ts/issues"
+  },
+  "homepage": "https://github.com/gcanti/types-io-ts",
+  "dependencies": {
+    "fp-ts": "^0.2.0",
+    "io-ts": "github:gcanti/io-ts#37",
+    "monocle-ts": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "2.2.38",
+    "@types/node": "7.0.4",
+    "mocha": "3.2.0",
+    "ts-node": "2.0.0",
+    "tslint": "4.4.2",
+    "tslint-config-standard": "4.0.0",
+    "typescript": "2.2.0",
+    "typings-checker": "1.1.2"
+  },
+  "tags": [
+    "io-ts",
+    "fp-ts"
+  ],
+  "keywords": [
+    "io-ts",
+    "fp-ts"
+  ]
+}
