@@ -1,6 +1,4 @@
-import { Type } from 'io-ts'
-import { reverseGet } from '../monocle-ts/TypePrismIso'
-import { AnyNumberPrism } from '../monocle-ts/AnyNumberPrism'
+import * as t from 'io-ts'
 import { NumberDatePrism } from '../monocle-ts/NumberDatePrism'
 
-export const DateFromNumber: Type<Date> = reverseGet(AnyNumberPrism.compose(NumberDatePrism), 'DateFromNumber')
+export const DateFromNumber = t.prism(t.number, NumberDatePrism.getOption, 'DateFromNumber')

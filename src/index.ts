@@ -16,6 +16,7 @@ export { createRangePrism } from './monocle-ts/createRangePrism'
 export { ISOStringDatePrism } from './monocle-ts/ISOStringDatePrism'
 export { NumberDatePrism } from './monocle-ts/NumberDatePrism'
 export { NumberIntegerPrism } from './monocle-ts/NumberIntegerPrism'
+export { StringJSONPrism } from './monocle-ts/StringJSONPrism'
 export { StringNumberPrism } from './monocle-ts/StringNumberPrism'
 import * as TypePrismIso from './monocle-ts/TypePrismIso'
 export { TypePrismIso }

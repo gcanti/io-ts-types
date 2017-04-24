@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/gcanti/types-io-ts",
   "dependencies": {
-    "fp-ts": "^0.2.0",
-    "io-ts": "github:gcanti/io-ts#37",
-    "monocle-ts": "^0.1.0"
+    "fp-ts": "^0.2.1",
+    "io-ts": "^0.3.1",
+    "monocle-ts": "^0.1.1"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",

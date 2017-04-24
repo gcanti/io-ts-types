@@ -12,5 +12,5 @@ export function createOptionFromJSON<A>(type: t.Type<A>): t.Type<Option<A>> {
     type: t.literal('Option'),
     value: t.union([type, t.null])
   })
-  return createOption(JSONOption.map(json => json.value), `Option<${type.name}>`)
+  return createOption(t.map(json => json.value, JSONOption), `Option<${type.name}>`)
 }

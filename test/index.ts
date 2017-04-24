@@ -9,20 +9,14 @@ import {
   DateFromISOString,
   AnyStringPrism,
   StringNumberPrism,
+  StringJSONPrism,
   DateFromNumber,
   JSONFromString
 } from '../src'
 import * as t from 'io-ts'
 import { None, Some } from 'fp-ts/lib/Option'
-import { Either, isRight, Left, Right } from 'fp-ts/lib/Either'
-import { fromSome } from './helpers'
-
-function fromRight<L, A>(e: Either<L, A>): A {
-  if (isRight(e)) {
-    return e.value
-  }
-  throw new Error(`fromRight called when is Left ${JSON.stringify(e.value, null, 2)}`)
-}
+import { Left, Right } from 'fp-ts/lib/Either'
+import { fromSome, fromRight } from './helpers'
 
 describe('fp-ts', () => {
 
@@ -110,6 +104,17 @@ describe('monocle-ts', () => {
   it('AnyStringPrism/StringNumberPrism', () => {
     const P = AnyStringPrism.compose(StringNumberPrism)
     assert.strictEqual(fromSome(P.getOption('10')), 10)
+  })
+
+  it('StringJSONPrism', () => {
+    const P = StringJSONPrism
+    assert.deepEqual(fromSome(P.getOption('{}')), {})
+    assert.deepEqual(fromSome(P.getOption('[]')), [])
+    assert.deepEqual(fromSome(P.getOption('"s"')), 's')
+    assert.strictEqual(fromSome(P.getOption('1')), 1)
+    assert.strictEqual(fromSome(P.getOption('true')), true)
+    assert.strictEqual(fromSome(P.getOption('null')), null)
+    assert.deepEqual(fromSome(P.getOption('{"name":"Giulio"}')), { name: 'Giulio' })
   })
 
 })
