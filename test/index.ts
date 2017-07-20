@@ -19,7 +19,6 @@ import { Left, Right } from 'fp-ts/lib/Either'
 import { fromSome, fromRight } from './helpers'
 
 describe('fp-ts', () => {
-
   it('createOptionFromNullable', () => {
     const T = createOptionFromNullable(t.number)
     assert.ok(fromRight(t.validate(null, T)) instanceof None)
@@ -37,11 +36,9 @@ describe('fp-ts', () => {
     assert.ok(fromRight(t.validate({ type: 'Left', value: 's' }, T)) instanceof Left)
     assert.ok(fromRight(t.validate({ type: 'Right', value: 1 }, T)) instanceof Right)
   })
-
 })
 
 describe('number', () => {
-
   it('createRange', () => {
     const T = createRange(t.number, 0, 10)
     assert.strictEqual(fromRight(t.validate(0, T)), 0)
@@ -76,16 +73,15 @@ describe('number', () => {
     assert.ok(t.validate('5.5', T) instanceof Left)
     assert.ok(t.validate('-5.5', T) instanceof Left)
   })
-
 })
 
 describe('Date', () => {
-
   it('DateFromISOString', () => {
     const T = DateFromISOString
-    const s = new Date(1973, 10, 30).toISOString()
+    const d = new Date(1973, 10, 30)
+    const s = d.toISOString()
     assert.ok(fromRight(t.validate(s, T)) instanceof Date)
-    assert.strictEqual(fromRight(t.validate(s, T)).getTime(), 123462000000)
+    assert.strictEqual(fromRight(t.validate(s, T)).getTime(), d.getTime())
     assert.ok(t.validate('foo', T) instanceof Left)
   })
 
@@ -96,11 +92,9 @@ describe('Date', () => {
     assert.strictEqual(fromRight(t.validate(n, T)).getTime(), n)
     assert.ok(t.validate(NaN, T) instanceof Left)
   })
-
 })
 
 describe('monocle-ts', () => {
-
   it('AnyStringPrism/StringNumberPrism', () => {
     const P = AnyStringPrism.compose(StringNumberPrism)
     assert.strictEqual(fromSome(P.getOption('10')), 10)
@@ -116,11 +110,9 @@ describe('monocle-ts', () => {
     assert.strictEqual(fromSome(P.getOption('null')), null)
     assert.deepEqual(fromSome(P.getOption('{"name":"Giulio"}')), { name: 'Giulio' })
   })
-
 })
 
 describe('JSON', () => {
-
   it('JSONFromString', () => {
     const T = JSONFromString
     assert.deepEqual(fromRight(t.validate('{}', T)), {})
@@ -131,5 +123,4 @@ describe('JSON', () => {
     assert.strictEqual(fromRight(t.validate('null', T)), null)
     assert.deepEqual(fromRight(t.validate('{"name":"Giulio"}', T)), { name: 'Giulio' })
   })
-
 })

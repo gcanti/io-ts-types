@@ -1,53 +1,44 @@
 {
-  "name": "types-io-ts",
+  "name": "io-ts-types",
   "version": "0.0.1",
   "description": "A collection of runtime types for use with io-ts",
-  "files": [
-    "lib",
-    "lib-jsnext"
-  ],
+  "files": ["lib"],
   "main": "lib/index.js",
-  "jsnext:main": "lib-jsnext/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
-    "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "test": "npm run lint && npm run typings-checker && npm run mocha",
-    "clean": "rm -rf lib/* && rm -rf lib-jsnext/*",
-    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-jsnext"
+    "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
+    "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
+    "test": "npm run lint && npm run prettier && npm run mocha",
+    "clean": "rm -rf lib/*",
+    "build": "npm run clean && tsc"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gcanti/types-io-ts.git"
+    "url": "https://github.com/gcanti/io-ts-types.git"
   },
   "author": "Giulio Canti <giulio.canti@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gcanti/types-io-ts/issues"
+    "url": "https://github.com/gcanti/io-ts-types/issues"
   },
-  "homepage": "https://github.com/gcanti/types-io-ts",
+  "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "^0.2.1",
-    "io-ts": "^0.3.1",
-    "monocle-ts": "^0.1.1"
+    "fp-ts": "^0.4.0",
+    "io-ts": "^0.6.0",
+    "monocle-ts": "^0.3.0"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
     "@types/node": "7.0.4",
     "mocha": "3.2.0",
-    "ts-node": "2.0.0",
+    "prettier": "1.5.3",
+    "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.2.0",
-    "typings-checker": "1.1.2"
+    "typescript": "2.4.2"
   },
-  "tags": [
-    "io-ts",
-    "fp-ts"
-  ],
-  "keywords": [
-    "io-ts",
-    "fp-ts"
-  ]
+  "tags": ["io-ts", "fp-ts"],
+  "keywords": ["io-ts", "fp-ts"]
 }
