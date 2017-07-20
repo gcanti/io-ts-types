@@ -3,12 +3,12 @@ import { Either } from 'fp-ts/lib/Either'
 import { createEither } from './createEither'
 
 export type JSONLeft<L> = {
-  type: 'Left',
+  type: 'Left'
   value: L
 }
 
 export type JSONRight<L> = {
-  type: 'Right',
+  type: 'Right'
   value: L
 }
 
@@ -23,10 +23,7 @@ export function createEitherFromJSON<L, A>(left: t.Type<L>, right: t.Type<A>): t
   })
   return t.mapWithName(
     e => e.bimap(v => v.value, v => v.value),
-    createEither<JSONLeft<L>, JSONRight<A>>(
-      t.union([JSONLeft, JSONRight]),
-      (v): v is JSONLeft<L> => v.type === 'Left'
-    ),
+    createEither<JSONLeft<L>, JSONRight<A>>(t.union([JSONLeft, JSONRight]), (v): v is JSONLeft<L> => v.type === 'Left'),
     `Either<${left.name}, ${right.name}>`
   )
 }

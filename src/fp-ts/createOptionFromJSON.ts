@@ -3,7 +3,7 @@ import { Option } from 'fp-ts/lib/Option'
 import { createOption } from './createOption'
 
 export type JSONOption<A> = {
-  type: 'Option',
+  type: 'Option'
   value: A | null
 }
 
