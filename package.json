@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "^0.4.0",
-    "io-ts": "^0.6.0",
-    "monocle-ts": "^0.3.0"
+    "fp-ts": "^0.5.2",
+    "io-ts": "^0.7.0",
+    "monocle-ts": "^0.4.1"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
@@ -37,7 +37,7 @@
     "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.4.2"
+    "typescript": "^2.5.2"
   },
   "tags": ["io-ts", "fp-ts"],
   "keywords": ["io-ts", "fp-ts"]
