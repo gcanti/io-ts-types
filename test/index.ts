@@ -11,10 +11,13 @@ import {
   StringNumberPrism,
   StringJSONPrism,
   DateFromNumber,
-  JSONFromString
+  JSONFromString,
+  lensesFromInterface,
+  lensesFromTuple,
+  prismsFromUnion
 } from '../src'
 import * as t from 'io-ts'
-import { None, Some } from 'fp-ts/lib/Option'
+import { None, Some, none, some } from 'fp-ts/lib/Option'
 import { Left, Right } from 'fp-ts/lib/Either'
 import { fromSome, fromRight } from './helpers'
 
@@ -109,6 +112,31 @@ describe('monocle-ts', () => {
     assert.strictEqual(fromSome(P.getOption('true')), true)
     assert.strictEqual(fromSome(P.getOption('null')), null)
     assert.deepEqual(fromSome(P.getOption('{"name":"Giulio"}')), { name: 'Giulio' })
+  })
+
+  it('lensesFromInterface', () => {
+    const Person = t.interface({
+      name: t.string,
+      age: t.number
+    })
+    const lenses = lensesFromInterface(Person)
+    assert.strictEqual(lenses.age.get({ name: 'Giulio', age: 43 }), 43)
+  })
+
+  it('lensesFromTuple', () => {
+    const Point = t.tuple([t.number, t.number])
+    const pointLenses = lensesFromTuple(Point)
+    assert.strictEqual(pointLenses.L1.get([100, 200]), 200)
+    assert.deepEqual(pointLenses.L0.set(50)([100, 200]), [50, 200])
+  })
+
+  it('prismsFromUnion', () => {
+    const RuntimeUnion = t.union([t.string, t.number])
+    const unionPrisms = prismsFromUnion(RuntimeUnion)
+    assert.deepEqual(unionPrisms.P0.getOption('a'), some('a'))
+    assert.deepEqual(unionPrisms.P0.getOption(1), none)
+    assert.deepEqual(unionPrisms.P1.getOption('a'), none)
+    assert.deepEqual(unionPrisms.P1.getOption(1), some(1))
   })
 })
 
