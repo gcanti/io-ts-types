@@ -2,7 +2,9 @@
   "name": "io-ts-types",
   "version": "0.0.2",
   "description": "A collection of runtime types for use with io-ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -25,8 +27,8 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "^0.5.2",
-    "io-ts": "^0.7.0",
+    "fp-ts": "^0.5.4",
+    "io-ts": "^0.7.1",
     "monocle-ts": "^0.4.1"
   },
   "devDependencies": {
@@ -39,6 +41,12 @@
     "tslint-config-standard": "4.0.0",
     "typescript": "^2.5.2"
   },
-  "tags": ["io-ts", "fp-ts"],
-  "keywords": ["io-ts", "fp-ts"]
+  "tags": [
+    "io-ts",
+    "fp-ts"
+  ],
+  "keywords": [
+    "io-ts",
+    "fp-ts"
+  ]
 }
