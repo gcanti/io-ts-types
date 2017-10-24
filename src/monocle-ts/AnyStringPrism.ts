@@ -1,3 +1,3 @@
 import { Prism } from 'monocle-ts'
 
-export const AnyStringPrism = Prism.fromPredicate(s => typeof s === 'string')
+export const AnyStringPrism: Prism<any, string> = Prism.fromPredicate(s => typeof s === 'string')
