@@ -1,11 +1,11 @@
 import { Prism } from 'monocle-ts'
 import { tryCatch } from 'fp-ts/lib/Either'
 
-export type JSONObject = { [key: string]: JSON }
-export interface JSONArray extends Array<JSON> {}
-export type JSON = null | string | number | boolean | JSONArray | JSONObject
+export type JSONObject = { [key: string]: JSONType }
+export interface JSONArray extends Array<JSONType> {}
+export type JSONType = null | string | number | boolean | JSONArray | JSONObject
 
-export const StringJSONPrism = new Prism<string, JSON>(
+export const StringJSONPrism = new Prism<string, JSONType>(
   s => tryCatch(() => JSON.parse(s)).toOption(),
   a => JSON.stringify(a)
 )

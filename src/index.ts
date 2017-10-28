@@ -7,7 +7,7 @@ export { createOption } from './fp-ts/createOption'
 export { createOptionFromJSON } from './fp-ts/createOptionFromJSON'
 export { createOptionFromNullable } from './fp-ts/createOptionFromNullable'
 
-export { JSONFromString } from './JSON/JSONFromString'
+export { JSONFromString, JSONType } from './JSON/JSONFromString'
 
 export { AnyNumberPrism } from './monocle-ts/AnyNumberPrism'
 export { AnyStringPrism } from './monocle-ts/AnyStringPrism'
