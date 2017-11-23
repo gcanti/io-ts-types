@@ -1,29 +1,43 @@
 import * as t from 'io-ts'
-import { Either } from 'fp-ts/lib/Either'
-import { createEither } from './createEither'
+import { Either, left, right } from 'fp-ts/lib/Either'
 
 export type JSONLeft<L> = {
   type: 'Left'
   value: L
 }
 
-export type JSONRight<L> = {
+export type JSONRight<A> = {
   type: 'Right'
-  value: L
+  value: A
 }
 
-export function createEitherFromJSON<L, A>(left: t.Type<L>, right: t.Type<A>): t.Type<Either<L, A>> {
+export type JSONEither<L, A> = JSONLeft<L> | JSONRight<A>
+
+export function createEitherFromJSON<L, A>(
+  leftType: t.Type<any, L>,
+  rightType: t.Type<any, A>
+): t.Type<any, Either<L, A>> {
   const JSONLeft = t.interface({
     type: t.literal('Left'),
-    value: left
+    value: leftType
   })
   const JSONRight = t.interface({
     type: t.literal('Right'),
-    value: right
+    value: rightType
   })
-  return t.mapWithName(
-    e => e.bimap(v => v.value, v => v.value),
-    createEither<JSONLeft<L>, JSONRight<A>>(t.union([JSONLeft, JSONRight]), (v): v is JSONLeft<L> => v.type === 'Left'),
-    `Either<${left.name}, ${right.name}>`
+  const JSONEither = t.union([JSONLeft, JSONRight])
+  return new t.Type(
+    `Either<${leftType.name}, ${rightType.name}>`,
+    (v): v is Either<L, A> => leftType.is(v) || rightType.is(v),
+    (s, c) =>
+      JSONEither.validate(s, c).chain(e => {
+        switch (e.type) {
+          case 'Left':
+            return t.success(left(e.value))
+          case 'Right':
+            return t.success(right(e.value))
+        }
+      }),
+    a => a.fold<JSONEither<L, A>>(l => ({ type: 'Left', value: l }), a => ({ type: 'Right', value: a }))
   )
 }

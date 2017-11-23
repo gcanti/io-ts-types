@@ -12,32 +12,39 @@ import {
   StringJSONPrism,
   DateFromNumber,
   JSONFromString,
-  lensesFromInterface,
-  lensesFromTuple,
-  prismsFromUnion
+  JSONTypeRT,
+  lensesFromProps
 } from '../src'
 import * as t from 'io-ts'
-import { None, Some, none, some } from 'fp-ts/lib/Option'
-import { Left, Right } from 'fp-ts/lib/Either'
+import { None, Some, some, none } from 'fp-ts/lib/Option'
+import { Left, Right, left, right } from 'fp-ts/lib/Either'
 import { fromSome, fromRight } from './helpers'
 
 describe('fp-ts', () => {
   it('createOptionFromNullable', () => {
     const T = createOptionFromNullable(t.number)
     assert.ok(fromRight(t.validate(null, T)) instanceof None)
+    assert.ok(fromRight(t.validate(undefined, T)) instanceof None)
     assert.ok(fromRight(t.validate(1, T)) instanceof Some)
+    assert.deepEqual(T.serialize(some(1)), 1)
+    assert.deepEqual(T.serialize(none), null)
   })
 
   it('createOptionFromJSON', () => {
     const T = createOptionFromJSON(t.number)
     assert.ok(fromRight(t.validate({ type: 'Option', value: null }, T)) instanceof None)
+    assert.ok(fromRight(t.validate({ type: 'Option', value: undefined }, T)) instanceof None)
     assert.ok(fromRight(t.validate({ type: 'Option', value: 1 }, T)) instanceof Some)
+    assert.deepEqual(T.serialize(some(1)), { type: 'Option', value: 1 })
+    assert.deepEqual(T.serialize(none), { type: 'Option', value: null })
   })
 
   it('createEitherFromJSON', () => {
     const T = createEitherFromJSON(t.string, t.number)
     assert.ok(fromRight(t.validate({ type: 'Left', value: 's' }, T)) instanceof Left)
     assert.ok(fromRight(t.validate({ type: 'Right', value: 1 }, T)) instanceof Right)
+    assert.deepEqual(T.serialize(left('a')), { type: 'Left', value: 'a' })
+    assert.deepEqual(T.serialize(right(1)), { type: 'Right', value: 1 })
   })
 })
 
@@ -114,33 +121,29 @@ describe('monocle-ts', () => {
     assert.deepEqual(fromSome(P.getOption('{"name":"Giulio"}')), { name: 'Giulio' })
   })
 
-  it('lensesFromInterface', () => {
+  it('lensesFromProps', () => {
     const Person = t.interface({
       name: t.string,
       age: t.number
     })
-    const lenses = lensesFromInterface(Person)
+    const lenses = lensesFromProps(Person.props)
     assert.strictEqual(lenses.age.get({ name: 'Giulio', age: 43 }), 43)
-  })
-
-  it('lensesFromTuple', () => {
-    const Point = t.tuple([t.number, t.number])
-    const pointLenses = lensesFromTuple(Point)
-    assert.strictEqual(pointLenses.L1.get([100, 200]), 200)
-    assert.deepEqual(pointLenses.L0.set(50)([100, 200]), [50, 200])
-  })
-
-  it('prismsFromUnion', () => {
-    const RuntimeUnion = t.union([t.string, t.number])
-    const unionPrisms = prismsFromUnion(RuntimeUnion)
-    assert.deepEqual(unionPrisms.P0.getOption('a'), some('a'))
-    assert.deepEqual(unionPrisms.P0.getOption(1), none)
-    assert.deepEqual(unionPrisms.P1.getOption('a'), none)
-    assert.deepEqual(unionPrisms.P1.getOption(1), some(1))
   })
 })
 
 describe('JSON', () => {
+  it('JSONTypeRT', () => {
+    const T = JSONTypeRT
+    assert.deepEqual(fromRight(t.validate({}, T)), {})
+    assert.deepEqual(fromRight(t.validate([], T)), [])
+    assert.deepEqual(fromRight(t.validate('s', T)), 's')
+    assert.strictEqual(fromRight(t.validate(1, T)), 1)
+    assert.strictEqual(fromRight(t.validate(true, T)), true)
+    assert.strictEqual(fromRight(t.validate(null, T)), null)
+    assert.deepEqual(fromRight(t.validate({ name: 'Giulio' }, T)), { name: 'Giulio' })
+    assert.strictEqual(JSONTypeRT.is([{ a: [true] }]), true)
+  })
+
   it('JSONFromString', () => {
     const T = JSONFromString
     assert.deepEqual(fromRight(t.validate('{}', T)), {})
