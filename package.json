@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A collection of runtime types for use with io-ts",
   "files": ["lib"],
   "main": "lib/index.js",
@@ -8,8 +8,10 @@
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
-    "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
+    "prettier":
+      "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
+    "fix-prettier":
+      "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "test": "npm run lint && npm run prettier && npm run mocha",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc"
@@ -25,19 +27,19 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "^0.6.0",
-    "io-ts": "^0.8.0",
-    "monocle-ts": "^0.5.0"
+    "fp-ts": "^0.6.4",
+    "io-ts": "^0.9.0",
+    "monocle-ts": "^0.5.1"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
     "@types/node": "7.0.4",
     "mocha": "3.2.0",
-    "prettier": "1.5.3",
+    "prettier": "1.8.2",
     "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.6.0-rc"
+    "typescript": "2.6.1"
   },
   "tags": ["io-ts", "fp-ts"],
   "keywords": ["io-ts", "fp-ts"]

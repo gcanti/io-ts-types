@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
 
-export function createSupRange<T extends t.Type<number>>(
+export function createSupRange<T extends t.Type<any, number>>(
   type: T,
   from: number,
   to: number,
