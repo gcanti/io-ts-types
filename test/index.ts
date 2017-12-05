@@ -14,7 +14,7 @@ import {
   JSONFromString,
   JSONTypeRT,
   lensesFromProps,
-  ISOType
+  fromIso
 } from '../src'
 import * as t from 'io-ts'
 import * as m from 'monocle-ts'
@@ -143,7 +143,11 @@ describe('monocle-ts', () => {
     const b: B = { b: 'x' }
 
     const ABiso = new m.Iso<A, B>(n => ({ b: n.a }), n => ({ a: n.b }))
-    const ABType = ISOType('t', ABiso, (n): n is B => n.hasOwnProperty('b') && typeof n['b'] === 'string')
+    const ABType = fromIso(
+      't',
+      ABiso,
+      (n: any): n is B => typeof n === 'object' && n.hasOwnProperty('b') && typeof n['b'] === 'string'
+    )
 
     it('validate', () => {
       assert.deepEqual(fromRight(t.validate(a, ABType)), b)
