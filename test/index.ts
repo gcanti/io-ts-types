@@ -14,13 +14,14 @@ import {
   JSONFromString,
   JSONTypeRT,
   lensesFromProps,
-  fromIso
+  fromNewtype
 } from '../src'
 import * as t from 'io-ts'
-import * as m from 'monocle-ts'
 import { None, Some, some, none } from 'fp-ts/lib/Option'
 import { Left, Right, left, right } from 'fp-ts/lib/Either'
 import { fromSome, fromRight } from './helpers'
+import { Newtype } from 'newtype-ts'
+import { Validation } from 'io-ts'
 
 describe('fp-ts', () => {
   it('createOptionFromNullable', () => {
@@ -131,31 +132,14 @@ describe('monocle-ts', () => {
     const lenses = lensesFromProps(Person.props)
     assert.strictEqual(lenses.age.get({ name: 'Giulio', age: 43 }), 43)
   })
+})
 
-  describe('ISOType', () => {
-    type A = {
-      a: string
-    }
-    const a: A = { a: 'x' }
-    type B = {
-      b: string
-    }
-    const b: B = { b: 'x' }
-
-    const ABiso = new m.Iso<A, B>(n => ({ b: n.a }), n => ({ a: n.b }))
-    const ABType = fromIso(
-      't',
-      ABiso,
-      (n: any): n is B => typeof n === 'object' && n.hasOwnProperty('b') && typeof n['b'] === 'string'
-    )
-
-    it('validate', () => {
-      assert.deepEqual(fromRight(t.validate(a, ABType)), b)
-    })
-
-    it('serialize', () => {
-      assert.deepEqual(ABType.serialize(b), a)
-    })
+describe('newtype-ts', () => {
+  it('fromNewtype', () => {
+    type Age = Newtype<'Age', number>
+    const T = fromNewtype<Age>(t.number)
+    const res: Validation<Age> = t.validate(42, T)
+    assert.deepEqual(fromRight(res), 42)
   })
 })
 
