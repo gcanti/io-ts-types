@@ -1,17 +1,17 @@
 {
   "name": "io-ts-types",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A collection of runtime types for use with io-ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
-    "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
+    "prettier":
+      "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
+    "fix-prettier":
+      "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "test": "npm run lint && npm run prettier && npm run mocha",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc"
@@ -30,7 +30,7 @@
     "fp-ts": "^0.6.4",
     "io-ts": "^0.9.0",
     "monocle-ts": "^0.5.1",
-    "newtype-ts": "0.1.0"
+    "newtype-ts": "^0.1.0"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
@@ -40,14 +40,8 @@
     "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.6.1"
+    "typescript": "2.6.2"
   },
-  "tags": [
-    "io-ts",
-    "fp-ts"
-  ],
-  "keywords": [
-    "io-ts",
-    "fp-ts"
-  ]
+  "tags": ["io-ts", "fp-ts", "monocle-ts", "newtype-ts"],
+  "keywords": ["io-ts", "fp-ts", "monocle-ts", "newtype-ts"]
 }
