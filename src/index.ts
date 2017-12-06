@@ -20,6 +20,7 @@ export { StringJSONPrism } from './monocle-ts/StringJSONPrism'
 export { StringNumberPrism } from './monocle-ts/StringNumberPrism'
 import * as TypePrismIso from './monocle-ts/TypePrismIso'
 export { TypePrismIso }
+export { fromNewtype } from './newtype-ts/fromNewtype'
 
 export { createInfRange } from './number/createInfRange'
 export { createInfSupRange } from './number/createInfSupRange'
