@@ -31,7 +31,7 @@ import { fromNewtype } from 'io-ts-types/lib/newtype-ts/fromNewtype'
 
 const Person = t.interface({
   name: t.string,
-  age: fromNewtype<Age>(t.number)
+  age: fromNewtype<Age>(t.Integer)
 })
 ```
 
