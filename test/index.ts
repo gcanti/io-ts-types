@@ -11,6 +11,7 @@ import {
   StringNumberPrism,
   StringJSONPrism,
   DateFromNumber,
+  DateFromUnixTime,
   JSONFromString,
   JSONTypeRT,
   lensesFromProps,
@@ -100,9 +101,18 @@ describe('Date', () => {
 
   it('DateFromNumber', () => {
     const T = DateFromNumber
-    const n = new Date(1973, 10, 30).getTime()
-    assert.ok(fromRight(t.validate(n, T)) instanceof Date)
-    assert.strictEqual(fromRight(t.validate(n, T)).getTime(), n)
+    const millis = new Date(1973, 10, 30).getTime()
+    assert.ok(fromRight(t.validate(millis, T)) instanceof Date)
+    assert.strictEqual(fromRight(t.validate(millis, T)).getTime(), millis)
+    assert.ok(t.validate(NaN, T) instanceof Left)
+  })
+
+  it('DateFromUnixTime', () => {
+    const T = DateFromUnixTime
+    const getSeconds = (d: Date): number => d.getTime() / 1000
+    const seconds = getSeconds(new Date(1973, 10, 30))
+    assert.ok(fromRight(t.validate(seconds, T)) instanceof Date)
+    assert.strictEqual(getSeconds(fromRight(t.validate(seconds, T))), seconds)
     assert.ok(t.validate(NaN, T) instanceof Left)
   })
 })
