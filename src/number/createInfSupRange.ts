@@ -5,6 +5,6 @@ export function createInfSupRange<T extends t.Type<any, number>>(
   from: number,
   to: number,
   name?: string
-): t.RefinementType<T> {
+): t.RefinementType<T, any, number> {
   return t.refinement(type, n => n > from && n < to, name || `Range(${from}, ${to})`)
 }
