@@ -6,7 +6,7 @@ import { JSONTypeRT } from './JSONTypeRT'
 
 export type JSONType = JSONType
 
-export const JSONFromString: t.Type<any, JSONType> = reverseGet(
+export const JSONFromString: t.Type<t.mixed, JSONType> = reverseGet(
   'JSONFromString',
   AnyStringPrism.compose(StringJSONPrism),
   JSONTypeRT.is
