@@ -4,7 +4,7 @@ import { AnyNumberPrism } from '../monocle-ts/AnyNumberPrism'
 import { NumberDatePrism } from '../monocle-ts/NumberDatePrism'
 import { MillisecondSecondIso } from '../monocle-ts/MillisecondSecondIso'
 
-export const DateFromUnixTime: t.Type<any, Date> = reverseGet(
+export const DateFromUnixTime: t.Type<t.mixed, Date> = reverseGet(
   'DateFromUnixTime',
   AnyNumberPrism.composeIso(MillisecondSecondIso.reverse()).compose(NumberDatePrism),
   (v): v is Date => v instanceof Date

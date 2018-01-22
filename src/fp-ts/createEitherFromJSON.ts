@@ -14,9 +14,9 @@ export type JSONRight<A> = {
 export type JSONEither<L, A> = JSONLeft<L> | JSONRight<A>
 
 export function createEitherFromJSON<L, A>(
-  leftType: t.Type<any, L>,
-  rightType: t.Type<any, A>
-): t.Type<any, Either<L, A>> {
+  leftType: t.Type<t.mixed, L>,
+  rightType: t.Type<t.mixed, A>
+): t.Type<t.mixed, Either<L, A>> {
   const JSONLeft = t.interface({
     type: t.literal('Left'),
     value: leftType

@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
 import { reverseGet } from '../monocle-ts/TypePrismIso'
-import { AnyStringPrism } from '../monocle-ts/AnyStringPrism'
+import { MixedStringPrism } from '../monocle-ts/MixedStringPrism'
 import { StringNumberPrism } from '../monocle-ts/StringNumberPrism'
 
-export const NumberFromString = reverseGet('NumberFromString', AnyStringPrism.compose(StringNumberPrism), t.number.is)
+export const NumberFromString = reverseGet('NumberFromString', MixedStringPrism.compose(StringNumberPrism), t.number.is)

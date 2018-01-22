@@ -6,7 +6,7 @@ export type JSONOption<A> = {
   value: A | null | undefined
 }
 
-export function createOptionFromJSON<A>(type: t.Type<any, A>): t.Type<any, Option<A>> {
+export function createOptionFromJSON<A>(type: t.Type<t.mixed, A>): t.Type<t.mixed, Option<A>> {
   const JSONOption = t.interface({
     type: t.literal('Option'),
     value: t.union([type, t.null, t.undefined])

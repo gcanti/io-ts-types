@@ -1,7 +1,7 @@
 import * as t from 'io-ts'
 import { Option, Some, None, fromNullable } from 'fp-ts/lib/Option'
 
-export const createOptionFromNullable = <A>(type: t.Type<any, A>): t.Type<any, Option<A>> => {
+export const createOptionFromNullable = <A>(type: t.Type<t.mixed, A>): t.Type<t.mixed, Option<A>> => {
   const Nullable = t.union([type, t.null, t.undefined])
   return new t.Type(
     `Option<${type.name}>`,
