@@ -1,5 +1,6 @@
 import * as t from 'io-ts'
-import { Option, None, Some, fromNullable } from 'fp-ts/lib/Option'
+
+import { None, Option, Some, fromNullable } from 'fp-ts/lib/Option'
 
 export type JSONOption<A> = {
   type: 'Option'
@@ -15,6 +16,9 @@ export function createOptionFromJSON<A>(type: t.Type<t.mixed, A>): t.Type<t.mixe
     `Option<${type.name}>`,
     (v): v is Option<A> => v instanceof Some || v instanceof None,
     (s, c) => JSONOption.validate(s, c).chain(o => t.success(fromNullable(o.value))),
-    a => ({ type: 'Option', value: a.toNullable() })
+    a => {
+      const res = a.toNullable()
+      return { type: 'Option', value: res !== null ? type.serialize(res) : null }
+    }
   )
 }

@@ -1,26 +1,28 @@
 import * as assert from 'assert'
+import * as t from 'io-ts'
+
 import {
-  createOptionFromNullable,
-  createOptionFromJSON,
-  createEitherFromJSON,
-  createRange,
-  NumberFromString,
-  IntegerFromString,
-  DateFromISOString,
   AnyStringPrism,
-  StringNumberPrism,
-  StringJSONPrism,
+  DateFromISOString,
   DateFromNumber,
   DateFromUnixTime,
+  IntegerFromString,
   JSONFromString,
   JSONTypeRT,
-  lensesFromProps,
-  fromNewtype
+  NumberFromString,
+  StringJSONPrism,
+  StringNumberPrism,
+  createEitherFromJSON,
+  createOptionFromJSON,
+  createOptionFromNullable,
+  createRange,
+  fromNewtype,
+  lensesFromProps
 } from '../src'
-import * as t from 'io-ts'
-import { None, Some, some, none } from 'fp-ts/lib/Option'
 import { Left, Right, left, right } from 'fp-ts/lib/Either'
-import { fromSome, fromRight } from './helpers'
+import { None, Some, none, some } from 'fp-ts/lib/Option'
+import { fromRight, fromSome } from './helpers'
+
 import { Newtype } from 'newtype-ts'
 import { Validation } from 'io-ts'
 
@@ -43,12 +45,34 @@ describe('fp-ts', () => {
     assert.deepEqual(T.serialize(none), { type: 'Option', value: null })
   })
 
+  it('createOptionOfOptionFromJSON', () => {
+    const T = createOptionFromJSON(createOptionFromJSON(t.number))
+    assert.deepEqual(fromRight(t.validate({ type: 'Option', value: { type: 'Option', value: 1 } }, T)), some(some(1)))
+    assert.deepEqual(T.serialize(some(some(1))), { type: 'Option', value: { type: 'Option', value: 1 } })
+    assert.deepEqual(T.serialize(some(none)), { type: 'Option', value: { type: 'Option', value: null } })
+    assert.deepEqual(fromRight(t.validate({ type: 'Option', value: { type: 'Option', value: null } }, T)), some(none))
+    assert.deepEqual(T.serialize(none), { type: 'Option', value: null })
+    assert.deepEqual(fromRight(t.validate({ type: 'Option', value: null }, T)), none)
+  })
+
   it('createEitherFromJSON', () => {
     const T = createEitherFromJSON(t.string, t.number)
     assert.ok(fromRight(t.validate({ type: 'Left', value: 's' }, T)) instanceof Left)
     assert.ok(fromRight(t.validate({ type: 'Right', value: 1 }, T)) instanceof Right)
     assert.deepEqual(T.serialize(left('a')), { type: 'Left', value: 'a' })
     assert.deepEqual(T.serialize(right(1)), { type: 'Right', value: 1 })
+  })
+
+  it('createEitherOfOptionFromJSON', () => {
+    const T = createEitherFromJSON(createOptionFromJSON(t.string), createOptionFromJSON(t.number))
+    assert.deepEqual(fromRight(t.validate({ type: 'Left', value: { type: 'Option', value: 's' } }, T)), left(some('s')))
+    assert.deepEqual(fromRight(t.validate({ type: 'Right', value: { type: 'Option', value: 1 } }, T)), right(some(1)))
+    assert.deepEqual(fromRight(t.validate({ type: 'Left', value: { type: 'Option', value: null } }, T)), left(none))
+    assert.deepEqual(fromRight(t.validate({ type: 'Right', value: { type: 'Option', value: null } }, T)), right(none))
+    assert.deepEqual(T.serialize(left(some('a'))), { type: 'Left', value: { type: 'Option', value: 'a' } })
+    assert.deepEqual(T.serialize(right(some(1))), { type: 'Right', value: { type: 'Option', value: 1 } })
+    assert.deepEqual(T.serialize(left(none)), { type: 'Left', value: { type: 'Option', value: null } })
+    assert.deepEqual(T.serialize(right(none)), { type: 'Right', value: { type: 'Option', value: null } })
   })
 })
 
