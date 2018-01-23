@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+
 import { Either, left, right } from 'fp-ts/lib/Either'
 
 export type JSONLeft<L> = {
@@ -38,6 +39,6 @@ export function createEitherFromJSON<L, A>(
             return t.success(right(e.value))
         }
       }),
-    a => a.fold<JSONEither<L, A>>(l => ({ type: 'Left', value: l }), a => ({ type: 'Right', value: a }))
+    a => a.fold<JSONEither<t.mixed, t.mixed>>(l => ({ type: 'Left', value: leftType.serialize(l) }), a => ({ type: 'Right', value: rightType.serialize(a) }))
   )
 }
