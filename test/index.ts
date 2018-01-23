@@ -74,7 +74,6 @@ describe('fp-ts', () => {
     assert.deepEqual(T.serialize(left(none)), { type: 'Left', value: { type: 'Option', value: null } })
     assert.deepEqual(T.serialize(right(none)), { type: 'Right', value: { type: 'Option', value: null } })
   })
-
 })
 
 describe('number', () => {

@@ -18,7 +18,7 @@ export function createOptionFromJSON<A>(type: t.Type<t.mixed, A>): t.Type<t.mixe
     (s, c) => JSONOption.validate(s, c).chain(o => t.success(fromNullable(o.value))),
     a => {
       const res = a.toNullable()
-      return ({ type: 'Option', value: (res !== null ? type.serialize(res) : null) })
+      return { type: 'Option', value: res !== null ? type.serialize(res) : null }
     }
   )
 }

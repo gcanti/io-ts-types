@@ -39,6 +39,10 @@ export function createEitherFromJSON<L, A>(
             return t.success(right(e.value))
         }
       }),
-    a => a.fold<JSONEither<t.mixed, t.mixed>>(l => ({ type: 'Left', value: leftType.serialize(l) }), a => ({ type: 'Right', value: rightType.serialize(a) }))
+    a =>
+      a.fold<JSONEither<t.mixed, t.mixed>>(
+        l => ({ type: 'Left', value: leftType.serialize(l) }),
+        a => ({ type: 'Right', value: rightType.serialize(a) })
+      )
   )
 }
