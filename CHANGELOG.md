@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.2.4
+
+* **Bug Fix**
+  * createEitherFromJSON and createOptionFromJSON now do serialize correctly their underlying type, fix #15 (@sledorze)
+
 # 0.2.3
 
 * **New Feature**
