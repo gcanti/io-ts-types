@@ -29,7 +29,7 @@ Solution
 import * as t from 'io-ts'
 import { fromNewtype } from 'io-ts-types/lib/newtype-ts/fromNewtype'
 
-const Person = t.interface({
+const Person = t.type({
   name: t.string,
   age: fromNewtype<Age>(t.Integer)
 })
@@ -47,6 +47,6 @@ const ageLens = Lens.fromProp<Person, 'age'>('age').composeIso(iso<Age>())
 
 const sum = (a: number) => (b: number) => a + b
 
-console.log(t.validate({ name: 'Giulio', age: 43 }, Person).map(ageLens.modify(sum(1))))
+console.log(Person.decode({ name: 'Giulio', age: 44 }).map(ageLens.modify(sum(1))))
 // => right({ name: 'Giulio', age: 44 })
 ```

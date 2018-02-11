@@ -1,13 +1,12 @@
 import * as t from 'io-ts'
-import { reverseGet } from '../monocle-ts/TypePrismIso'
-import { AnyStringPrism } from '../monocle-ts/AnyStringPrism'
-import { JSONType, StringJSONPrism } from '../monocle-ts/StringJSONPrism'
-import { JSONTypeRT } from './JSONTypeRT'
+import { JSONType, JSONTypeRT } from './JSONTypeRT'
+import { tryCatch } from 'fp-ts/lib/Either'
 
 export type JSONType = JSONType
 
-export const JSONFromString: t.Type<t.mixed, JSONType> = reverseGet(
+export const JSONFromString = new t.Type<JSONType>(
   'JSONFromString',
-  AnyStringPrism.compose(StringJSONPrism),
-  JSONTypeRT.is
+  JSONTypeRT.is,
+  (m, c) => t.string.validate(m, c).chain(s => tryCatch(() => JSON.parse(s)).fold(() => t.failure(s, c), t.success)),
+  JSON.stringify
 )
