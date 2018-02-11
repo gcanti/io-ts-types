@@ -1,13 +1,13 @@
 {
   "name": "io-ts-types",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "A collection of runtime types for use with io-ts",
   "files": ["lib"],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
-    "mocha": "mocha -r ts-node/register test/*.ts",
+    "mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
     "prettier":
       "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
     "fix-prettier":
@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "^0.6.4",
-    "io-ts": "^0.9.5",
-    "monocle-ts": "^0.5.2",
-    "newtype-ts": "^0.1.0"
+    "fp-ts": "gcanti/fp-ts#next",
+    "io-ts": "gcanti/io-ts#next",
+    "monocle-ts": "gcanti/monocle-ts#next",
+    "newtype-ts": "gcanti/newtype-ts#next"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
@@ -40,7 +40,7 @@
     "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.6.2"
+    "typescript": "2.7.1"
   },
   "tags": ["io-ts", "fp-ts", "monocle-ts", "newtype-ts"],
   "keywords": ["io-ts", "fp-ts", "monocle-ts", "newtype-ts"]

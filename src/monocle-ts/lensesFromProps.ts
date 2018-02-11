@@ -1,7 +1,7 @@
 import * as t from 'io-ts'
 import { Lens } from 'monocle-ts'
 
-export type LensesFromProps<P extends t.Props, T extends t.InterfaceOf<P> = t.InterfaceOf<P>> = {
+export type LensesFromProps<P extends t.Props, T extends t.TypeOfProps<P> = t.TypeOfProps<P>> = {
   [K in keyof P]: Lens<T, T[K]>
 }
 

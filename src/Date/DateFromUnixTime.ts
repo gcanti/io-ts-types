@@ -1,11 +1,12 @@
 import * as t from 'io-ts'
-import { reverseGet } from '../monocle-ts/TypePrismIso'
-import { AnyNumberPrism } from '../monocle-ts/AnyNumberPrism'
-import { NumberDatePrism } from '../monocle-ts/NumberDatePrism'
-import { MillisecondSecondIso } from '../monocle-ts/MillisecondSecondIso'
 
-export const DateFromUnixTime: t.Type<t.mixed, Date> = reverseGet(
+export const DateFromUnixTime = new t.Type<Date, number>(
   'DateFromUnixTime',
-  AnyNumberPrism.composeIso(MillisecondSecondIso.reverse()).compose(NumberDatePrism),
-  (v): v is Date => v instanceof Date
+  (m): m is Date => m instanceof Date,
+  (m, c) =>
+    t.Integer.validate(m, c).chain(n => {
+      const d = new Date(n * 1000)
+      return isNaN(d.getTime()) ? t.failure(n, c) : t.success(d)
+    }),
+  a => a.getTime() / 1000
 )
