@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.0
+
+* **Breaking Change**
+  * upgrade to `fp-ts@1.0.0`, `io-ts@1.0.0`, `monocle-ts@1.0.0`, `newtype-ts@0.2.0` (@gcanti)
+
 # 0.2.4
 
 * **Bug Fix**

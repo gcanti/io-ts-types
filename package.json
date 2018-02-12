@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "dependencies": {
-    "fp-ts": "gcanti/fp-ts#next",
-    "io-ts": "gcanti/io-ts#next",
-    "monocle-ts": "gcanti/monocle-ts#next",
-    "newtype-ts": "gcanti/newtype-ts#next"
+    "fp-ts": "^1.0.0",
+    "io-ts": "^1.0.0",
+    "monocle-ts": "^1.0.0",
+    "newtype-ts": "^0.2.0"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
