@@ -14,6 +14,7 @@ import {
   createEitherFromJSON,
   createOptionFromJSON,
   createOptionFromNullable,
+  createNonEmptyArrayFromArray,
   fromNewtype,
   lensesFromProps,
   lensesFromInterface
@@ -23,6 +24,7 @@ import { none, some } from 'fp-ts/lib/Option'
 
 import { Newtype } from 'newtype-ts'
 import { Validation } from 'io-ts'
+import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
 
 describe('fp-ts', () => {
   it('createOptionFromNullable', () => {
@@ -79,6 +81,17 @@ describe('fp-ts', () => {
     assert.deepEqual(T.encode(right(some(1))), { type: 'Right', value: { type: 'Option', value: 1 } })
     assert.deepEqual(T.encode(left(none)), { type: 'Left', value: { type: 'Option', value: null } })
     assert.deepEqual(T.encode(right(none)), { type: 'Right', value: { type: 'Option', value: null } })
+  })
+
+  it('createNonEmptyArrayFromArray', () => {
+    const T = createNonEmptyArrayFromArray(t.number)
+    assert.deepEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : NonEmptyArray<number>'])
+    assert.deepEqual(PathReporter.report(T.decode([])), ['Invalid value [] supplied to : NonEmptyArray<number>'])
+    assert.deepEqual(T.decode([1]), right(new NonEmptyArray(1, [])))
+    assert.deepEqual(T.decode([1, 2, 3]), right(new NonEmptyArray(1, [2, 3])))
+
+    assert.deepEqual(T.encode(new NonEmptyArray(1, [2, 3])), [1, 2, 3])
+    assert.deepEqual(T.encode(new NonEmptyArray(1, [])), [1])
   })
 })
 
