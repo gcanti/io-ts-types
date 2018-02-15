@@ -9,7 +9,7 @@ const getNonEmptyArrayFromArray = <A = never>() =>
     nep => nep.toArray()
   )
 
-export const createNonEmptyArrayFromArray = <A, O = A>(
+export const createNonEmptyArrayFromArray = <A, O>(
   type: t.Type<A, O, t.mixed>
-): t.Type<NonEmptyArray<A>, O[], t.mixed> =>
+): t.Type<NonEmptyArray<A>, Array<O>, t.mixed> =>
   t.array(type).pipe(getNonEmptyArrayFromArray(), `NonEmptyArray<${type.name}>`)
