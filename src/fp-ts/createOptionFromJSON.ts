@@ -7,7 +7,7 @@ export interface JSONOption<A> {
   value: A | null | undefined
 }
 
-export function createOptionFromJSON<A, I>(type: t.Type<A, I>): t.Type<Option<A>, JSONOption<I>> {
+export function createOptionFromJSON<A, O>(type: t.Type<A, O>): t.Type<Option<A>, JSONOption<O>> {
   const JSONOption = t.type({
     type: t.literal('Option'),
     value: t.union([type, t.null, t.undefined])
@@ -17,7 +17,7 @@ export function createOptionFromJSON<A, I>(type: t.Type<A, I>): t.Type<Option<A>
     (m): m is Option<A> => m instanceof None || (m instanceof Some && type.is(m.value)),
     (m, c) => JSONOption.validate(m, c).chain(o => t.success(fromNullable(o.value))),
     a =>
-      a.foldL<JSONOption<I>>(
+      a.foldL<JSONOption<O>>(
         () => ({ type: 'Option', value: null }),
         value => ({ type: 'Option', value: type.encode(value) })
       )
