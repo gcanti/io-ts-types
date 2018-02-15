@@ -28,14 +28,20 @@ import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
 
 describe('fp-ts', () => {
   it('createOptionFromNullable', () => {
-    const T = createOptionFromNullable(t.number)
-    assert.deepEqual(T.decode(null), right(none))
-    assert.deepEqual(T.decode(undefined), right(none))
-    assert.deepEqual(T.decode(1), right(some(1)))
-    assert.deepEqual(T.encode(some(1)), 1)
-    assert.deepEqual(T.encode(none), null)
-    assert.strictEqual(T.is(some(1)), true)
-    assert.strictEqual(T.is(some('foo')), false)
+    const T1 = createOptionFromNullable(t.number)
+    assert.deepEqual(T1.decode(null), right(none))
+    assert.deepEqual(T1.decode(undefined), right(none))
+    assert.deepEqual(T1.decode(1), right(some(1)))
+    assert.deepEqual(T1.encode(some(1)), 1)
+    assert.deepEqual(T1.encode(none), null)
+    assert.strictEqual(T1.is(some(1)), true)
+    assert.strictEqual(T1.is(some('foo')), false)
+
+    const T2 = createOptionFromNullable(NumberFromString)
+    assert.deepEqual(T2.decode(null), right(none))
+    assert.deepEqual(T2.decode('1'), right(some(1)))
+    assert.deepEqual(T2.encode(none), null)
+    assert.deepEqual(T2.encode(some(1)), '1')
   })
 
   it('createOptionFromJSON', () => {
