@@ -5,6 +5,7 @@ export { DateFromUnixTime } from './Date/DateFromUnixTime'
 export { createEitherFromJSON } from './fp-ts/createEitherFromJSON'
 export { createOptionFromJSON } from './fp-ts/createOptionFromJSON'
 export { createOptionFromNullable } from './fp-ts/createOptionFromNullable'
+export { createNonEmptyArrayFromArray } from './fp-ts/createNonEmptyArrayFromArray'
 
 export { JSONFromString, JSONType } from './JSON/JSONFromString'
 export { JSONTypeRT } from './JSON/JSONTypeRT'
