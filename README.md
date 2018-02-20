@@ -2,6 +2,26 @@ A collection of runtime types and combinators for use with [io-ts](https://githu
 
 # API
 
+## `mapOutput`
+
+Changes the output type of the given runtime type
+
+```ts
+import { mapOutput } from 'io-ts-types/lib/mapOutput'
+import { createOptionFromNullable } from 'io-ts-types/lib/fp-ts/createOptionFromNullable'
+
+// Input: t.Type<Option<number>, number | null, t.mixed>
+const Input = createOptionFromNullable(t.number)
+
+const toUndefined = <A>(x: A | null): A | undefined => (x === null ? undefined : x)
+
+// Output: t.Type<Option<number>, number | undefined, t.mixed>
+const Output = mapOutput(Input, toUndefined)
+
+assert.strictEqual(T.encode(none), undefined)
+assert.strictEqual(T.encode(some(1)), 1)
+```
+
 ## `newtype-ts`
 
 ### `fromNewtype`
