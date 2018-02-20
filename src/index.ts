@@ -18,3 +18,5 @@ export { fromNewtype } from './newtype-ts/fromNewtype'
 
 export { IntegerFromString } from './number/IntegerFromString'
 export { NumberFromString } from './number/NumberFromString'
+
+export { mapOutput } from './mapOutput'

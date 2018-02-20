@@ -17,7 +17,8 @@ import {
   createNonEmptyArrayFromArray,
   fromNewtype,
   lensesFromProps,
-  lensesFromInterface
+  lensesFromInterface,
+  mapOutput
 } from '../src'
 import { left, right } from 'fp-ts/lib/Either'
 import { none, some } from 'fp-ts/lib/Option'
@@ -25,6 +26,16 @@ import { none, some } from 'fp-ts/lib/Option'
 import { Newtype } from 'newtype-ts'
 import { Validation } from 'io-ts'
 import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
+
+describe('mapOutput', () => {
+  it('should map the output of encode', () => {
+    const toUndefined = <A>(x: A | null): A | undefined => (x === null ? undefined : x)
+    const Input = createOptionFromNullable(t.number)
+    const Output = mapOutput(Input, toUndefined)
+    assert.strictEqual(Output.encode(none), undefined)
+    assert.strictEqual(Output.encode(some(1)), 1)
+  })
+})
 
 describe('fp-ts', () => {
   it('createOptionFromNullable', () => {
