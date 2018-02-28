@@ -114,7 +114,7 @@ describe('fp-ts', () => {
   })
 
   it('createSetFromArray', () => {
-    const T = createSetFromArray(t.number, ordNumber) // t.Type<any, number[], t.mixed> Why ???
+    const T = createSetFromArray(t.number, ordNumber)
     assert.deepEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : Set<number>'])
     assert.deepEqual(PathReporter.report(T.decode([1, 1])), ['Invalid value [1,1] supplied to : Set<number>'])
 
