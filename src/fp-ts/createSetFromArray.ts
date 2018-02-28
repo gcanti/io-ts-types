@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
-import * as sets from 'fp-ts/lib/Set'
-import * as arrays from 'fp-ts/lib/Array'
+import { insert, toArray } from 'fp-ts/lib/Set'
+import { array } from 'fp-ts/lib/Array'
 import { Ord } from 'fp-ts/lib/Ord'
 
 export class SetFromArrayType<RT extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
@@ -21,16 +21,16 @@ export const createSetFromArray = <RT extends t.Type<A, O>, A = any, O = any>(
   ordA: Ord<t.TypeOf<RT>>,
   name: string = `Set<${type.name}>`
 ): t.Type<Set<t.TypeOf<RT>>, Array<t.OutputOf<RT>>, t.InputOf<RT>> => {
-  const insertSetOrdA = sets.insert(ordA)
+  const insertSetOrdA = insert(ordA)
   return t.array(type).pipe(
     new SetFromArrayType<RT, Set<t.TypeOf<RT>>, Array<t.TypeOf<RT>>, Array<t.TypeOf<RT>>>(
       `SetFromArray`,
       (m): m is Set<t.TypeOf<RT>> => m instanceof Set,
       (as, c) => {
-        const newSet = arrays.array.reduce(as, new Set<t.TypeOf<RT>>(), (set, a) => insertSetOrdA(a, set))
+        const newSet = array.reduce(as, new Set<t.TypeOf<RT>>(), (set, a) => insertSetOrdA(a, set))
         return newSet.size !== as.length ? t.failure(as, c) : t.success(newSet)
       },
-      sets.toArray(ordA),
+      toArray(ordA),
       type
     ),
     name
