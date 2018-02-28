@@ -15,6 +15,7 @@ import {
   createOptionFromJSON,
   createOptionFromNullable,
   createNonEmptyArrayFromArray,
+  createSetFromArray,
   fromNewtype,
   lensesFromProps,
   lensesFromInterface,
@@ -26,6 +27,7 @@ import { none, some } from 'fp-ts/lib/Option'
 import { Newtype } from 'newtype-ts'
 import { Validation } from 'io-ts'
 import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
+import { ordNumber } from 'fp-ts/lib/Ord'
 
 describe('mapOutput', () => {
   it('should map the output of encode', () => {
@@ -109,6 +111,21 @@ describe('fp-ts', () => {
 
     assert.deepEqual(T.encode(new NonEmptyArray(1, [2, 3])), [1, 2, 3])
     assert.deepEqual(T.encode(new NonEmptyArray(1, [])), [1])
+  })
+
+  it('createSetFromArray', () => {
+    const T = createSetFromArray(t.number, ordNumber) // t.Type<any, number[], t.mixed> Why ???
+    assert.deepEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : Set<number>'])
+    assert.deepEqual(PathReporter.report(T.decode([1, 1])), ['Invalid value [1,1] supplied to : Set<number>'])
+
+    assert.deepEqual(T.decode([]), right(new Set()))
+    assert.deepEqual(T.decode([1]), right(new Set([1])))
+    assert.deepEqual(T.decode([1, 2, 3]), right(new Set([1, 2, 3])))
+
+    assert.deepEqual(T.encode(new Set([1, 2, 3])), [1, 2, 3])
+    assert.deepEqual(T.encode(new Set([1])), [1])
+    assert.deepEqual(T.encode(new Set([])), [])
+    assert.deepEqual(T.encode(new Set()), [])
   })
 })
 
