@@ -7,19 +7,43 @@ export interface JSONOption<A> {
   value: A | null | undefined
 }
 
-export function createOptionFromJSON<A, O>(type: t.Type<A, O>): t.Type<Option<A>, JSONOption<O>> {
+export class OptionFromJSONType<RT extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+  readonly _tag: 'OptionFromJSONType' = 'OptionFromJSONType'
+  constructor(
+    name: string,
+    is: OptionFromJSONType<RT, A, O, I>['is'],
+    validate: OptionFromJSONType<RT, A, O, I>['validate'],
+    serialize: OptionFromJSONType<RT, A, O, I>['encode'],
+    readonly type: RT
+  ) {
+    super(name, is, validate, serialize)
+  }
+}
+
+export function createOptionFromJSON<RT extends t.Type<A, O>, A = any, O = A>(
+  type: RT,
+  name: string = `Option<${type.name}>`
+): OptionFromJSONType<RT, Option<t.TypeOf<RT>>, JSONOption<t.OutputOf<RT>>, t.mixed> {
   const JSONOption = t.type({
     type: t.literal('Option'),
     value: t.union([type, t.null, t.undefined])
   })
-  return new t.Type(
-    `Option<${type.name}>`,
-    (m): m is Option<A> => m instanceof None || (m instanceof Some && type.is(m.value)),
-    (m, c) => JSONOption.validate(m, c).chain(o => t.success(fromNullable(o.value))),
+  return new OptionFromJSONType(
+    name,
+    (m): m is Option<t.TypeOf<RT>> => m instanceof None || (m instanceof Some && type.is(m.value)),
+    (m, c) => {
+      const validation = JSONOption.validate(m, c)
+      if (validation.isLeft()) {
+        return validation as any
+      } else {
+        return t.success(fromNullable(validation.value.value))
+      }
+    },
     a =>
-      a.foldL<JSONOption<O>>(
+      a.foldL<JSONOption<t.OutputOf<RT>>>(
         () => ({ type: 'Option', value: null }),
         value => ({ type: 'Option', value: type.encode(value) })
-      )
+      ),
+    type
   )
 }

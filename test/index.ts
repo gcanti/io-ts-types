@@ -111,6 +111,10 @@ describe('fp-ts', () => {
 
     assert.deepEqual(T.encode(new NonEmptyArray(1, [2, 3])), [1, 2, 3])
     assert.deepEqual(T.encode(new NonEmptyArray(1, [])), [1])
+
+    assert.strictEqual(T.is(new NonEmptyArray(1, [2, 3])), true)
+    assert.strictEqual(T.is(null), false)
+    assert.strictEqual(T.is(new NonEmptyArray('a', ['b', 'c'])), false)
   })
 
   it('createSetFromArray', () => {
