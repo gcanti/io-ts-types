@@ -4,9 +4,24 @@ import { tryCatch } from 'fp-ts/lib/Either'
 
 export type JSONType = JSONType
 
-export const JSONFromString = new t.Type<JSONType>(
-  'JSONFromString',
-  JSONTypeRT.is,
-  (m, c) => t.string.validate(m, c).chain(s => tryCatch(() => JSON.parse(s)).fold(() => t.failure(s, c), t.success)),
-  JSON.stringify
-)
+export class JSONFromStringType extends t.Type<JSONType> {
+  readonly _tag: 'JSONFromStringType' = 'JSONFromStringType'
+  constructor() {
+    super(
+      'JSONFromString',
+      JSONTypeRT.is,
+      (m, c) => {
+        const validation = t.string.validate(m, c)
+        if (validation.isLeft()) {
+          return validation as any
+        } else {
+          const s = validation.value
+          return tryCatch(() => JSON.parse(s)).fold(() => t.failure(s, c), t.success)
+        }
+      },
+      JSON.stringify
+    )
+  }
+}
+
+export const JSONFromString = new JSONFromStringType()
