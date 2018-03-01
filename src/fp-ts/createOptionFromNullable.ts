@@ -14,7 +14,7 @@ export class OptionFromNullableType<RT extends t.Any, A = any, O = A, I = t.mixe
   }
 }
 
-export const createOptionFromNullable = <RT extends t.Mixed>(
+export const createOptionFromNullable = <RT extends t.Type<A, O>, A = any, O = A>(
   type: RT,
   name: string = `Option<${type.name}>`
 ): OptionFromNullableType<RT, Option<t.TypeOf<RT>>, t.OutputOf<RT> | null, t.mixed> => {
@@ -24,7 +24,7 @@ export const createOptionFromNullable = <RT extends t.Mixed>(
     (m): m is Option<t.TypeOf<RT>> => m instanceof None || (m instanceof Some && type.is(m.value)),
     (s, c) => {
       const validation = Nullable.validate(s, c)
-      return validation.isLeft() ? validation : t.success(fromNullable(validation.value))
+      return validation.isLeft() ? (validation as any) : t.success(fromNullable(validation.value))
     },
     a => a.map(type.encode).toNullable(),
     type
