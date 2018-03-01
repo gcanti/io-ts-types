@@ -115,6 +115,11 @@ describe('fp-ts', () => {
 
   it('createSetFromArray', () => {
     const T = createSetFromArray(t.number, ordNumber)
+    assert.deepEqual(T.is(null), false)
+    assert.deepEqual(T.is(new Set([1, 2])), true)
+    assert.deepEqual(T.is(new Set([1, '1'])), false)
+    assert.deepEqual(T.is(new Set([1, 1])), false) // Should we?
+
     assert.deepEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : Set<number>'])
     assert.deepEqual(PathReporter.report(T.decode([1, 1])), ['Invalid value [1,1] supplied to : Set<number>'])
 
