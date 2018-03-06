@@ -1,4 +1,8 @@
 import * as t from 'io-ts'
-import { NumberFromString } from './NumberFromString'
+import { NumberFromString, NumberFromStringType } from './NumberFromString'
 
-export const IntegerFromString = t.refinement(NumberFromString, t.Integer.predicate, 'IntegerFromString')
+export const IntegerFromString: t.RefinementType<NumberFromStringType, number, string, t.mixed> = t.refinement(
+  NumberFromString,
+  t.Integer.predicate,
+  'IntegerFromString'
+)
