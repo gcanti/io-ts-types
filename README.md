@@ -22,6 +22,72 @@ assert.strictEqual(T.encode(none), undefined)
 assert.strictEqual(T.encode(some(1)), 1)
 ```
 
+## `Date`
+
+### `DateFromISOString`
+
+TODO
+
+### `DateFromNumber`
+
+TODO
+
+### `DateFromUnixTime`
+
+TODO
+
+## `fp-ts`
+
+### `createEitherFromJSON`
+
+TODO
+
+### `createNonEmptyArrayFromArray`
+
+TODO
+
+### `createOptionFromJSON`
+
+TODO
+
+### `createOptionFromNullable`
+
+TODO
+
+### `createSetFromArray`
+
+```ts
+import * as t from 'io-ts'
+import { ordNumber } from 'fp-ts/lib/Ord'
+
+const NumberSet = createSetFromArray(t.number, ordNumber)
+NumberSet.decode([1, 2, 3] // Set([1, 2, 3])
+```
+
+## `JSON`
+
+### `JSONFromString`
+
+TODO
+
+### `JSONTypeRT`
+
+TODO
+
+## `monocle-ts`
+
+### `lensesFromInterface`
+
+TODO
+
+### `lensesFromProps`
+
+TODO
+
+### `TypePrismIso`
+
+TODO
+
 ## `newtype-ts`
 
 ### `fromNewtype`
@@ -70,3 +136,13 @@ const sum = (a: number) => (b: number) => a + b
 console.log(Person.decode({ name: 'Giulio', age: 44 }).map(ageLens.modify(sum(1))))
 // => right({ name: 'Giulio', age: 44 })
 ```
+
+## number
+
+### `IntegerFromString`
+
+TODO
+
+### `NumberFromString`
+
+TODO

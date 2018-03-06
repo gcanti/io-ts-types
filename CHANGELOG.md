@@ -13,6 +13,21 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.3
+
+* **New Feature**
+  * add tagged custom types for (@gcanti, @sledorze)
+    * createOptionFromNullable
+    * createOptionFromJSON
+    * createNonEmptyArrayFromArray
+    * createEitherFromJSON
+    * DateFromISOString
+    * DateFromNumber
+    * DateFromUnixTime
+    * NumberFromString
+    * JSONFromString
+  * add createSetFromArray, closes #24 (@sledorze)
+
 # 0.3.2
 
 * **New Feature**
