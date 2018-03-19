@@ -16,6 +16,7 @@ import {
   createOptionFromNullable,
   createNonEmptyArrayFromArray,
   createSetFromArray,
+  createStrMapFromDictionary,
   fromNewtype,
   lensesFromProps,
   lensesFromInterface,
@@ -28,6 +29,7 @@ import { Newtype } from 'newtype-ts'
 import { Validation } from 'io-ts'
 import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
 import { ordNumber } from 'fp-ts/lib/Ord'
+import { StrMap } from 'fp-ts/lib/StrMap'
 
 describe('mapOutput', () => {
   it('should map the output of encode', () => {
@@ -139,6 +141,21 @@ describe('fp-ts', () => {
     assert.deepEqual(T.encode(new Set([1])), [1])
     assert.deepEqual(T.encode(new Set([])), [])
     assert.deepEqual(T.encode(new Set()), [])
+  })
+
+  it('createStrMapFromDictionary', () => {
+    const T = createStrMapFromDictionary(t.number)
+
+    assert.deepEqual(T.decode({}), right(new StrMap({})))
+    assert.deepEqual(T.decode({ foo: 42 }), right(new StrMap({ foo: 42 })))
+    assert.deepEqual(PathReporter.report(T.decode({ foo: 'not a number' })), [
+      'Invalid value "not a number" supplied to : StrMap<number>/foo: number'
+    ])
+    assert.deepEqual(T.encode(new StrMap({})), {})
+    assert.deepEqual(T.encode(new StrMap({ foo: 42 })), { foo: 42 })
+    assert.strictEqual(T.is(new StrMap({ foo: 42 })), true)
+    assert.strictEqual(T.is(new StrMap({ foo: 'not a number' })), false)
+    assert.strictEqual(T.is('not a strmap'), false)
   })
 })
 

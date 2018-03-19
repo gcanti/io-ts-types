@@ -9,6 +9,7 @@ export { createNonEmptyArrayFromArray } from './fp-ts/createNonEmptyArrayFromArr
 export { createOptionFromJSON } from './fp-ts/createOptionFromJSON'
 export { createOptionFromNullable } from './fp-ts/createOptionFromNullable'
 export { createSetFromArray } from './fp-ts/createSetFromArray'
+export { createStrMapFromDictionary } from './fp-ts/createStrMapFromDictionary'
 
 // JSON
 export { JSONFromString, JSONType } from './JSON/JSONFromString'

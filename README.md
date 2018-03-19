@@ -64,6 +64,17 @@ const NumberSet = createSetFromArray(t.number, ordNumber)
 NumberSet.decode([1, 2, 3] // Set([1, 2, 3])
 ```
 
+### `createStrMapFromDictionary`
+
+```ts
+import * as t from 'io-ts';
+
+const NumberStrMap = createStrMapFromDictionary(t.number)
+NumberStrMap.decode({ someNumber: 42 }) // StrMap<number>({ someNumber: 42 })
+NumberStrMap.encode(new StrMap({ someNumber: 42 })) // { someNumber: 42 }
+
+```
+
 ## `JSON`
 
 ### `JSONFromString`
