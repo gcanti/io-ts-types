@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "A collection of runtime types and combinators for use with io-ts",
   "files": [
     "lib"
