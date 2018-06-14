@@ -168,6 +168,9 @@ describe('number', () => {
     assert.deepEqual(T.decode('11'), right(11))
     assert.deepEqual(T.decode('5.5'), right(5.5))
     assert.deepEqual(T.decode('-5.5'), right(-5.5))
+    assert.deepEqual(PathReporter.report(T.decode('a')), ['Invalid value "a" supplied to : NumberFromString'])
+    assert.deepEqual(PathReporter.report(T.decode('2a')), ['Invalid value "2a" supplied to : NumberFromString'])
+    assert.deepEqual(PathReporter.report(T.decode('2.a')), ['Invalid value "2.a" supplied to : NumberFromString'])
   })
 
   it('IntegerFromString', () => {
@@ -178,6 +181,8 @@ describe('number', () => {
     assert.deepEqual(T.decode('11'), right(11))
     assert.deepEqual(PathReporter.report(T.decode('5.5')), ['Invalid value 5.5 supplied to : IntegerFromString'])
     assert.deepEqual(PathReporter.report(T.decode('-5.5')), ['Invalid value -5.5 supplied to : IntegerFromString'])
+    assert.deepEqual(PathReporter.report(T.decode('a')), ['Invalid value "a" supplied to : IntegerFromString'])
+    assert.deepEqual(PathReporter.report(T.decode('a5')), ['Invalid value "a5" supplied to : IntegerFromString'])
   })
 })
 

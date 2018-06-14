@@ -12,7 +12,7 @@ export class NumberFromStringType extends t.Type<number, string> {
           return validation as any
         } else {
           const s = validation.value
-          const n = parseFloat(s)
+          const n = +s
           return isNaN(n) ? t.failure(s, c) : t.success(n)
         }
       },
