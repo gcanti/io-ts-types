@@ -9,10 +9,10 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
-    "mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
+    "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run lint && npm run prettier && npm run mocha",
+    "test": "npm run lint && npm run prettier && npm run jest",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc"
   },
@@ -33,10 +33,12 @@
     "newtype-ts": "^0.2.0"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.2",
     "@types/mocha": "2.2.38",
     "@types/node": "7.0.4",
-    "mocha": "3.2.0",
+    "jest": "^22.4.3",
     "prettier": "^1.13.5",
+    "ts-jest": "^22.4.2",
     "ts-node": "3.2.1",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
@@ -53,5 +55,21 @@
     "fp-ts",
     "monocle-ts",
     "newtype-ts"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "test",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  }
 }
