@@ -2,6 +2,7 @@ import * as assert from 'assert'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
 import { iso } from 'newtype-ts'
+import { prismNonZero, NonZero } from 'newtype-ts/lib/NonZero'
 
 import {
   DateFromISOString,
@@ -18,6 +19,7 @@ import {
   createSetFromArray,
   createStrMapFromDictionary,
   fromNewtype,
+  fromRefinement,
   lensesFromProps,
   lensesFromInterface,
   mapOutput
@@ -259,6 +261,13 @@ describe('newtype-ts', () => {
     assert.deepEqual(res, right(42))
     const e: number = T.encode(isoAge.wrap(42))
     assert.strictEqual(e, 42)
+  })
+
+  it('fromRefinement', () => {
+    const T = fromRefinement<NonZero>()(t.number, prismNonZero, 'NonZero')
+    assert.deepEqual(T.decode(1), right(1))
+    assert.deepEqual(PathReporter.report(T.decode('a')), ['Invalid value "a" supplied to : NonZero'])
+    assert.deepEqual(PathReporter.report(T.decode(0)), ['Invalid value 0 supplied to : NonZero'])
   })
 })
 
