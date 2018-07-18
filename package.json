@@ -30,7 +30,7 @@
     "fp-ts": "^1.0.0",
     "io-ts": "^1.1.4",
     "monocle-ts": "^1.0.0",
-    "newtype-ts": "^0.2.0"
+    "newtype-ts": "^0.2.1"
   },
   "devDependencies": {
     "@types/jest": "^22.2.2",
