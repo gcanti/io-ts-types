@@ -22,13 +22,13 @@ import {
   fromRefinement,
   lensesFromProps,
   lensesFromInterface,
-  mapOutput
+  mapOutput,
+  fromNewtypeCurried
 } from '../src'
 import { left, right } from 'fp-ts/lib/Either'
 import { none, some } from 'fp-ts/lib/Option'
 
 import { Newtype } from 'newtype-ts'
-import { Validation } from 'io-ts'
 import { NonEmptyArray } from 'fp-ts/lib/NonEmptyArray'
 import { ordNumber } from 'fp-ts/lib/Ord'
 import { StrMap } from 'fp-ts/lib/StrMap'
@@ -254,13 +254,39 @@ describe('monocle-ts', () => {
 
 describe('newtype-ts', () => {
   it('fromNewtype', () => {
-    type Age = Newtype<'Age', number>
+    interface Age extends Newtype<'Age', number> {}
     const isoAge = iso<Age>()
     const T = fromNewtype<Age>(t.number)
-    const res: Validation<Age> = T.decode(42)
-    assert.deepEqual(res, right(42))
-    const e: number = T.encode(isoAge.wrap(42))
-    assert.strictEqual(e, 42)
+    assert.deepEqual(T.decode(42), right(42))
+    assert.strictEqual(T.encode(isoAge.wrap(42)), 42)
+  })
+
+  it('fromNewtypeCurried', () => {
+    interface Id extends Newtype<'Id', string> {}
+
+    const Id = fromNewtype<Id>(t.string)
+    const isoId = iso<Id>()
+
+    interface User {
+      id: Id
+      name: string
+    }
+
+    const User = t.interface({
+      id: Id,
+      name: t.string
+    })
+
+    interface SpecialUser extends Newtype<'SpecialUser', User> {}
+
+    const isoSpecialUser = iso<SpecialUser>()
+
+    const T = fromNewtypeCurried<SpecialUser>()(User)
+    assert.deepEqual(T.decode({ id: 'abc', name: 'name' }), right({ id: 'abc', name: 'name' }))
+    assert.deepEqual(T.encode(isoSpecialUser.wrap({ id: isoId.wrap('abc'), name: 'name' })), {
+      id: 'abc',
+      name: 'name'
+    })
   })
 
   it('fromRefinement', () => {
