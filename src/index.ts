@@ -23,6 +23,7 @@ export { TypePrismIso }
 
 // newtype-ts
 export { fromNewtype } from './newtype-ts/fromNewtype'
+export { fromNewtypeCurried } from './newtype-ts/fromNewtype'
 export { fromRefinement } from './newtype-ts/fromRefinement'
 
 // number
