@@ -13,6 +13,12 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.7
+
+- **New Feature**
+  - add `newtype-ts/fromRefinement` (@gcanti)
+  - add `newtype-ts/fromNewtypeCurried`, closes #44 (@gcanti)
+
 # 0.3.6
 
 - **Bug Fix**
