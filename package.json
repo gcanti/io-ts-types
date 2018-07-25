@@ -12,9 +12,10 @@
     "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run lint && npm run prettier && npm run jest",
+    "test": "npm run build && npm run lint && npm run prettier && npm run check-declarations && npm run jest",
     "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "check-declarations": "count=$(grep -R 'node_modules' ./lib | wc -l); exit $count"
   },
   "repository": {
     "type": "git",
