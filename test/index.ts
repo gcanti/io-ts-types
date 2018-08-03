@@ -23,7 +23,8 @@ import {
   lensesFromProps,
   lensesFromInterface,
   mapOutput,
-  fromNewtypeCurried
+  fromNewtypeCurried,
+  uuid
 } from '../src'
 import { left, right } from 'fp-ts/lib/Either'
 import { none, some } from 'fp-ts/lib/Option'
@@ -320,4 +321,9 @@ describe('JSON', () => {
     assert.deepEqual(T.decode('null'), right(null))
     assert.deepEqual(T.decode('{"name":"Giulio"}'), right({ name: 'Giulio' }))
   })
+})
+
+it('UUID', () => {
+  assert.deepEqual(uuid.decode('6e9c5587-a342-4b63-a901-87b31fa2ffa3'), right('6e9c5587-a342-4b63-a901-87b31fa2ffa3'))
+  assert.deepEqual(PathReporter.report(uuid.decode('invalid')), ['Invalid value "invalid" supplied to : UUID'])
 })
