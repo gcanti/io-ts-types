@@ -32,3 +32,6 @@ export { NumberFromString } from './number/NumberFromString'
 
 // top level
 export { mapOutput } from './mapOutput'
+
+// UUID
+export { uuid } from './uuid'
