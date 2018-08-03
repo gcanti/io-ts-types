@@ -264,3 +264,13 @@ import { NumberFromString } from 'io-ts-types/lib/number/NumberFromString'
 NumberFromString.decode('1') // right(1)
 NumberFromString.decode('1.1') // right(1.1)
 ```
+
+## string
+
+### `uuid`
+
+```ts
+import { uuid } from 'io-ts-types/lib/string/uuid'
+
+uuid.decode('6e9c5587-a342-4b63-a901-87b31fa2ffa3') // right('6e9c5587-a342-4b63-a901-87b31fa2ffa3')
+```
