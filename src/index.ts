@@ -34,4 +34,4 @@ export { NumberFromString } from './number/NumberFromString'
 export { mapOutput } from './mapOutput'
 
 // UUID
-export { uuid } from './uuid'
+export { uuid } from './string/uuid'
