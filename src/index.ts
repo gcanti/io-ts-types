@@ -35,3 +35,6 @@ export { mapOutput } from './mapOutput'
 
 // UUID
 export { uuid } from './string/uuid'
+
+// io-ts
+export { fallback } from './io-ts/fallback'
