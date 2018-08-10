@@ -13,6 +13,12 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.10
+
+- **New Feature**
+  - add fallback, fixes #49 (@sledorze)
+  - add fromNullable, closes #51 (@sledorze)
+
 # 0.3.9
 
 - **New Feature**
