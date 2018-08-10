@@ -25,6 +25,7 @@ import {
   mapOutput,
   fromNewtypeCurried,
   uuid,
+  fromNullable,
   fallback
 } from '../src'
 import { left, right } from 'fp-ts/lib/Either'
@@ -160,6 +161,14 @@ describe('fp-ts', () => {
     assert.strictEqual(T.is(new StrMap({ foo: 42 })), true)
     assert.strictEqual(T.is(new StrMap({ foo: 'not a number' })), false)
     assert.strictEqual(T.is('not a strmap'), false)
+  })
+
+  it('fromNullable', () => {
+    const T = fromNullable(t.number)(0)
+    assert.deepEqual(T.decode(42), right(42))
+    assert.deepEqual(T.decode(null), right(0))
+    assert.deepEqual(T.decode(undefined), right(0))
+    assert.deepEqual(T.decode({}).isLeft(), true)
   })
 })
 
