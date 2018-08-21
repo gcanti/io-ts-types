@@ -162,7 +162,7 @@ import * as t from 'io-ts'
 import { lensesFromProps } from 'io-ts-types/lib/monocle-ts/lensesFromProps'
 
 /** return a Lens for each prop */
-const lenses = lensesFromInterface({
+const lenses = lensesFromProps({
   name: t.string,
   age: t.number
 })
