@@ -27,7 +27,7 @@ assert.strictEqual(T.encode(some(1)), 1)
 ### `DateFromISOString`
 
 ```ts
-import { DateFromISOString } from 'io-ts-types/lib/date/DateFromISOString'
+import { DateFromISOString } from 'io-ts-types/lib/Date/DateFromISOString'
 
 const input = new Date(1973, 10, 30).toISOString()
 DateFromISOString.decode(input) // right(new Date(...))
@@ -36,7 +36,7 @@ DateFromISOString.decode(input) // right(new Date(...))
 ### `DateFromNumber`
 
 ```ts
-import { DateFromNumber } from 'io-ts-types/lib/date/DateFromNumber'
+import { DateFromNumber } from 'io-ts-types/lib/Date/DateFromNumber'
 
 const input = new Date(1973, 10, 30).getTime()
 DateFromNumber.decode(input) // right(new Date(...))
@@ -45,7 +45,7 @@ DateFromNumber.decode(input) // right(new Date(...))
 ### `DateFromUnixTime`
 
 ```ts
-import { DateFromUnixTime } from 'io-ts-types/lib/date/DateFromUnixTime'
+import { DateFromUnixTime } from 'io-ts-types/lib/Date/DateFromUnixTime'
 
 const input = new Date(1973, 10, 30).getTime() / 1000
 DateFromUnixTime.decode(input) // right(new Date(...))
