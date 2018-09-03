@@ -26,7 +26,8 @@ import {
   fromNewtypeCurried,
   uuid,
   fromNullable,
-  fallback
+  fallback,
+  BooleanFromString
 } from '../src'
 import { left, right } from 'fp-ts/lib/Either'
 import { none, some } from 'fp-ts/lib/Option'
@@ -169,6 +170,29 @@ describe('fp-ts', () => {
     assert.deepEqual(T.decode(null), right(0))
     assert.deepEqual(T.decode(undefined), right(0))
     assert.deepEqual(T.decode({}).isLeft(), true)
+  })
+})
+
+describe('boolean', () => {
+  it('BooleanFromString', () => {
+    const T = BooleanFromString
+    assert.deepEqual(T.decode('true'), right(true))
+    assert.deepEqual(T.decode('false'), right(false))
+    assert.deepEqual(T.decode('True').isLeft(), true)
+    assert.deepEqual(T.decode('False').isLeft(), true)
+    assert.deepEqual(T.decode('TRUE').isLeft(), true)
+    assert.deepEqual(T.decode('FALSE').isLeft(), true)
+
+    assert.deepEqual(T.decode(true).isLeft(), true)
+    assert.deepEqual(T.decode(false).isLeft(), true)
+
+    assert.deepEqual(T.is(true), true)
+    assert.deepEqual(T.is(false), true)
+    assert.deepEqual(T.is('true'), false)
+    assert.deepEqual(T.is('false'), false)
+
+    assert.deepEqual(T.encode(true), 'true')
+    assert.deepEqual(T.encode(false), 'false')
   })
 })
 
