@@ -27,6 +27,9 @@ export { fromNewtype } from './newtype-ts/fromNewtype'
 export { fromNewtypeCurried } from './newtype-ts/fromNewtype'
 export { fromRefinement } from './newtype-ts/fromRefinement'
 
+// boolean
+export { BooleanFromString } from './boolean/BooleanFromString'
+
 // number
 export { IntegerFromString } from './number/IntegerFromString'
 export { NumberFromString } from './number/NumberFromString'
