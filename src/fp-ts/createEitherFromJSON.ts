@@ -39,7 +39,7 @@ export function createEitherFromJSON<
   leftType: L,
   rightType: R,
   name: string = `Either<${leftType.name}, ${rightType.name}>`
-): EitherFromJSONType<L, R, Either<t.TypeOf<L>, t.TypeOf<R>>, JSONEither<OL, OR>, t.mixed> {
+): EitherFromJSONType<L, R, Either<AL, AR>, JSONEither<OL, OR>, t.mixed> {
   const JSONLeft = t.type({
     type: t.literal('Left'),
     value: leftType
@@ -51,7 +51,7 @@ export function createEitherFromJSON<
   const JSONEither = t.taggedUnion('type', [JSONLeft, JSONRight])
   return new EitherFromJSONType(
     name,
-    (m): m is Either<t.TypeOf<L>, t.TypeOf<R>> =>
+    (m): m is Either<AL, AR> =>
       (m instanceof Right && rightType.is(m.value)) || (m instanceof Left && leftType.is(m.value)),
     (m, c) => {
       const validation = JSONEither.validate(m, c)
