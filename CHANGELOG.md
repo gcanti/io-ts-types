@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.13
+
+- **New Feature**
+  - Export Codec class Types alongside their combinator, https://github.com/gcanti/io-ts-types/pull/63 (@sledorze)
+
 # 0.3.12
 
 - **Internal**
