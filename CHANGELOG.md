@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.12
+
+- **Internal**
+  - fix broken build with `typescript@3.1-rc`, closes #61 (@sledorze)
+
 # 0.3.11
 
 - **New Feature**
