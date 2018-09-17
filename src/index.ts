@@ -1,19 +1,19 @@
 // Date
-export { DateFromISOString } from './Date/DateFromISOString'
-export { DateFromNumber } from './Date/DateFromNumber'
-export { DateFromUnixTime } from './Date/DateFromUnixTime'
+export { DateFromISOString, DateFromISOStringType } from './Date/DateFromISOString'
+export { DateFromNumber, DateFromNumberType } from './Date/DateFromNumber'
+export { DateFromUnixTime, DateFromUnixTimeType } from './Date/DateFromUnixTime'
 
 // fp-ts
-export { createEitherFromJSON } from './fp-ts/createEitherFromJSON'
-export { createNonEmptyArrayFromArray } from './fp-ts/createNonEmptyArrayFromArray'
-export { createOptionFromJSON } from './fp-ts/createOptionFromJSON'
-export { createOptionFromNullable } from './fp-ts/createOptionFromNullable'
-export { createSetFromArray } from './fp-ts/createSetFromArray'
-export { createStrMapFromDictionary } from './fp-ts/createStrMapFromDictionary'
+export { createEitherFromJSON, EitherFromJSONType } from './fp-ts/createEitherFromJSON'
+export { createNonEmptyArrayFromArray, NonEmptyArrayFromArrayType } from './fp-ts/createNonEmptyArrayFromArray'
+export { createOptionFromJSON, OptionFromJSONType } from './fp-ts/createOptionFromJSON'
+export { createOptionFromNullable, OptionFromNullableType } from './fp-ts/createOptionFromNullable'
+export { createSetFromArray, SetFromArrayType } from './fp-ts/createSetFromArray'
+export { createStrMapFromDictionary, StrMapType } from './fp-ts/createStrMapFromDictionary'
 export { fromNullable } from './fromNullable'
 
 // JSON
-export { JSONFromString, JSONType } from './JSON/JSONFromString'
+export { JSONFromString, JSONType, JSONFromStringType } from './JSON/JSONFromString'
 export { JSONTypeRT } from './JSON/JSONTypeRT'
 
 // monocle-ts
@@ -28,11 +28,11 @@ export { fromNewtypeCurried } from './newtype-ts/fromNewtype'
 export { fromRefinement } from './newtype-ts/fromRefinement'
 
 // boolean
-export { BooleanFromString } from './boolean/BooleanFromString'
+export { BooleanFromString, BooleanFromStringType } from './boolean/BooleanFromString'
 
 // number
 export { IntegerFromString } from './number/IntegerFromString'
-export { NumberFromString } from './number/NumberFromString'
+export { NumberFromString, NumberFromStringType } from './number/NumberFromString'
 
 // top level
 export { mapOutput } from './mapOutput'
