@@ -24,6 +24,15 @@ assert.strictEqual(T.encode(some(1)), 1)
 
 ## `Date`
 
+### `date`
+
+```ts
+import { date } from 'io-ts-types/lib/Date/date'
+
+const input = new Date(1973, 10, 30)
+date.decode(input) // right(new Date(...))
+```
+
 ### `DateFromISOString`
 
 ```ts

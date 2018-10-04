@@ -1,4 +1,5 @@
 // Date
+export { date, DateType } from './Date/date'
 export { DateFromISOString, DateFromISOStringType } from './Date/DateFromISOString'
 export { DateFromNumber, DateFromNumberType } from './Date/DateFromNumber'
 export { DateFromUnixTime, DateFromUnixTimeType } from './Date/DateFromUnixTime'
