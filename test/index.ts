@@ -5,6 +5,7 @@ import { iso } from 'newtype-ts'
 import { prismNonZero, NonZero } from 'newtype-ts/lib/NonZero'
 
 import {
+  date,
   DateFromISOString,
   DateFromNumber,
   DateFromUnixTime,
@@ -224,6 +225,16 @@ describe('number', () => {
 })
 
 describe('Date', () => {
+  describe('Date', () => {
+    it('should decode Date values', () => {
+      assert.deepEqual(date.decode(new Date(0)), right(new Date(0)))
+    })
+
+    it('should not decode non-Date values', () => {
+      assert.deepEqual(PathReporter.report(date.decode(1)), ['Invalid value 1 supplied to : Date'])
+    })
+  })
+
   it('DateFromISOString', () => {
     const T = DateFromISOString
     const d = new Date(1973, 10, 30)
