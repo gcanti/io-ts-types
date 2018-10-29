@@ -12,10 +12,11 @@
     "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run prettier && npm run check-declarations && npm run jest",
+    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run check-declarations && npm run jest",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc",
-    "check-declarations": "count=$(grep -R 'node_modules' ./lib | wc -l); exit $count"
+    "check-declarations": "count=$(grep -R 'node_modules' ./lib | wc -l); exit $count",
+    "dtslint": "dtslint dtslint"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "7.0.4",
+    "dtslint": "^0.3.0",
     "jest": "^22.4.3",
     "prettier": "^1.13.5",
     "ts-jest": "^22.4.2",
