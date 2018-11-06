@@ -28,18 +28,11 @@ export class EitherFromJSONType<L extends t.Any, R extends t.Any, A = any, O = A
   }
 }
 
-export function createEitherFromJSON<
-  L extends t.Type<AL, OL>,
-  R extends t.Type<AR, OR>,
-  AL = t.TypeOf<L>,
-  OL = t.OutputOf<L>,
-  AR = t.TypeOf<R>,
-  OR = t.OutputOf<R>
->(
-  leftType: L,
-  rightType: R,
+function safeCreateEitherFromJSON<AL, OL, AR, OR>(
+  leftType: t.Type<AL, OL>,
+  rightType: t.Type<AR, OR>,
   name: string = `Either<${leftType.name}, ${rightType.name}>`
-): EitherFromJSONType<L, R, Either<AL, AR>, JSONEither<OL, OR>, t.mixed> {
+): EitherFromJSONType<typeof leftType, typeof rightType, Either<AL, AR>, JSONEither<OL, OR>, t.mixed> {
   const JSONLeft = t.type({
     type: t.literal('Left'),
     value: leftType
@@ -76,3 +69,15 @@ export function createEitherFromJSON<
     rightType
   )
 }
+
+export const createEitherFromJSON: <L extends t.Mixed, R extends t.Mixed>(
+  leftType: L,
+  rightType: R,
+  name?: string
+) => EitherFromJSONType<
+  L,
+  R,
+  Either<t.TypeOf<L>, t.TypeOf<R>>,
+  JSONEither<t.OutputOf<L>, t.OutputOf<R>>,
+  t.mixed
+> = safeCreateEitherFromJSON as any

@@ -2,6 +2,11 @@
   "extends": "dtslint/dtslint.json",
   "rules": {
     "semicolon": false,
-    "array-type": false
+    "array-type": false,
+    "member-access": false,
+    "no-unnecessary-class": false,
+    "radix": false,
+    "prefer-object-spread": false,
+    "whitespace": false
   }
 }

@@ -14,14 +14,14 @@ export class StrMapType<RT extends t.Any, A = any, O = A, I = t.mixed> extends t
   }
 }
 
-export const createStrMapFromDictionary = <RT extends t.Type<A, O>, A = any, O = A>(
-  type: RT,
+function safeCreateStrMapFromDictionary<A, O>(
+  type: t.Type<A, O, t.mixed>,
   name: string = `StrMap<${type.name}>`
-): StrMapType<RT, StrMap<t.TypeOf<RT>>, Record<string, t.OutputOf<RT>>, t.mixed> => {
+): StrMapType<typeof type, StrMap<A>, Record<string, O>, t.mixed> {
   const Dict = t.dictionary(t.string, type)
   return new StrMapType(
     name,
-    (m): m is StrMap<t.TypeOf<RT>> => m instanceof StrMap && Object.keys(m.value).every(key => type.is(m.value[key])),
+    (m): m is StrMap<A> => m instanceof StrMap && Object.keys(m.value).every(key => type.is(m.value[key])),
     (s, c) => {
       const validation = Dict.validate(s, c)
       return validation.isLeft() ? (validation as any) : t.success(new StrMap(validation.value))
@@ -30,3 +30,13 @@ export const createStrMapFromDictionary = <RT extends t.Type<A, O>, A = any, O =
     type
   )
 }
+
+export const createStrMapFromDictionary: <RT extends t.Mixed>(
+  type: RT,
+  name?: string
+) => StrMapType<
+  RT,
+  StrMap<t.TypeOf<RT>>,
+  Record<string, t.OutputOf<RT>>,
+  t.mixed
+> = safeCreateStrMapFromDictionary as any

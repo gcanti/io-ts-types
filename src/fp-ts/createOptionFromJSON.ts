@@ -20,10 +20,10 @@ export class OptionFromJSONType<RT extends t.Any, A = any, O = A, I = t.mixed> e
   }
 }
 
-export function createOptionFromJSON<RT extends t.Type<A, O>, A = t.TypeOf<RT>, O = t.OutputOf<RT>>(
-  type: RT,
+function safeCreateOptionFromJSON<A, O>(
+  type: t.Type<A, O, t.mixed>,
   name: string = `Option<${type.name}>`
-): OptionFromJSONType<RT, Option<A>, JSONOption<O>, t.mixed> {
+): OptionFromJSONType<typeof type, Option<A>, JSONOption<O>, t.mixed> {
   const JSONOption = t.type({
     type: t.literal('Option'),
     value: t.union([type, t.null, t.undefined])
@@ -47,3 +47,8 @@ export function createOptionFromJSON<RT extends t.Type<A, O>, A = t.TypeOf<RT>, 
     type
   )
 }
+
+export const createOptionFromJSON: <RT extends t.Mixed>(
+  type: RT,
+  name?: string
+) => OptionFromJSONType<RT, Option<t.TypeOf<RT>>, JSONOption<t.OutputOf<RT>>, t.mixed> = safeCreateOptionFromJSON as any
