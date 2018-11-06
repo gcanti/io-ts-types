@@ -14,10 +14,10 @@ export class OptionFromNullableType<RT extends t.Any, A = any, O = A, I = t.mixe
   }
 }
 
-export const createOptionFromNullable = <A, O>(
+function safeCreateOptionFromNullable<A, O>(
   type: t.Type<A, O, t.mixed>,
   name: string = `Option<${type.name}>`
-): OptionFromNullableType<typeof type, Option<A>, O | null, t.mixed> => {
+): OptionFromNullableType<typeof type, Option<A>, O | null, t.mixed> {
   const Nullable = t.union([type, t.null, t.undefined])
   return new OptionFromNullableType(
     name,
@@ -30,3 +30,13 @@ export const createOptionFromNullable = <A, O>(
     type
   )
 }
+
+export const createOptionFromNullable: <RT extends t.Mixed>(
+  type: RT,
+  name?: string
+) => OptionFromNullableType<
+  RT,
+  Option<t.TypeOf<RT>>,
+  t.OutputOf<RT> | null,
+  t.mixed
+> = safeCreateOptionFromNullable as any

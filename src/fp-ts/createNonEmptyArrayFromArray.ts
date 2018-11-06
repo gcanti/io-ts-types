@@ -14,14 +14,14 @@ export class NonEmptyArrayFromArrayType<RT extends t.Any, A = any, O = A, I = t.
   }
 }
 
-export const createNonEmptyArrayFromArray = <RT extends t.Type<A, O>, A = any, O = A>(
-  type: RT,
+function safeCreateNonEmptyArrayFromArray<A, O>(
+  type: t.Type<A, O, t.mixed>,
   name: string = `NonEmptyArray<${type.name}>`
-): NonEmptyArrayFromArrayType<RT, NonEmptyArray<t.TypeOf<RT>>, Array<t.OutputOf<RT>>, t.mixed> => {
+): NonEmptyArrayFromArrayType<typeof type, NonEmptyArray<A>, Array<O>, t.mixed> {
   const ArrayType = t.array(type)
   return new NonEmptyArrayFromArrayType(
     name,
-    (m): m is NonEmptyArray<t.TypeOf<RT>> => m instanceof NonEmptyArray && type.is(m.head),
+    (m): m is NonEmptyArray<A> => m instanceof NonEmptyArray && type.is(m.head),
     (m, c) => {
       const validation = ArrayType.validate(m, c)
       if (validation.isLeft()) {
@@ -35,3 +35,13 @@ export const createNonEmptyArrayFromArray = <RT extends t.Type<A, O>, A = any, O
     type
   )
 }
+
+export const createNonEmptyArrayFromArray: <RT extends t.Mixed>(
+  type: RT,
+  name?: string
+) => NonEmptyArrayFromArrayType<
+  RT,
+  NonEmptyArray<t.TypeOf<RT>>,
+  Array<t.OutputOf<RT>>,
+  t.mixed
+> = safeCreateNonEmptyArrayFromArray as any
