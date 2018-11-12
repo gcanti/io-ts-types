@@ -13,6 +13,13 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.4.0
+
+- **Bug fix**
+  - switch to `io-ts` pattern, fix #67 (PR #71) (@gcanti)
+
+**Note**. This fix should **not** be a breaking change for most users. However since some signatures are changed, namely their type parameters, this release is published with a minor bump as a precaution.
+
 # 0.3.14
 
 - **New Feature**
