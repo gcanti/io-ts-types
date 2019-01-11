@@ -8,7 +8,7 @@ export const lensesFromProps = <P extends t.Props>(
 ): { [K in keyof P]: Lens<t.TypeOfProps<P>, t.TypeOfProps<P>[K]> } => {
   const r: any = {}
   for (const k in props) {
-    r[k] = Lens.fromProp<any, typeof k>(k)
+    r[k] = (Lens.fromProp as any)(k)
   }
   return r
 }
