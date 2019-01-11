@@ -1,5 +1,13 @@
 A collection of runtime types and combinators for use with [io-ts](https://github.com/gcanti/io-ts)
 
+# TypeScript compatibility
+
+The stable version is tested against TypeScript 3.2.2, but should run with TypeScript 3.0.1+ too
+
+**Note**. If you are running `< typescript@3.0.1` you have to polyfill `unknown`.
+
+You can use [unknown-ts](https://github.com/gcanti/unknown-ts) as a polyfill.
+
 # API
 
 ## `mapOutput`
@@ -27,7 +35,7 @@ assert.strictEqual(T.encode(some(1)), 1)
 ### `date`
 
 ```ts
-import { date } from 'io-ts-types/lib/Date/date'
+import { date } from 'io-ts-types/lib/Date/date'
 
 const input = new Date(1973, 10, 30)
 date.decode(input) // right(new Date(...))
@@ -279,7 +287,7 @@ NumberFromString.decode('1.1') // right(1.1)
 ### `uuid`
 
 ```ts
-import { uuid } from 'io-ts-types/lib/string/uuid'
+import { uuid } from 'io-ts-types/lib/string/uuid'
 
 uuid.decode('6e9c5587-a342-4b63-a901-87b31fa2ffa3') // right('6e9c5587-a342-4b63-a901-87b31fa2ffa3')
 ```
