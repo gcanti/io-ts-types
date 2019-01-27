@@ -13,7 +13,7 @@ export const fromRefinement: <S extends AnyNewtype = never>() => <O>(
 ) =>
   new Type(
     name,
-    (m): m is S => carrier.is(m) && prism.getOption(m).isSome(),
-    (m, c) => carrier.validate(m, c).chain(s => prism.getOption(s).foldL(() => failure(s, c), success)),
+    (u): u is S => carrier.is(u) && prism.getOption(u).isSome(),
+    (u, c) => carrier.validate(u, c).chain(s => prism.getOption(s).foldL(() => failure(s, c), success)),
     a => carrier.encode(a)
   )

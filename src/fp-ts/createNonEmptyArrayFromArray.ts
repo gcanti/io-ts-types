@@ -1,27 +1,30 @@
 import * as t from 'io-ts'
 import { NonEmptyArray, fromArray } from 'fp-ts/lib/NonEmptyArray'
 
-export class NonEmptyArrayFromArrayType<RT extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class NonEmptyArrayFromArrayType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
   readonly _tag: 'NonEmptyArrayFromArrayType' = 'NonEmptyArrayFromArrayType'
   constructor(
     name: string,
-    is: NonEmptyArrayFromArrayType<RT, A, O, I>['is'],
-    validate: NonEmptyArrayFromArrayType<RT, A, O, I>['validate'],
-    serialize: NonEmptyArrayFromArrayType<RT, A, O, I>['encode'],
-    readonly type: RT
+    is: NonEmptyArrayFromArrayType<C, A, O, I>['is'],
+    validate: NonEmptyArrayFromArrayType<C, A, O, I>['validate'],
+    serialize: NonEmptyArrayFromArrayType<C, A, O, I>['encode'],
+    readonly type: C
   ) {
     super(name, is, validate, serialize)
   }
 }
 
-function safeCreateNonEmptyArrayFromArray<A, O>(
-  type: t.Type<A, O, t.mixed>,
-  name: string = `NonEmptyArray<${type.name}>`
-): NonEmptyArrayFromArrayType<typeof type, NonEmptyArray<A>, Array<O>, t.mixed> {
-  const ArrayType = t.array(type)
+export interface NonEmptyArrayFromArrayC<C extends t.Mixed>
+  extends NonEmptyArrayFromArrayType<C, NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
+
+export const createNonEmptyArrayFromArray = <C extends t.Mixed>(
+  codec: C,
+  name: string = `NonEmptyArray<${codec.name}>`
+): NonEmptyArrayFromArrayC<C> => {
+  const ArrayType = t.array(codec)
   return new NonEmptyArrayFromArrayType(
     name,
-    (m): m is NonEmptyArray<A> => m instanceof NonEmptyArray && type.is(m.head),
+    (m): m is NonEmptyArray<t.TypeOf<C>> => m instanceof NonEmptyArray && codec.is(m.head),
     (m, c) => {
       const validation = ArrayType.validate(m, c)
       if (validation.isLeft()) {
@@ -32,16 +35,6 @@ function safeCreateNonEmptyArrayFromArray<A, O>(
       }
     },
     a => ArrayType.encode(a.toArray()),
-    type
+    codec
   )
 }
-
-export const createNonEmptyArrayFromArray: <RT extends t.Mixed>(
-  type: RT,
-  name?: string
-) => NonEmptyArrayFromArrayType<
-  RT,
-  NonEmptyArray<t.TypeOf<RT>>,
-  Array<t.OutputOf<RT>>,
-  t.mixed
-> = safeCreateNonEmptyArrayFromArray as any

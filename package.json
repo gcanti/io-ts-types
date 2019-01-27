@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A collection of runtime types and combinators for use with io-ts",
   "files": [
     "lib"
@@ -8,15 +8,15 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "lint": "tslint src/**/*.ts test/**/*.ts",
-    "jest": "jest",
+    "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
+    "jest": "jest --coverage",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run check-declarations && npm run jest",
+    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc",
-    "check-declarations": "count=$(grep -R 'node_modules' ./lib | wc -l); exit $count",
-    "dtslint": "dtslint dtslint"
+    "dtslint": "dtslint dtslint",
+    "mocha": "mocha -r ts-node/register test/*.ts"
   },
   "repository": {
     "type": "git",
@@ -39,11 +39,12 @@
     "@types/node": "7.0.4",
     "dtslint": "^0.4.2",
     "jest": "^22.4.3",
-    "prettier": "^1.13.5",
+    "mocha": "^5.2.0",
+    "prettier": "^1.16.1",
     "ts-jest": "^22.4.2",
     "ts-node": "3.2.1",
-    "tslint": "4.4.2",
-    "tslint-config-standard": "4.0.0",
+    "tslint": "^5.12.1",
+    "tslint-config-standard": "^8.0.1",
     "typescript": "^3.2.2"
   },
   "tags": [
@@ -73,6 +74,14 @@
       "ts",
       "js"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 0
+      }
+    }
   }
 }

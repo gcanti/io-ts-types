@@ -1,19 +1,17 @@
 import * as t from 'io-ts'
 
-export class DateFromUnixTimeType extends t.Type<Date, number> {
+export class DateFromUnixTimeType extends t.Type<Date, number, t.mixed> {
   readonly _tag: 'DateFromUnixTimeType' = 'DateFromUnixTimeType'
   constructor() {
     super(
       'DateFromUnixTime',
-      (m): m is Date => m instanceof Date,
-      (m, c) => {
-        const validation = t.Integer.validate(m, c)
+      (u): u is Date => u instanceof Date,
+      (u, c) => {
+        const validation = t.Integer.validate(u, c)
         if (validation.isLeft()) {
           return validation as any
         } else {
-          const n = validation.value
-          const d = new Date(n * 1000)
-          return isNaN(d.getTime()) ? t.failure(n, c) : t.success(d)
+          return t.success(new Date(validation.value * 1000))
         }
       },
       a => a.getTime() / 1000
@@ -21,4 +19,6 @@ export class DateFromUnixTimeType extends t.Type<Date, number> {
   }
 }
 
-export const DateFromUnixTime = new DateFromUnixTimeType()
+export interface DateFromUnixTimeC extends DateFromUnixTimeType {}
+
+export const DateFromUnixTime: DateFromUnixTimeC = new DateFromUnixTimeType()

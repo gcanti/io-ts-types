@@ -1,13 +1,13 @@
 import * as t from 'io-ts'
 
-export class DateFromNumberType extends t.Type<Date, number> {
+export class DateFromNumberType extends t.Type<Date, number, t.mixed> {
   readonly _tag: 'DateFromNumberType' = 'DateFromNumberType'
   constructor() {
     super(
       'DateFromNumber',
-      (m): m is Date => m instanceof Date,
-      (m, c) => {
-        const validation = t.number.validate(m, c)
+      (u): u is Date => u instanceof Date,
+      (u, c) => {
+        const validation = t.number.validate(u, c)
         if (validation.isLeft()) {
           return validation as any
         } else {
@@ -21,4 +21,6 @@ export class DateFromNumberType extends t.Type<Date, number> {
   }
 }
 
-export const DateFromNumber = new DateFromNumberType()
+export interface DateFromNumberC extends DateFromNumberType {}
+
+export const DateFromNumber: DateFromNumberC = new DateFromNumberType()

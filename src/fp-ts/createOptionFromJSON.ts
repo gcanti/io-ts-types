@@ -7,30 +7,33 @@ export interface JSONOption<A> {
   value: A | null | undefined
 }
 
-export class OptionFromJSONType<RT extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class OptionFromJSONType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
   readonly _tag: 'OptionFromJSONType' = 'OptionFromJSONType'
   constructor(
     name: string,
-    is: OptionFromJSONType<RT, A, O, I>['is'],
-    validate: OptionFromJSONType<RT, A, O, I>['validate'],
-    serialize: OptionFromJSONType<RT, A, O, I>['encode'],
-    readonly type: RT
+    is: OptionFromJSONType<C, A, O, I>['is'],
+    validate: OptionFromJSONType<C, A, O, I>['validate'],
+    serialize: OptionFromJSONType<C, A, O, I>['encode'],
+    readonly type: C
   ) {
     super(name, is, validate, serialize)
   }
 }
 
-function safeCreateOptionFromJSON<A, O>(
-  type: t.Type<A, O, t.mixed>,
-  name: string = `Option<${type.name}>`
-): OptionFromJSONType<typeof type, Option<A>, JSONOption<O>, t.mixed> {
+export interface OptionFromJSONC<C extends t.Mixed>
+  extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, t.mixed> {}
+
+export const createOptionFromJSON = <C extends t.Mixed>(
+  codec: C,
+  name: string = `Option<${codec.name}>`
+): OptionFromJSONC<C> => {
   const JSONOption = t.type({
     type: t.literal('Option'),
-    value: t.union([type, t.null, t.undefined])
+    value: t.union([codec, t.null, t.undefined])
   })
   return new OptionFromJSONType(
     name,
-    (m): m is Option<A> => m instanceof None || (m instanceof Some && type.is(m.value)),
+    (m): m is Option<t.TypeOf<C>> => m instanceof None || (m instanceof Some && codec.is(m.value)),
     (m, c) => {
       const validation = JSONOption.validate(m, c)
       if (validation.isLeft()) {
@@ -40,15 +43,10 @@ function safeCreateOptionFromJSON<A, O>(
       }
     },
     a =>
-      a.foldL<JSONOption<O>>(
+      a.foldL<JSONOption<t.OutputOf<C>>>(
         () => ({ type: 'Option', value: null }),
-        value => ({ type: 'Option', value: type.encode(value) })
+        value => ({ type: 'Option', value: codec.encode(value) })
       ),
-    type
+    codec
   )
 }
-
-export const createOptionFromJSON: <RT extends t.Mixed>(
-  type: RT,
-  name?: string
-) => OptionFromJSONType<RT, Option<t.TypeOf<RT>>, JSONOption<t.OutputOf<RT>>, t.mixed> = safeCreateOptionFromJSON as any
