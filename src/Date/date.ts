@@ -1,15 +1,17 @@
 import * as t from 'io-ts'
 
-export class DateType extends t.Type<Date> {
+export class DateType extends t.Type<Date, Date, t.mixed> {
   readonly _tag: 'DateType' = 'DateType'
   constructor() {
     super(
       'Date',
-      (m): m is Date => m instanceof Date,
-      (m, c) => (this.is(m) ? t.success(m) : t.failure(m, c)),
+      (u): u is Date => u instanceof Date,
+      (u, c) => (this.is(u) ? t.success(u) : t.failure(u, c)),
       t.identity
     )
   }
 }
 
-export const date: DateType = new DateType()
+export interface DateC extends DateType {}
+
+export const date: DateC = new DateType()

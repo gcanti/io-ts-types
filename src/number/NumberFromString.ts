@@ -6,8 +6,8 @@ export class NumberFromStringType extends t.Type<number, string> {
     super(
       'NumberFromString',
       t.number.is,
-      (m, c) => {
-        const validation = t.string.validate(m, c)
+      (u, c) => {
+        const validation = t.string.validate(u, c)
         if (validation.isLeft()) {
           return validation as any
         } else {
@@ -21,4 +21,6 @@ export class NumberFromStringType extends t.Type<number, string> {
   }
 }
 
-export const NumberFromString = new NumberFromStringType()
+export interface NumberFromStringC extends NumberFromStringType {}
+
+export const NumberFromString: NumberFromStringC = new NumberFromStringType()

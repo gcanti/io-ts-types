@@ -28,24 +28,33 @@ export class EitherFromJSONType<L extends t.Any, R extends t.Any, A = any, O = A
   }
 }
 
-function safeCreateEitherFromJSON<AL, OL, AR, OR>(
-  leftType: t.Type<AL, OL>,
-  rightType: t.Type<AR, OR>,
-  name: string = `Either<${leftType.name}, ${rightType.name}>`
-): EitherFromJSONType<typeof leftType, typeof rightType, Either<AL, AR>, JSONEither<OL, OR>, t.mixed> {
+export interface EitherFromJSONC<L extends t.Mixed, R extends t.Mixed>
+  extends EitherFromJSONType<
+    L,
+    R,
+    Either<t.TypeOf<L>, t.TypeOf<R>>,
+    JSONEither<t.OutputOf<L>, t.OutputOf<R>>,
+    t.mixed
+  > {}
+
+export const createEitherFromJSON = <L extends t.Mixed, R extends t.Mixed>(
+  leftCodec: L,
+  rightCodec: R,
+  name: string = `Either<${leftCodec.name}, ${rightCodec.name}>`
+): EitherFromJSONC<L, R> => {
   const JSONLeft = t.type({
     type: t.literal('Left'),
-    value: leftType
+    value: leftCodec
   })
   const JSONRight = t.type({
     type: t.literal('Right'),
-    value: rightType
+    value: rightCodec
   })
   const JSONEither = t.taggedUnion('type', [JSONLeft, JSONRight])
   return new EitherFromJSONType(
     name,
-    (m): m is Either<AL, AR> =>
-      (m instanceof Right && rightType.is(m.value)) || (m instanceof Left && leftType.is(m.value)),
+    (m): m is Either<t.TypeOf<L>, t.TypeOf<R>> =>
+      (m instanceof Right && rightCodec.is(m.value)) || (m instanceof Left && leftCodec.is(m.value)),
     (m, c) => {
       const validation = JSONEither.validate(m, c)
       if (validation.isLeft()) {
@@ -61,23 +70,11 @@ function safeCreateEitherFromJSON<AL, OL, AR, OR>(
       }
     },
     a =>
-      a.fold<JSONEither<OL, OR>>(
-        l => ({ type: 'Left', value: leftType.encode(l) }),
-        a => ({ type: 'Right', value: rightType.encode(a) })
+      a.fold<JSONEither<t.OutputOf<L>, t.OutputOf<R>>>(
+        l => ({ type: 'Left', value: leftCodec.encode(l) }),
+        a => ({ type: 'Right', value: rightCodec.encode(a) })
       ),
-    leftType,
-    rightType
+    leftCodec,
+    rightCodec
   )
 }
-
-export const createEitherFromJSON: <L extends t.Mixed, R extends t.Mixed>(
-  leftType: L,
-  rightType: R,
-  name?: string
-) => EitherFromJSONType<
-  L,
-  R,
-  Either<t.TypeOf<L>, t.TypeOf<R>>,
-  JSONEither<t.OutputOf<L>, t.OutputOf<R>>,
-  t.mixed
-> = safeCreateEitherFromJSON as any

@@ -16,6 +16,7 @@ export class JSONFromStringType extends t.Type<JSONType> {
           return validation as any
         } else {
           const s = validation.value
+          // tslint:disable-next-line: deprecation
           return tryCatch(() => JSON.parse(s)).fold(() => t.failure(s, c), t.success)
         }
       },
@@ -24,4 +25,6 @@ export class JSONFromStringType extends t.Type<JSONType> {
   }
 }
 
-export const JSONFromString = new JSONFromStringType()
+export interface JSONFromStringC extends JSONFromStringType {}
+
+export const JSONFromString: JSONFromStringC = new JSONFromStringType()
