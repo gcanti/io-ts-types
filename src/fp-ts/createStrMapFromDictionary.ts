@@ -21,7 +21,7 @@ export const createStrMapFromDictionary = <C extends t.Mixed>(
   codec: C,
   name: string = `StrMap<${codec.name}>`
 ): StrMapC<C> => {
-  const Dict = t.dictionary(t.string, codec)
+  const Dict = t.record(t.string, codec)
   return new StrMapType(
     name,
     (m): m is StrMap<t.TypeOf<C>> => m instanceof StrMap && Object.keys(m.value).every(key => codec.is(m.value[key])),
