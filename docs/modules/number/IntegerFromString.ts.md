@@ -18,7 +18,7 @@ parent: Modules
 **Signature**
 
 ```ts
-export interface IntegerFromStringC extends t.RefinementType<NumberFromStringType, number, string, t.mixed> {}
+export interface IntegerFromStringC extends t.RefinementType<NumberFromStringType, number, string, unknown> {}
 ```
 
 # IntegerFromString (constant)

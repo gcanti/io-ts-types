@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
 
-export class DateType extends t.Type<Date, Date, t.mixed> {
+export class DateType extends t.Type<Date, Date, unknown> {
   readonly _tag: 'DateType' = 'DateType'
   constructor() {
     super(

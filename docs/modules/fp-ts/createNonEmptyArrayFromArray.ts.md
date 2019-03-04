@@ -20,7 +20,7 @@ parent: Modules
 
 ```ts
 export interface NonEmptyArrayFromArrayC<C extends t.Mixed>
-  extends NonEmptyArrayFromArrayType<C, NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
+  extends NonEmptyArrayFromArrayType<C, NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 ```
 
 # NonEmptyArrayFromArrayType (class)

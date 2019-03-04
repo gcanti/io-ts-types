@@ -20,7 +20,7 @@ parent: Modules
 
 ```ts
 export interface SetFromArrayC<C extends t.Mixed>
-  extends SetFromArrayType<C, Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
+  extends SetFromArrayType<C, Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 ```
 
 # SetFromArrayType (class)

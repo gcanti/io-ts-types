@@ -18,11 +18,11 @@ parent: Modules
 
 ```ts
 export const fromRefinement: <S extends AnyNewtype = never>() => <O>(
-  carrier: Type<CarrierOf<S>, O, mixed>,
+  carrier: Type<CarrierOf<S>, O, unknown>,
   prism: Prism<CarrierOf<S>, S>,
   name?: string
-) => Type<S, O, mixed> = <S extends AnyNewtype = never>() => <O>(
-  carrier: Type<CarrierOf<S>, O, mixed>,
+) => Type<S, O, unknown> = <S extends AnyNewtype = never>() => <O>(
+  carrier: Type<CarrierOf<S>, O, unknown>,
   prism: Prism<CarrierOf<S>, S>,
   name: string = `Refinement<${carrier.name}>`
 ) =>

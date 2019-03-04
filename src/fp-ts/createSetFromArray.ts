@@ -2,7 +2,7 @@ import * as t from 'io-ts'
 import { toArray, some, every } from 'fp-ts/lib/Set'
 import { Ord } from 'fp-ts/lib/Ord'
 
-export class SetFromArrayType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class SetFromArrayType<C extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'SetFromArrayType' = 'SetFromArrayType'
   constructor(
     name: string,
@@ -17,7 +17,7 @@ export class SetFromArrayType<C extends t.Any, A = any, O = A, I = t.mixed> exte
 }
 
 export interface SetFromArrayC<C extends t.Mixed>
-  extends SetFromArrayType<C, Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
+  extends SetFromArrayType<C, Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 
 /**
  * @example

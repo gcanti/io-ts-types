@@ -1,12 +1,13 @@
 import * as t from 'io-ts'
 
-export class DateFromUnixTimeType extends t.Type<Date, number, t.mixed> {
+export class DateFromUnixTimeType extends t.Type<Date, number, unknown> {
   readonly _tag: 'DateFromUnixTimeType' = 'DateFromUnixTimeType'
   constructor() {
     super(
       'DateFromUnixTime',
       (u): u is Date => u instanceof Date,
       (u, c) => {
+        // tslint:disable-next-line: deprecation
         const validation = t.Integer.validate(u, c)
         if (validation.isLeft()) {
           return validation as any
