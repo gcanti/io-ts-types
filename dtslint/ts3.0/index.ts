@@ -6,7 +6,7 @@ import {
   createOptionFromNullable,
   createSetFromArray,
   createStrMapFromDictionary
-} from '../src'
+} from '../../src'
 import { ordString } from 'fp-ts/lib/Ord'
 
 //
