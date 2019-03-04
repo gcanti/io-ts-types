@@ -273,7 +273,7 @@ describe('Date', () => {
     const millis = d.getTime()
     assert.deepEqual(T.decode(millis), right(d))
     assert.deepEqual(T.decode(millis).map(d => d.getTime()), right(millis))
-    assert.deepEqual(PathReporter.report(T.decode(NaN)), ['Invalid value null supplied to : DateFromNumber'])
+    assert.deepEqual(PathReporter.report(T.decode(NaN)), ['Invalid value -Infinity supplied to : DateFromNumber'])
     assert.deepEqual(PathReporter.report(T.decode('')), ['Invalid value "" supplied to : DateFromNumber'])
     assert.strictEqual(T.is(d), true)
     assert.strictEqual(T.is(0), false)
@@ -287,7 +287,7 @@ describe('Date', () => {
     const seconds = getSeconds(d)
     assert.deepEqual(T.decode(seconds), right(d))
     assert.deepEqual(T.decode(seconds).map(getSeconds), right(seconds))
-    assert.deepEqual(PathReporter.report(T.decode(NaN)), ['Invalid value null supplied to : DateFromUnixTime'])
+    assert.deepEqual(PathReporter.report(T.decode(NaN)), ['Invalid value -Infinity supplied to : DateFromUnixTime'])
     assert.deepEqual(PathReporter.report(T.decode('')), ['Invalid value "" supplied to : DateFromUnixTime'])
     assert.strictEqual(T.is(d), true)
     assert.strictEqual(T.is(0), false)
@@ -450,6 +450,7 @@ it('fallback', () => {
 
   assert.deepEqual(defaultDate1.encode(date1), date1.toISOString(), 'encode')
 
+  // tslint:disable-next-line: deprecation
   const invalidFallback = fallback(t.refinement(t.number, n => n > 0))(-1)
   assert.deepEqual(invalidFallback.decode(1), right(1), 'decode value with invalid fallback')
   assert.deepEqual(invalidFallback.decode(-1).isLeft(), true, 'fails decoding invalid value with invalid fallback')
