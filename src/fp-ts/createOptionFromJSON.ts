@@ -23,6 +23,18 @@ export class OptionFromJSONType<C extends t.Any, A = any, O = A, I = t.mixed> ex
 export interface OptionFromJSONC<C extends t.Mixed>
   extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, t.mixed> {}
 
+/**
+ * @example
+ * import * as t from 'io-ts'
+ * import { createOptionFromJSON } from 'io-ts-types/lib/fp-ts/createOptionFromJSON'
+ * import { right } from 'fp-ts/lib/Either'
+ * import { none, some } from 'fp-ts/lib/Option'
+ *
+ * const T = createOptionFromJSON(t.number)
+ * assert.deepStrictEqual(T.decode({ type: 'Option', value: null }), right(none))
+ * assert.deepStrictEqual(T.decode({ type: 'Option', value: undefined }), right(none))
+ * assert.deepStrictEqual(T.decode({ type: 'Option', value: 1 }), right(some(1)))
+ */
 export const createOptionFromJSON = <C extends t.Mixed>(
   codec: C,
   name: string = `Option<${codec.name}>`

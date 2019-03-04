@@ -23,4 +23,13 @@ export class DateFromNumberType extends t.Type<Date, number, t.mixed> {
 
 export interface DateFromNumberC extends DateFromNumberType {}
 
+/**
+ * @example
+ * import { DateFromNumber } from 'io-ts-types/lib/Date/DateFromNumber'
+ * import { right } from 'fp-ts/lib/Either'
+ *
+ * const date = new Date(1973, 10, 30)
+ * const input = date.getTime()
+ * assert.deepStrictEqual(DateFromNumber.decode(input), right(date))
+ */
 export const DateFromNumber: DateFromNumberC = new DateFromNumberType()

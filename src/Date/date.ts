@@ -14,4 +14,12 @@ export class DateType extends t.Type<Date, Date, t.mixed> {
 
 export interface DateC extends DateType {}
 
+/**
+ * @example
+ * import { date } from 'io-ts-types/lib/Date/date'
+ * import { right } from 'fp-ts/lib/Either'
+ *
+ * const input = new Date(1973, 10, 30)
+ * assert.deepStrictEqual(date.decode(input), right(input))
+ */
 export const date: DateC = new DateType()

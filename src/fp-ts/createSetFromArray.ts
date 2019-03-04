@@ -19,6 +19,17 @@ export class SetFromArrayType<C extends t.Any, A = any, O = A, I = t.mixed> exte
 export interface SetFromArrayC<C extends t.Mixed>
   extends SetFromArrayType<C, Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
 
+/**
+ * @example
+ * import * as t from 'io-ts'
+ * import { ordNumber } from 'fp-ts/lib/Ord'
+ * import { createSetFromArray } from 'io-ts-types/lib/fp-ts/createSetFromArray'
+ * import { right } from 'fp-ts/lib/Either'
+ *
+ * const T = createSetFromArray(t.number, ordNumber)
+ *
+ * assert.deepStrictEqual(T.decode([1, 2, 3]), right(new Set([1, 2, 3])))
+ */
 export const createSetFromArray = <C extends t.Mixed>(
   codec: C,
   ordA: Ord<t.TypeOf<C>>,
