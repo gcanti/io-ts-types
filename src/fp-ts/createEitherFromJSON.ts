@@ -37,6 +37,16 @@ export interface EitherFromJSONC<L extends t.Mixed, R extends t.Mixed>
     t.mixed
   > {}
 
+/**
+ * @example
+ * import * as t from 'io-ts'
+ * import { createEitherFromJSON } from 'io-ts-types/lib/fp-ts/createEitherFromJSON'
+ * import { right, left } from 'fp-ts/lib/Either'
+ *
+ * const T = createEitherFromJSON(t.string, t.number)
+ * assert.deepStrictEqual(T.decode({ type: 'Left', value: 's' }), right(left('s')))
+ * assert.deepStrictEqual(T.decode({ type: 'Right', value: 1 }), right(right(1)))
+ */
 export const createEitherFromJSON = <L extends t.Mixed, R extends t.Mixed>(
   leftCodec: L,
   rightCodec: R,

@@ -27,4 +27,11 @@ export class JSONFromStringType extends t.Type<JSONType> {
 
 export interface JSONFromStringC extends JSONFromStringType {}
 
+/**
+ * @example
+ * import { JSONFromString } from 'io-ts-types/lib/JSON/JSONFromString'
+ * import { right } from 'fp-ts/lib/Either'
+ *
+ * assert.deepStrictEqual(JSONFromString.decode('{"name":"Giulio"}'), right({ name: 'Giulio' }))
+ */
 export const JSONFromString: JSONFromStringC = new JSONFromStringType()

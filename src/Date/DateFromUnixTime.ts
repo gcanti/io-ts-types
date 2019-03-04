@@ -21,4 +21,13 @@ export class DateFromUnixTimeType extends t.Type<Date, number, t.mixed> {
 
 export interface DateFromUnixTimeC extends DateFromUnixTimeType {}
 
+/**
+ * @example
+ * import { DateFromUnixTime } from 'io-ts-types/lib/Date/DateFromUnixTime'
+ * import { right } from 'fp-ts/lib/Either'
+ *
+ * const date = new Date(1973, 10, 30)
+ * const input = date.getTime() / 1000
+ * assert.deepStrictEqual(DateFromUnixTime.decode(input), right(date))
+ */
 export const DateFromUnixTime: DateFromUnixTimeC = new DateFromUnixTimeType()

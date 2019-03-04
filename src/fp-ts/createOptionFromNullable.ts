@@ -17,6 +17,18 @@ export class OptionFromNullableType<C extends t.Any, A = any, O = A, I = t.mixed
 export interface OptionFromNullableC<C extends t.Mixed>
   extends OptionFromNullableType<C, Option<t.TypeOf<C>>, t.OutputOf<C> | null, t.mixed> {}
 
+/**
+ * @example
+ * import * as t from 'io-ts'
+ * import { createOptionFromNullable } from 'io-ts-types/lib/fp-ts/createOptionFromNullable'
+ * import { right } from 'fp-ts/lib/Either'
+ * import { none, some } from 'fp-ts/lib/Option'
+ *
+ * const T = createOptionFromNullable(t.number)
+ * assert.deepStrictEqual(T.decode(null), right(none))
+ * assert.deepStrictEqual(T.decode(undefined), right(none))
+ * assert.deepStrictEqual(T.decode(1), right(some(1)))
+ */
 export const createOptionFromNullable = <C extends t.Mixed>(
   codec: C,
   name: string = `Option<${codec.name}>`

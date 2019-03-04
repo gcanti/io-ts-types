@@ -17,6 +17,18 @@ export class StrMapType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.
 export interface StrMapC<C extends t.Mixed>
   extends StrMapType<C, StrMap<t.TypeOf<C>>, Record<string, t.OutputOf<C>>, t.mixed> {}
 
+/**
+ * @example
+ * import * as t from 'io-ts'
+ * import { createStrMapFromDictionary } from 'io-ts-types/lib/fp-ts/createStrMapFromDictionary'
+ * import { right } from 'fp-ts/lib/Either'
+ * import { StrMap } from 'fp-ts/lib/StrMap'
+ *
+ * const T = createStrMapFromDictionary(t.number)
+ *
+ * assert.deepStrictEqual(T.decode({ someNumber: 42 }), right(new StrMap({ someNumber: 42 })))
+ * assert.deepStrictEqual(T.encode(new StrMap({ someNumber: 42 })), { someNumber: 42 })
+ */
 export const createStrMapFromDictionary = <C extends t.Mixed>(
   codec: C,
   name: string = `StrMap<${codec.name}>`
