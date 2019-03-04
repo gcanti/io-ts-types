@@ -17,6 +17,7 @@ import { Lens } from 'monocle-ts'
  * const lenses = lensesFromInterface(Person)
  * assert.strictEqual(lenses.age.get({ name: 'Giulio', age: 44 }), 44)
  */
+// tslint:disable-next-line: deprecation
 export const lensesFromInterface = <C extends t.InterfaceType<any> | t.StrictType<any>>(
   codec: C
 ): { [K in keyof C['props']]: Lens<t.TypeOf<C>, t.TypeOfProps<C['props']>[K]> } => {

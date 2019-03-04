@@ -20,7 +20,7 @@ parent: Modules
 
 ```ts
 export interface OptionFromNullableC<C extends t.Mixed>
-  extends OptionFromNullableType<C, Option<t.TypeOf<C>>, t.OutputOf<C> | null, t.mixed> {}
+  extends OptionFromNullableType<C, Option<t.TypeOf<C>>, t.OutputOf<C> | null, unknown> {}
 ```
 
 # OptionFromNullableType (class)

@@ -20,7 +20,7 @@ parent: Modules
 
 ```ts
 export interface StrMapC<C extends t.Mixed>
-  extends StrMapType<C, StrMap<t.TypeOf<C>>, Record<string, t.OutputOf<C>>, t.mixed> {}
+  extends StrMapType<C, StrMap<t.TypeOf<C>>, Record<string, t.OutputOf<C>>, unknown> {}
 ```
 
 # StrMapType (class)

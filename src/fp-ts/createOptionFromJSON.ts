@@ -7,7 +7,7 @@ export interface JSONOption<A> {
   value: A | null | undefined
 }
 
-export class OptionFromJSONType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class OptionFromJSONType<C extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'OptionFromJSONType' = 'OptionFromJSONType'
   constructor(
     name: string,
@@ -21,7 +21,7 @@ export class OptionFromJSONType<C extends t.Any, A = any, O = A, I = t.mixed> ex
 }
 
 export interface OptionFromJSONC<C extends t.Mixed>
-  extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, t.mixed> {}
+  extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, unknown> {}
 
 /**
  * @example

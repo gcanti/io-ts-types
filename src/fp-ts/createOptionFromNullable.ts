@@ -1,7 +1,7 @@
 import * as t from 'io-ts'
 import { Option, Some, None, fromNullable } from 'fp-ts/lib/Option'
 
-export class OptionFromNullableType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class OptionFromNullableType<C extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'OptionFromNullableType' = 'OptionFromNullableType'
   constructor(
     name: string,
@@ -15,7 +15,7 @@ export class OptionFromNullableType<C extends t.Any, A = any, O = A, I = t.mixed
 }
 
 export interface OptionFromNullableC<C extends t.Mixed>
-  extends OptionFromNullableType<C, Option<t.TypeOf<C>>, t.OutputOf<C> | null, t.mixed> {}
+  extends OptionFromNullableType<C, Option<t.TypeOf<C>>, t.OutputOf<C> | null, unknown> {}
 
 /**
  * @example

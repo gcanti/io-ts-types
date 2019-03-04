@@ -28,7 +28,7 @@ export interface EitherFromJSONC<L extends t.Mixed, R extends t.Mixed>
     R,
     Either<t.TypeOf<L>, t.TypeOf<R>>,
     JSONEither<t.OutputOf<L>, t.OutputOf<R>>,
-    t.mixed
+    unknown
   > {}
 ```
 

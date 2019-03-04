@@ -32,7 +32,7 @@ export interface JSONOption<A> {
 
 ```ts
 export interface OptionFromJSONC<C extends t.Mixed>
-  extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, t.mixed> {}
+  extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, unknown> {}
 ```
 
 # OptionFromJSONType (class)

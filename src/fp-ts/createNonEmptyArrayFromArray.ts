@@ -1,7 +1,7 @@
 import * as t from 'io-ts'
 import { NonEmptyArray, fromArray } from 'fp-ts/lib/NonEmptyArray'
 
-export class NonEmptyArrayFromArrayType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class NonEmptyArrayFromArrayType<C extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'NonEmptyArrayFromArrayType' = 'NonEmptyArrayFromArrayType'
   constructor(
     name: string,
@@ -15,7 +15,7 @@ export class NonEmptyArrayFromArrayType<C extends t.Any, A = any, O = A, I = t.m
 }
 
 export interface NonEmptyArrayFromArrayC<C extends t.Mixed>
-  extends NonEmptyArrayFromArrayType<C, NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, t.mixed> {}
+  extends NonEmptyArrayFromArrayType<C, NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 
 /**
  * @example

@@ -5,7 +5,7 @@ const TrueOrFalse = t.keyof({
   false: null
 })
 
-export class BooleanFromStringType extends t.Type<boolean, string, t.mixed> {
+export class BooleanFromStringType extends t.Type<boolean, string, unknown> {
   readonly _tag: 'BooleanFromStringType' = 'BooleanFromStringType'
   constructor() {
     super('BooleanFromString', t.boolean.is, (u, c) => TrueOrFalse.validate(u, c).map(tof => tof === 'true'), String)

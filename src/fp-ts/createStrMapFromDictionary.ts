@@ -1,7 +1,7 @@
 import { StrMap } from 'fp-ts/lib/StrMap'
 import * as t from 'io-ts'
 
-export class StrMapType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class StrMapType<C extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'StrMapType' = 'StrMapType'
   constructor(
     name: string,
@@ -15,7 +15,7 @@ export class StrMapType<C extends t.Any, A = any, O = A, I = t.mixed> extends t.
 }
 
 export interface StrMapC<C extends t.Mixed>
-  extends StrMapType<C, StrMap<t.TypeOf<C>>, Record<string, t.OutputOf<C>>, t.mixed> {}
+  extends StrMapType<C, StrMap<t.TypeOf<C>>, Record<string, t.OutputOf<C>>, unknown> {}
 
 /**
  * @example

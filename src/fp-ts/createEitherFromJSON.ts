@@ -14,7 +14,7 @@ export interface JSONRight<A> {
 
 export type JSONEither<L, A> = JSONLeft<L> | JSONRight<A>
 
-export class EitherFromJSONType<L extends t.Any, R extends t.Any, A = any, O = A, I = t.mixed> extends t.Type<A, O, I> {
+export class EitherFromJSONType<L extends t.Any, R extends t.Any, A = any, O = A, I = unknown> extends t.Type<A, O, I> {
   readonly _tag: 'EitherFromJSONType' = 'EitherFromJSONType'
   constructor(
     name: string,
@@ -34,7 +34,7 @@ export interface EitherFromJSONC<L extends t.Mixed, R extends t.Mixed>
     R,
     Either<t.TypeOf<L>, t.TypeOf<R>>,
     JSONEither<t.OutputOf<L>, t.OutputOf<R>>,
-    t.mixed
+    unknown
   > {}
 
 /**

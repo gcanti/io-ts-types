@@ -64,8 +64,8 @@ assert.deepStrictEqual(Person.decode({ name: 'Giulio', age: 44 }).map(ageLens.mo
 
 ```ts
 export const fromNewtype: <N extends AnyNewtype = never>(
-  codec: Type<CarrierOf<N>, CarrierOf<N>, mixed>
-) => Type<N, CarrierOf<N>, mixed> = type => ...
+  codec: Type<CarrierOf<N>, CarrierOf<N>, unknown>
+) => Type<N, CarrierOf<N>, unknown> = type => ...
 ```
 
 # fromNewtypeCurried (function)
@@ -74,6 +74,6 @@ export const fromNewtype: <N extends AnyNewtype = never>(
 
 ```ts
 export const fromNewtypeCurried: <N extends AnyNewtype = never>() => <O>(
-  codec: Type<CarrierOf<N>, O, mixed>
-) => Type<N, O, mixed> = () => type => ...
+  codec: Type<CarrierOf<N>, O, unknown>
+) => Type<N, O, unknown> = () => type => ...
 ```
