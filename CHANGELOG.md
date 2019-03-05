@@ -13,6 +13,13 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.4.3
+
+- **New Feature**
+  - add `clone` (@gcanti)
+  - add `withValidate` (@gcanti)
+  - add `withMessage` (@gcanti)
+
 # 0.4.2
 
 - **Polish**
