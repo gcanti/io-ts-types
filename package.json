@@ -41,10 +41,10 @@
     "docs-ts": "github:gcanti/docs-ts",
     "dtslint": "github:gcanti/dtslint",
     "io-ts": "^1.8.2",
-    "jest": "^22.4.3",
+    "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "prettier": "^1.16.1",
-    "ts-jest": "^22.4.2",
+    "ts-jest": "^24.0.0",
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
@@ -61,30 +61,5 @@
     "fp-ts",
     "monocle-ts",
     "newtype-ts"
-  ],
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "skipBabel": true
-      }
-    },
-    "collectCoverage": true,
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "test",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 0
-      }
-    }
-  }
+  ]
 }
