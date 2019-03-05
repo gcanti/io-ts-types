@@ -235,6 +235,7 @@ describe('number', () => {
   })
 
   it('IntegerFromString', () => {
+    // tslint:disable-next-line: deprecation
     const T = IntegerFromString
     assert.deepEqual(T.decode('0'), right(0))
     assert.deepEqual(T.decode('10'), right(10))

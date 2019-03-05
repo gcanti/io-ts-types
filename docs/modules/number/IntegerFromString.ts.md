@@ -1,6 +1,6 @@
 ---
 title: number/IntegerFromString.ts
-nav_order: 24
+nav_order: 25
 parent: Modules
 ---
 
@@ -9,7 +9,7 @@ parent: Modules
 <h2 class="text-delta">Table of contents</h2>
 
 - [IntegerFromStringC (interface)](#integerfromstringc-interface)
-- [IntegerFromString (constant)](#integerfromstring-constant)
+- [~~IntegerFromString~~ (constant)](#integerfromstring-constant)
 
 ---
 
@@ -21,7 +21,9 @@ parent: Modules
 export interface IntegerFromStringC extends t.RefinementType<NumberFromStringType, number, string, unknown> {}
 ```
 
-# IntegerFromString (constant)
+# ~~IntegerFromString~~ (constant)
+
+Use `io-ts-types/lib/IntFromString` instead.
 
 **Signature**
 
