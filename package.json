@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A collection of runtime types and combinators for use with io-ts",
   "files": [
     "lib"
@@ -8,11 +8,11 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
+    "lint": "tslint -p tsconfig.tslint.json src/**/*.ts test/**/*.ts",
     "jest": "jest --coverage",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest",
+    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc",
     "dtslint": "dtslint dtslint",
