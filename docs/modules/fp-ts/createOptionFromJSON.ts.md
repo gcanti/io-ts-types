@@ -1,6 +1,6 @@
 ---
 title: fp-ts/createOptionFromJSON.ts
-nav_order: 9
+nav_order: 10
 parent: Modules
 ---
 

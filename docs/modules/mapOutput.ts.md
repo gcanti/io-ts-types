@@ -1,6 +1,6 @@
 ---
 title: mapOutput.ts
-nav_order: 17
+nav_order: 18
 parent: Modules
 ---
 
@@ -19,8 +19,11 @@ Changes the output type of the given runtime type
 **Signature**
 
 ```ts
-export const mapOutput = <A, O, I, P>(codec: Type<A, O, I>, f: (p: O) => P, name?: string): Type<A, P, I> =>
-  new Type(name === undefined ? codec.name : name, codec.is, codec.validate, a => ...
+export function mapOutput<A, O, I, P>(
+  codec: t.Type<A, O, I>,
+  f: (p: O) => P,
+  name: string = codec.name
+): t.Type<A, P, I> { ... }
 ```
 
 **Example**

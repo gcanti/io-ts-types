@@ -1,4 +1,4 @@
-import { Type } from 'io-ts'
+import * as t from 'io-ts'
 
 /**
  * Changes the output type of the given runtime type
@@ -20,6 +20,10 @@ import { Type } from 'io-ts'
  * assert.strictEqual(Output.encode(none), undefined)
  * assert.strictEqual(Output.encode(some(1)), 1)
  */
-export function mapOutput<A, O, I, P>(codec: Type<A, O, I>, f: (p: O) => P, name: string = codec.name): Type<A, P, I> {
-  return new Type(name, codec.is, codec.validate, a => f(codec.encode(a)))
+export function mapOutput<A, O, I, P>(
+  codec: t.Type<A, O, I>,
+  f: (p: O) => P,
+  name: string = codec.name
+): t.Type<A, P, I> {
+  return new t.Type(name, codec.is, codec.validate, a => f(codec.encode(a)))
 }
