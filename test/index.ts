@@ -20,7 +20,6 @@ import {
   DateFromISOString,
   DateFromNumber,
   DateFromUnixTime,
-  fallback,
   fromNewtype,
   fromNewtypeCurried,
   fromNullable,
@@ -35,6 +34,7 @@ import {
   uuid,
   TypePrismIso
 } from '../src'
+import { assertSuccess, assertFailure } from './helpers'
 
 describe('mapOutput', () => {
   it('should map the output of encode', () => {
@@ -262,9 +262,13 @@ describe('Date', () => {
     const T = DateFromISOString
     const d = new Date(1973, 10, 30)
     const s = d.toISOString()
-    assert.deepEqual(T.decode(s), right(d))
-    assert.deepEqual(T.decode(s).map(d => d.getTime()), right(d.getTime()))
-    assert.deepEqual(PathReporter.report(T.decode('foo')), ['Invalid value "foo" supplied to : DateFromISOString'])
+    assertSuccess(T.decode(s), d)
+    assertSuccess(T.decode(s).map(d => d.getTime()), d.getTime())
+    assertFailure(T, null, ['Invalid value null supplied to : DateFromISOString'])
+    assertFailure(T, 'foo', ['Invalid value "foo" supplied to : DateFromISOString'])
+    assert.strictEqual(T.is(d), true)
+    assert.strictEqual(T.is(null), false)
+    assert.strictEqual(T.encode(d), s)
   })
 
   it('DateFromNumber', () => {
@@ -432,30 +436,4 @@ describe('JSON', () => {
 it('UUID', () => {
   assert.deepEqual(uuid.decode('6e9c5587-a342-4b63-a901-87b31fa2ffa3'), right('6e9c5587-a342-4b63-a901-87b31fa2ffa3'))
   assert.deepEqual(PathReporter.report(uuid.decode('invalid')), ['Invalid value "invalid" supplied to : UUID'])
-})
-
-it('fallback', () => {
-  const date1 = new Date(123456)
-  const date2 = new Date(1234564)
-
-  const defaultDate1 = fallback(DateFromISOString)(date1, 'defaultDate1')
-  assert.strictEqual(defaultDate1.name, 'defaultDate1')
-
-  assert.deepEqual(defaultDate1.decode(date2.toISOString()), right(date2), 'decode actual valid value') //
-  assert.deepEqual(defaultDate1.decode(date2), right(date1), 'fallback on alternate value on failure') //
-  assert.deepEqual(defaultDate1.decode('date2'), right(date1), 'fallback on alternate value on failure(2)')
-
-  assert.deepEqual(defaultDate1.is(date2), true, 'is on correct value')
-  assert.deepEqual(defaultDate1.is('date2'), false, 'is on invalid value')
-
-  assert.deepEqual(defaultDate1.encode(date1), date1.toISOString(), 'encode')
-
-  // tslint:disable-next-line: deprecation
-  const invalidFallback = fallback(t.refinement(t.number, n => n > 0))(-1)
-  assert.deepEqual(invalidFallback.decode(1), right(1), 'decode value with invalid fallback')
-  assert.deepEqual(invalidFallback.decode(-1).isLeft(), true, 'fails decoding invalid value with invalid fallback')
-  assert.deepEqual(invalidFallback.encode(1), 1, 'encodes valid with invalid fallback')
-  assert.deepEqual(invalidFallback.encode(-1), -1, 'encodes invalid with invalid fallback')
-  assert.deepEqual(invalidFallback.is(1), true, 'is on valid with invalid fallback')
-  assert.deepEqual(invalidFallback.is(-1), false, 'is on invalid with invalid fallback')
 })
