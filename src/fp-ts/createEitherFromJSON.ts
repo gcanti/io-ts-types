@@ -1,3 +1,7 @@
+/**
+ * @file Use `io-ts-types/lib/eitherFromJSON` instead.
+ * @deprecated
+ */
 import * as t from 'io-ts'
 
 import { Either, Right, Left, left, right } from 'fp-ts/lib/Either'
