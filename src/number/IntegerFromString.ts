@@ -1,3 +1,7 @@
+/**
+ * @file Use `io-ts-types/lib/IntFromString` instead.
+ * @deprecated
+ */
 import * as t from 'io-ts'
 import { NumberFromString, NumberFromStringType } from './NumberFromString'
 

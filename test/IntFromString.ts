@@ -24,6 +24,8 @@ describe('fallback', () => {
       assertFailure(T, null, ['Invalid value null supplied to : IntFromString'])
       assertFailure(T, '1.1', ['Invalid value "1.1" supplied to : IntFromString'])
       assertFailure(T, '1a', ['Invalid value "1a" supplied to : IntFromString'])
+      assertFailure(T, '2a', ['Invalid value "2a" supplied to : IntFromString'])
+      assertFailure(T, '2.a', ['Invalid value "2.a" supplied to : IntFromString'])
     })
   })
 
