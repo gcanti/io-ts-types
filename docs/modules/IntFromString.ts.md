@@ -1,6 +1,6 @@
 ---
 title: IntFromString.ts
-nav_order: 16
+nav_order: 15
 parent: Modules
 ---
 
@@ -8,9 +8,18 @@ parent: Modules
 
 <h2 class="text-delta">Table of contents</h2>
 
+- [IntFromStringC (interface)](#intfromstringc-interface)
 - [IntFromString (constant)](#intfromstring-constant)
 
 ---
+
+# IntFromStringC (interface)
+
+**Signature**
+
+```ts
+export interface IntFromStringC extends t.Type<t.Int, string, unknown> {}
+```
 
 # IntFromString (constant)
 
@@ -19,7 +28,7 @@ A codec that succeeds if a string can be parsed to an integer
 **Signature**
 
 ```ts
-export const IntFromString: t.Type<t.Int, string, unknown> = ...
+export const IntFromString: IntFromStringC = ...
 ```
 
 **Example**
