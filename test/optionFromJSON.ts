@@ -8,6 +8,13 @@ import { none, some, Option } from 'fp-ts/lib/Option'
 const toJSON = <A>(ma: Option<A>): unknown => JSON.parse(JSON.stringify(ma))
 
 describe('optionFromJSON', () => {
+  it('name', () => {
+    const T1 = optionFromJSON(t.number)
+    assert.strictEqual(T1.name, 'Option<number>')
+    const T2 = optionFromJSON(t.number, 'T')
+    assert.strictEqual(T2.name, 'T')
+  })
+
   it('is', () => {
     const T1 = optionFromJSON(t.number)
     assert.strictEqual(T1.is(some(1)), true)

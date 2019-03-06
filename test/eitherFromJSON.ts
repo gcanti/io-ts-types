@@ -6,6 +6,13 @@ import { assertFailure, assertSuccess } from './helpers'
 import { NumberFromString } from '../src/number/NumberFromString'
 
 describe('eitherFromJSON', () => {
+  it('name', () => {
+    const T1 = eitherFromJSON(t.string, t.number)
+    assert.strictEqual(T1.name, 'Either<string, number>')
+    const T2 = eitherFromJSON(t.string, t.number, 'T')
+    assert.strictEqual(T2.name, 'T')
+  })
+
   it('is', () => {
     const T = eitherFromJSON(t.string, t.number)
     assert.strictEqual(T.is(right(1)), true)
