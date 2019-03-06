@@ -1,6 +1,6 @@
 ---
 title: newtype-ts/fromNewtype.ts
-nav_order: 23
+nav_order: 22
 parent: Modules
 ---
 

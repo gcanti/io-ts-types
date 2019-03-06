@@ -1,3 +1,7 @@
+/**
+ * @file Use `io-ts-types/lib/optionFromJSON` instead.
+ * @deprecated
+ */
 import * as t from 'io-ts'
 
 import { Option, None, Some, fromNullable } from 'fp-ts/lib/Option'
