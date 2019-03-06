@@ -28,6 +28,8 @@ export interface OptionFromJSONC<C extends t.Mixed>
   extends OptionFromJSONType<C, Option<t.TypeOf<C>>, JSONOption<t.OutputOf<C>>, unknown> {}
 
 /**
+ * Use `io-ts-types/lib/optionFromJSON` instead.
+ *
  * @example
  * import * as t from 'io-ts'
  * import { createOptionFromJSON } from 'io-ts-types/lib/fp-ts/createOptionFromJSON'
@@ -38,6 +40,7 @@ export interface OptionFromJSONC<C extends t.Mixed>
  * assert.deepStrictEqual(T.decode({ type: 'Option', value: null }), right(none))
  * assert.deepStrictEqual(T.decode({ type: 'Option', value: undefined }), right(none))
  * assert.deepStrictEqual(T.decode({ type: 'Option', value: 1 }), right(some(1)))
+ * @deprecated
  */
 export const createOptionFromJSON = <C extends t.Mixed>(
   codec: C,

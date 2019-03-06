@@ -73,6 +73,7 @@ describe('fp-ts', () => {
   })
 
   it('createOptionFromJSON', () => {
+    // tslint:disable-next-line: deprecation
     const T = createOptionFromJSON(t.number)
     assert.deepEqual(T.decode({ type: 'Option', value: null }), right(none))
     assert.deepEqual(T.decode({ type: 'Option', value: undefined }), right(none))
@@ -82,11 +83,13 @@ describe('fp-ts', () => {
     assert.strictEqual(T.is(some(1)), true)
     assert.strictEqual(T.is(some('foo')), false)
 
+    // tslint:disable-next-line: deprecation
     const T2 = createOptionFromJSON(t.number, 'T2')
     assert.strictEqual(T2.name, 'T2')
   })
 
   it('createOptionOfOptionFromJSON', () => {
+    // tslint:disable-next-line: deprecation
     const T = createOptionFromJSON(createOptionFromJSON(t.number))
     assert.deepEqual(T.decode({ type: 'Option', value: { type: 'Option', value: 1 } }), right(some(some(1))))
     assert.deepEqual(T.encode(some(some(1))), { type: 'Option', value: { type: 'Option', value: 1 } })
@@ -97,6 +100,7 @@ describe('fp-ts', () => {
   })
 
   it('createEitherFromJSON', () => {
+    // tslint:disable-next-line: deprecation
     const T = createEitherFromJSON(t.string, t.number)
     assert.deepEqual(T.decode({ type: 'Left', value: 's' }), right(left('s')))
     assert.deepEqual(T.decode({ type: 'Right', value: 1 }), right(right(1)))
@@ -107,11 +111,13 @@ describe('fp-ts', () => {
     assert.strictEqual(T.is(left(1)), false)
     assert.strictEqual(T.is(left('foo')), true)
     assert.deepEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : Either<string, number>'])
+    // tslint:disable-next-line: deprecation
     const T2 = createEitherFromJSON(t.string, t.number, 'T2')
     assert.strictEqual(T2.name, 'T2')
   })
 
   it('createEitherOfOptionFromJSON', () => {
+    // tslint:disable-next-line: deprecation
     const T = createEitherFromJSON(createOptionFromJSON(t.string), createOptionFromJSON(t.number))
     assert.deepEqual(T.decode({ type: 'Left', value: { type: 'Option', value: 's' } }), right(left(some('s'))))
     assert.deepEqual(T.decode({ type: 'Right', value: { type: 'Option', value: 1 } }), right(right(some(1))))
