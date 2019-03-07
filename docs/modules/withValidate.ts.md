@@ -35,3 +35,5 @@ const T = withValidate(t.number, (u, c) => t.number.validate(u, c).map(n => n * 
 assert.deepStrictEqual(T.decode(1), right(2))
 assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : number'])
 ```
+
+Added in v0.4.3

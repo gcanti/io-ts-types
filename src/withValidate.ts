@@ -14,6 +14,8 @@ import { clone } from './clone'
  *
  * assert.deepStrictEqual(T.decode(1), right(2))
  * assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : number'])
+ *
+ * @since 0.4.3
  */
 export function withValidate<C extends t.Any>(codec: C, validate: C['validate'], name: string = codec.name): C {
   const r: any = clone(codec)

@@ -30,3 +30,5 @@ import * as t from 'io-ts'
 
 assert.deepStrictEqual(clone(t.string), t.string)
 ```
+
+Added in v0.4.3

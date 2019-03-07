@@ -35,3 +35,5 @@ const T = withMessage(t.number, () => 'Invalid number')
 assert.deepStrictEqual(T.decode(1), right(1))
 assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid number'])
 ```
+
+Added in v0.4.3

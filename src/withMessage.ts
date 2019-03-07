@@ -14,6 +14,8 @@ import { withValidate } from './withValidate'
  *
  * assert.deepStrictEqual(T.decode(1), right(1))
  * assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid number'])
+ *
+ * @since 0.4.3
  */
 export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>) => string): C {
   return withValidate(codec, (i, c) =>

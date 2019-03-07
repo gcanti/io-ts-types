@@ -8,6 +8,8 @@ import * as t from 'io-ts'
  * import * as t from 'io-ts'
  *
  * assert.deepStrictEqual(clone(t.string), t.string)
+ *
+ * @since 0.4.3
  */
 export function clone<C extends t.Any>(t: C): C {
   const r = Object.create(Object.getPrototypeOf(t))

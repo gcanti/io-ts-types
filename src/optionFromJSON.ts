@@ -28,6 +28,8 @@ export interface OptionFromJSONC<C extends t.Mixed>
  * assert.deepStrictEqual(T.decode(toJSON(none)), right(none))
  * assert.deepStrictEqual(T.decode(toJSON(some(1))), right(some(1)))
  * assert.deepStrictEqual(PathReporter.report(T.decode(some('a'))), ['Invalid value "a" supplied to : Option<number>/value: number'])
+ *
+ * @since 0.4.4
  */
 export function optionFromJSON<C extends t.Mixed>(
   codec: C,
