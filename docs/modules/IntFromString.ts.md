@@ -43,3 +43,5 @@ assert.deepStrictEqual(PathReporter.report(IntFromString.decode('1.1')), [
   'Invalid value "1.1" supplied to : IntFromString'
 ])
 ```
+
+Added in v0.4.4

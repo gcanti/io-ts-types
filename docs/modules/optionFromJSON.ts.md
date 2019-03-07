@@ -41,7 +41,8 @@ the JSON representation of an `Option`.
 ```ts
 export function optionFromJSON<C extends t.Mixed>(
   codec: C,
-  name: string = `Option<$ { ... }
+  name: string = `Option<${codec.name}>`
+): OptionFromJSONC<C> { ... }
 ```
 
 **Example**
@@ -63,3 +64,5 @@ assert.deepStrictEqual(PathReporter.report(T.decode(some('a'))), [
   'Invalid value "a" supplied to : Option<number>/value: number'
 ])
 ```
+
+Added in v0.4.4

@@ -13,6 +13,8 @@ export interface IntFromStringC extends t.Type<t.Int, string, unknown> {}
  *
  * assert.deepStrictEqual(IntFromString.decode('1'), right(1))
  * assert.deepStrictEqual(PathReporter.report(IntFromString.decode('1.1')), ['Invalid value "1.1" supplied to : IntFromString'])
+ *
+ * @since 0.4.4
  */
 export const IntFromString: IntFromStringC = new t.Type<t.Int, string, unknown>(
   'IntFromString',

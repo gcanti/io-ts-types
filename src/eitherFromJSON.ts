@@ -27,6 +27,8 @@ export interface EitherFromJSONC<L extends t.Mixed, R extends t.Mixed>
  * assert.deepStrictEqual(T.decode(toJSON(right(1))), right(right(1)))
  * assert.deepStrictEqual(T.decode(toJSON(left('a'))), right(left('a')))
  * assert.deepStrictEqual(PathReporter.report(T.decode(right('a'))), ['Invalid value "a" supplied to : Either<string, number>/value: number'])
+ *
+ * @since 0.4.4
  */
 export function eitherFromJSON<L extends t.Mixed, R extends t.Mixed>(
   leftCodec: L,

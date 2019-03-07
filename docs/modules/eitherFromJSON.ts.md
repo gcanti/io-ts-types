@@ -42,7 +42,8 @@ the JSON representation of an `Either`.
 export function eitherFromJSON<L extends t.Mixed, R extends t.Mixed>(
   leftCodec: L,
   rightCodec: R,
-  name: string = `Either<$ { ... }
+  name: string = `Either<${leftCodec.name}, ${rightCodec.name}>`
+): EitherFromJSONC<L, R> { ... }
 ```
 
 **Example**
@@ -63,3 +64,5 @@ assert.deepStrictEqual(PathReporter.report(T.decode(right('a'))), [
   'Invalid value "a" supplied to : Either<string, number>/value: number'
 ])
 ```
+
+Added in v0.4.4
