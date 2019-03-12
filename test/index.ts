@@ -31,7 +31,6 @@ import {
   lensesFromProps,
   mapOutput,
   NumberFromString,
-  regexp,
   uuid,
   TypePrismIso
 } from '../src'
@@ -256,7 +255,7 @@ describe('number', () => {
 })
 
 describe('Date', () => {
-  describe('Date', () => {
+  describe('date', () => {
     it('should decode Date values', () => {
       assert.deepEqual(date.decode(new Date(0)), right(new Date(0)))
     })
@@ -304,17 +303,6 @@ describe('Date', () => {
     assert.strictEqual(T.is(d), true)
     assert.strictEqual(T.is(0), false)
     assert.strictEqual(T.encode(d), seconds)
-  })
-})
-
-describe('RegExp', () => {
-  it('should decode RegExp values', () => {
-    assert.deepEqual(regexp.decode(/\w+/), right(/\w+/))
-    assert.deepEqual(regexp.decode(new RegExp('\\w+')), right(new RegExp('\\w+')))
-  })
-
-  it('should not decode non-Date values', () => {
-    assert.deepEqual(PathReporter.report(regexp.decode(1)), ['Invalid value 1 supplied to : RegExp'])
   })
 })
 
