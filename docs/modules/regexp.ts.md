@@ -1,6 +1,6 @@
 ---
 title: regexp.ts
-nav_order: 26
+nav_order: 27
 parent: Modules
 ---
 
@@ -9,7 +9,6 @@ parent: Modules
 <h2 class="text-delta">Table of contents</h2>
 
 - [RegExpC (interface)](#regexpc-interface)
-- [RegExpType (class)](#regexptype-class)
 - [regexp (constant)](#regexp-constant)
 
 ---
@@ -19,18 +18,7 @@ parent: Modules
 **Signature**
 
 ```ts
-export interface RegExpC extends RegExpType {}
-```
-
-# RegExpType (class)
-
-**Signature**
-
-```ts
-export class RegExpType {
-  constructor() { ... }
-  ...
-}
+export interface RegExpC extends t.Type<RegExp, RegExp, unknown> {}
 ```
 
 # regexp (constant)
@@ -52,3 +40,5 @@ const input2 = new RegExp('\\w+')
 assert.deepStrictEqual(regexp.decode(input1), right(input1))
 assert.deepStrictEqual(regexp.decode(input2), right(input2))
 ```
+
+Added in v0.4.4
