@@ -4,9 +4,6 @@ export { DateFromISOString, DateFromISOStringC, DateFromISOStringType } from './
 export { DateFromNumber, DateFromNumberC, DateFromNumberType } from './Date/DateFromNumber'
 export { DateFromUnixTime, DateFromUnixTimeC, DateFromUnixTimeType } from './Date/DateFromUnixTime'
 
-// RegExp
-export { regexp, RegExpC, RegExpType } from './regexp'
-
 // fp-ts
 export { createEitherFromJSON, EitherFromJSONC, EitherFromJSONType } from './fp-ts/createEitherFromJSON'
 export {
