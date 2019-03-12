@@ -29,7 +29,7 @@
     "url": "https://github.com/gcanti/io-ts-types/issues"
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
-  "dependencies": {
+  "peerDependencies": {
     "fp-ts": "^1.0.0",
     "io-ts": "^1.7.1",
     "monocle-ts": "^1.0.0",
@@ -48,7 +48,10 @@
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "fp-ts": "^1.0.0",
+    "monocle-ts": "^1.0.0",
+    "newtype-ts": "^0.2.1"
   },
   "tags": [
     "io-ts",
