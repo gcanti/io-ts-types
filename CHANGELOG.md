@@ -13,6 +13,19 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.4.4
+
+- **New Feature**
+  - add `optionFromJSON` combinator (@gcanti)
+  - add `eitherFromJSON` combinator (@gcanti)
+  - add `IntFromString` codec (@gcanti)
+  - add `fromRefinement` combinator (@gcanti)
+  - add `regexp` codec (@StefanoMagrassi)
+- **Deprecation**
+  - deprecate `number/IntegerFromString` in favour of `IntFromString` (@gcanti)
+  - deprecate `fp-ts/createOptionFromJSON` in favour of `optionFromJSON` (@gcanti)
+  - deprecate `fp-ts/createEitherFromJSON` in favour of `eitherFromJSON` (@gcanti)
+
 # 0.4.3
 
 - **New Feature**
