@@ -3,7 +3,7 @@ import * as t from 'io-ts'
 import { IntFromString } from '../src/IntFromString'
 import { assertSuccess, assertFailure } from './helpers'
 
-describe('fallback', () => {
+describe('IntFromString', () => {
   describe('is', () => {
     it('should check a isomorphic value', () => {
       const T = IntFromString
