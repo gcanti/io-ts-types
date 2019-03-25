@@ -64,3 +64,5 @@ assert.deepStrictEqual(PathReporter.report(UUID.decode('not a uuid')), [
   'Invalid value "not a uuid" supplied to : UUID'
 ])
 ```
+
+Added in v0.4.6

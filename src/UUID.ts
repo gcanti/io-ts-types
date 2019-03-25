@@ -18,5 +18,7 @@ export interface UUIDC extends t.Type<UUID, string, unknown> {}
  *
  * assert.deepStrictEqual(UUID.decode('00000000-0000-0000-0000-000000000000'), right('00000000-0000-0000-0000-000000000000'))
  * assert.deepStrictEqual(PathReporter.report(UUID.decode('not a uuid')), ['Invalid value "not a uuid" supplied to : UUID'])
+ *
+ * @since 0.4.6
  */
 export const UUID = t.brand(t.string, (s): s is UUID => regex.test(s), 'UUID')
