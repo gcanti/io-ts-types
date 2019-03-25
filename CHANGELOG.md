@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.4.6
+
+- **New Feature**
+  - add `UUID` codec (@mlegenhausen)
+
 # 0.4.5
 
 - **New Feature**
