@@ -2,7 +2,7 @@ import * as assert from 'assert'
 import { UUID } from '../src/UUID'
 import { assertSuccess, assertFailure } from './helpers'
 
-describe('NonEmptyString', () => {
+describe('UUID', () => {
   describe('is', () => {
     it('should check a isomorphic value', () => {
       const T = UUID
