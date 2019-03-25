@@ -21,4 +21,4 @@ export interface UUIDC extends t.Type<UUID, string, unknown> {}
  *
  * @since 0.4.6
  */
-export const UUID = t.brand(t.string, (s): s is UUID => regex.test(s), 'UUID')
+export const UUID: UUIDC = t.brand(t.string, (s): s is UUID => regex.test(s), 'UUID')

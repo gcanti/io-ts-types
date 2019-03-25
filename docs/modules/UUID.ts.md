@@ -46,7 +46,7 @@ export type UUID = t.Branded<string, UUIDBrand>
 **Signature**
 
 ```ts
-export const UUID = ...
+export const UUID: UUIDC = ...
 ```
 
 **Example**
