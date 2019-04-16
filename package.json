@@ -40,18 +40,18 @@
     "@types/node": "7.0.4",
     "docs-ts": "0.0.1",
     "dtslint": "github:gcanti/dtslint",
-    "io-ts": "^1.8.2",
+    "fp-ts": "^1.16.1",
+    "io-ts": "^1.8.5",
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
+    "monocle-ts": "^1.0.0",
+    "newtype-ts": "^0.2.1",
     "prettier": "^1.16.1",
     "ts-jest": "^24.0.0",
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.2.2",
-    "fp-ts": "^1.0.0",
-    "monocle-ts": "^1.0.0",
-    "newtype-ts": "^0.2.1"
+    "typescript": "^3.2.2"
   },
   "tags": [
     "io-ts",
