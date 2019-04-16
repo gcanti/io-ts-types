@@ -20,6 +20,8 @@ import { clone } from './clone'
 export function withValidate<C extends t.Any>(codec: C, validate: C['validate'], name: string = codec.name): C {
   const r: any = clone(codec)
   r.validate = validate
+  // tslint:disable-next-line: deprecation
+  r.decode = (i: any) => validate(i, t.getDefaultContext(r))
   r.name = name
   return r
 }
