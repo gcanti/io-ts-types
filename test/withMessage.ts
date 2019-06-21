@@ -1,11 +1,10 @@
 import * as t from 'io-ts'
+import { assertFailure } from './helpers'
 import { withMessage } from '../src/withMessage'
-import { assertSuccess, assertFailure } from './helpers'
 
 describe('withMessage', () => {
-  it('should return a custom message', () => {
-    const T = withMessage(t.number, () => 'Invalid number')
-    assertSuccess(T.decode(1), 1)
-    assertFailure(T, null, ['Invalid number'])
+  it('should set the error message', () => {
+    const T = withMessage(t.string, u => `${u} is not a string`)
+    assertFailure(T, null, ['null is not a string'])
   })
 })

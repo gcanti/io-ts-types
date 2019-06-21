@@ -6,11 +6,11 @@ import * as t from 'io-ts'
  * @example
  * import * as t from 'io-ts'
  * import { mapOutput } from 'io-ts-types/lib/mapOutput'
- * import { createOptionFromNullable } from 'io-ts-types/lib/fp-ts/createOptionFromNullable'
+ * import { optionFromNullable } from 'io-ts-types/lib/optionFromNullable'
  * import { none, some } from 'fp-ts/lib/Option'
  *
  * // Input: t.Type<Option<number>, number | null, t.mixed>
- * const Input = createOptionFromNullable(t.number)
+ * const Input = optionFromNullable(t.number)
  *
  * const toUndefined = <A>(x: A | null): A | undefined => (x === null ? undefined : x)
  *
@@ -19,6 +19,8 @@ import * as t from 'io-ts'
  *
  * assert.strictEqual(Output.encode(none), undefined)
  * assert.strictEqual(Output.encode(some(1)), 1)
+ *
+ * @since 0.3.2
  */
 export function mapOutput<A, O, I, P>(
   codec: t.Type<A, O, I>,

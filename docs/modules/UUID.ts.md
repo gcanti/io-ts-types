@@ -1,6 +1,6 @@
 ---
 title: UUID.ts
-nav_order: 29
+nav_order: 20
 parent: Modules
 ---
 
@@ -9,7 +9,6 @@ parent: Modules
 <h2 class="text-delta">Table of contents</h2>
 
 - [UUIDBrand (interface)](#uuidbrand-interface)
-- [UUIDC (interface)](#uuidc-interface)
 - [UUID (type alias)](#uuid-type-alias)
 - [UUID (constant)](#uuid-constant)
 
@@ -25,13 +24,7 @@ export interface UUIDBrand {
 }
 ```
 
-# UUIDC (interface)
-
-**Signature**
-
-```ts
-export interface UUIDC extends t.Type<UUID, string, unknown> {}
-```
+Added in v0.4.6
 
 # UUID (type alias)
 
@@ -41,12 +34,14 @@ export interface UUIDC extends t.Type<UUID, string, unknown> {}
 export type UUID = t.Branded<string, UUIDBrand>
 ```
 
+Added in v0.4.6
+
 # UUID (constant)
 
 **Signature**
 
 ```ts
-export const UUID: UUIDC = ...
+export const UUID = ...
 ```
 
 **Example**

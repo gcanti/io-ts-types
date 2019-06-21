@@ -1,20 +1,20 @@
 {
   "name": "io-ts-types",
-  "version": "0.4.7",
-  "description": "A collection of runtime types and combinators for use with io-ts",
+  "version": "0.5.0",
+  "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
     "lib"
   ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "lint": "tslint -p tsconfig.tslint.json src/**/*.ts test/**/*.ts",
-    "jest": "jest --coverage",
+    "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
+    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run mocha",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc",
+    "prepublish": "npm run build",
     "dtslint": "dtslint dtslint",
     "mocha": "mocha -r ts-node/register test/*.ts",
     "docs": "docs-ts"
@@ -30,28 +30,24 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "peerDependencies": {
-    "fp-ts": "^1.0.0",
-    "io-ts": "^1.7.1",
-    "monocle-ts": "^1.0.0",
-    "newtype-ts": "^0.2.1"
+    "fp-ts": "^2.0.0",
+    "io-ts": "^2.0.0",
+    "monocle-ts": "^2.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^22.2.2",
+    "@types/mocha": "^5.2.7",
     "@types/node": "7.0.4",
-    "docs-ts": "0.0.1",
+    "docs-ts": "0.0.3",
     "dtslint": "github:gcanti/dtslint",
-    "fp-ts": "^1.16.1",
-    "io-ts": "^1.8.5",
-    "jest": "^23.6.0",
+    "fp-ts": "^2.0.0",
+    "io-ts": "^2.0.0",
     "mocha": "^5.2.0",
-    "monocle-ts": "^1.0.0",
-    "newtype-ts": "^0.2.1",
+    "monocle-ts": "^2.0.0",
     "prettier": "^1.16.1",
-    "ts-jest": "^24.0.0",
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.5.1"
   },
   "tags": [
     "io-ts",
@@ -64,5 +60,34 @@
     "fp-ts",
     "monocle-ts",
     "newtype-ts"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "test",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testPathIgnorePatterns": [
+      "helpers.ts"
+    ],
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 0
+      }
+    }
+  },
+  "dependencies": {}
 }

@@ -1,6 +1,6 @@
 ---
 title: withValidate.ts
-nav_order: 31
+nav_order: 23
 parent: Modules
 ---
 
@@ -28,9 +28,9 @@ export function withValidate<C extends t.Any>(codec: C, validate: C['validate'],
 import { withValidate } from 'io-ts-types/lib/withValidate'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
-import { right } from 'fp-ts/lib/Either'
+import { either, right } from 'fp-ts/lib/Either'
 
-const T = withValidate(t.number, (u, c) => t.number.validate(u, c).map(n => n * 2))
+const T = withValidate(t.number, (u, c) => either.map(t.number.validate(u, c), n => n * 2))
 
 assert.deepStrictEqual(T.decode(1), right(2))
 assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : number'])
