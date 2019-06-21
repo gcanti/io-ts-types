@@ -13,6 +13,44 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.0
+
+**Note**. `io-ts-types` depends on
+
+- [`fp-ts`](https://github.com/gcanti/fp-ts)
+- [`io-ts`](https://github.com/gcanti/io-ts)
+- [`monocle-ts`](https://github.com/gcanti/monocle-ts)
+
+starting from `0.5.0` you must install `fp-ts`, `io-ts` and `monocle-ts` manually (`fp-ts`, `io-ts` and `monocle-ts` are listed in `peerDependencies`)
+
+- **Breaking Change**
+  - upgrade to `fp-ts@2`, `monocle-ts@2` and `io-ts@2.0.0` (@gcanti)
+  - remove `boolean` folder (@gcanti)
+    - move `BooleanFromString` to top level
+  - remove `date` folder (@gcanti)
+    - move `date` to top level
+    - move `DateFromISOString` to top level
+    - move `DateFromNumber` to top level
+    - move `DateFromUnixTime` to top level
+  - remove `fp-ts` folder (@gcanti)
+    - move `createEitherFromJSON` to top level and rename to `either`
+    - move `createNonEmptyArrayFromArray` to top level and rename to `nonEmptyArray`
+    - move `createOptionFromJSON` to top level and rename to `option`
+    - remove `createStrMapFromDictionary`
+    - move `createOptionFromNullable` to top level and rename to `optionFromNullable`
+    - move `createSetFromArray` to top level and rename to `setFromArray`
+  - remove `JSON` folder (@gcanti)
+  - remove `monocle-ts` (@gcanti)
+    - move `lensesFromInterface` to top level and renamed to `getLenses` (@gcanti)
+  - remove `newtype-ts` folder (@gcanti)
+  - remove `number` folder (@gcanti)
+    - move `NumberFromString` to top level
+    - move `IntegerFromString` to top level and rename to `IntFromString`
+  - rename `eitherFromJSON` to `either` (@gcanti)
+  - rename `optionFromJSON` to `option` (@gcanti)
+  - uncurry `fromNullable` (@gcanti)
+  - uncurry `fallback` and rename to `withFallback` (@gcanti)
+
 # 0.4.7
 
 - **Bug Fix**

@@ -1,6 +1,6 @@
 ---
 title: IntFromString.ts
-nav_order: 16
+nav_order: 12
 parent: Modules
 ---
 
@@ -20,6 +20,8 @@ parent: Modules
 ```ts
 export interface IntFromStringC extends t.Type<t.Int, string, unknown> {}
 ```
+
+Added in v0.4.4
 
 # IntFromString (constant)
 

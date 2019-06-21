@@ -1,5 +1,6 @@
 import * as t from 'io-ts'
 import { withValidate } from './withValidate'
+import { mapLeft } from 'fp-ts/lib/Either'
 
 /**
  * Returns a clone of the given codec that sets the given string as error messsage
@@ -19,13 +20,13 @@ import { withValidate } from './withValidate'
  */
 export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>) => string): C {
   return withValidate(codec, (i, c) =>
-    codec.validate(i, c).mapLeft(() => [
+    mapLeft(() => [
       {
         value: i,
         context: c,
         message: message(i),
         actual: i
       }
-    ])
+    ])(codec.validate(i, c))
   )
 }
