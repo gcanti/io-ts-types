@@ -6,6 +6,11 @@ import { option } from '../src/option'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('option', () => {
+  it('name', () => {
+    const T = option(t.number, 'T')
+    assert.strictEqual(T.name, 'T')
+  })
+
   it('is', () => {
     const T1 = option(t.number)
     assert.strictEqual(T1.is(some(1)), true)
