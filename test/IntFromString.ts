@@ -14,5 +14,7 @@ describe('IntFromString', () => {
     assertFailure(T, '2a', ['Invalid value "2a" supplied to : IntFromString'])
     assertFailure(T, '2.a', ['Invalid value "2.a" supplied to : IntFromString'])
     assertFailure(T, '1.1', ['Invalid value "1.1" supplied to : IntFromString'])
+    assertFailure(T, '', ['Invalid value "" supplied to : IntFromString'])
+    assertFailure(T, ' ', ['Invalid value " " supplied to : IntFromString'])
   })
 })

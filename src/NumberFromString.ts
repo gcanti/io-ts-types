@@ -21,7 +21,7 @@ export const NumberFromString: NumberFromStringC = new t.Type<number, string, un
   (u, c) =>
     either.chain(t.string.validate(u, c), s => {
       const n = +s
-      return isNaN(n) ? t.failure(u, c) : t.success(n)
+      return isNaN(n) || s.trim() === '' ? t.failure(u, c) : t.success(n)
     }),
   String
 )
