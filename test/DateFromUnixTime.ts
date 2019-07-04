@@ -20,6 +20,7 @@ describe('DateFromUnixTime', () => {
     assertSuccess(either.map(T.decode(seconds), d => d.getTime()), n)
     assertFailure(T, NaN, ['Invalid value NaN supplied to : DateFromUnixTime'])
     assertFailure(T, '', ['Invalid value "" supplied to : DateFromUnixTime'])
+    assertFailure(T, 1.2345678901234568e79, ['Invalid value 1.2345678901234568e+79 supplied to : DateFromUnixTime'])
   })
 
   it('encode', () => {

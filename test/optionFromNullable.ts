@@ -6,6 +6,11 @@ import { NumberFromString } from '../src/NumberFromString'
 import { none, some } from 'fp-ts/lib/Option'
 
 describe('optionFromNullable', () => {
+  it('name', () => {
+    const T = optionFromNullable(t.number, 'T')
+    assert.strictEqual(T.name, 'T')
+  })
+
   it('is', () => {
     const T1 = optionFromNullable(t.number)
     assert.strictEqual(T1.is(some(1)), true)

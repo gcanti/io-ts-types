@@ -5,6 +5,11 @@ import { assertFailure, assertSuccess } from './helpers'
 import { ordNumber } from 'fp-ts/lib/Ord'
 
 describe('setFromArray', () => {
+  it('name', () => {
+    const T = setFromArray(t.number, ordNumber, 'T')
+    assert.strictEqual(T.name, 'T')
+  })
+
   it('is', () => {
     const T = setFromArray(t.number, ordNumber)
     assert.deepStrictEqual(T.is(null), false)

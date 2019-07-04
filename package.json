@@ -11,7 +11,8 @@
     "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run mocha",
+    "jest": "jest --ci",
+    "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc",
     "prepublish": "npm run build",
@@ -35,19 +36,21 @@
     "monocle-ts": "^2.0.0"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.7",
+    "@types/jest": "^24.0.15",
     "@types/node": "7.0.4",
     "docs-ts": "0.0.3",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.0.0",
     "io-ts": "^2.0.0",
+    "jest": "^24.8.0",
     "mocha": "^5.2.0",
     "monocle-ts": "^2.0.0",
     "prettier": "^1.16.1",
+    "ts-jest": "^24.0.2",
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.2"
   },
   "tags": [
     "io-ts",

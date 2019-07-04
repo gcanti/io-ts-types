@@ -5,6 +5,11 @@ import * as assert from 'assert'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('nonEmptyArray', () => {
+  it('name', () => {
+    const T = nonEmptyArray(t.number, 'T')
+    assert.strictEqual(T.name, 'T')
+  })
+
   it('is', () => {
     const T = nonEmptyArray(t.number)
     assert.strictEqual(T.is(cons(1, [2, 3])), true)

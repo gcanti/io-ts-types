@@ -25,6 +25,7 @@ starting from `0.5.0` you must install `fp-ts`, `io-ts` and `monocle-ts` manuall
 
 - **Breaking Change**
   - upgrade to `fp-ts@2`, `monocle-ts@2` and `io-ts@2.0.0` (@gcanti)
+  - move `fp-ts@2`, `monocle-ts@2` and `io-ts@2.0.0` to `peerDependencies` (@gcanti)
   - remove `boolean` folder (@gcanti)
     - move `BooleanFromString` to top level
   - remove `date` folder (@gcanti)
@@ -42,6 +43,7 @@ starting from `0.5.0` you must install `fp-ts`, `io-ts` and `monocle-ts` manuall
   - remove `JSON` folder (@gcanti)
   - remove `monocle-ts` (@gcanti)
     - move `lensesFromInterface` to top level and renamed to `getLenses` (@gcanti)
+    - remove `TypePrismIso` module (@gcanti)
   - remove `newtype-ts` folder (@gcanti)
   - remove `number` folder (@gcanti)
     - move `NumberFromString` to top level

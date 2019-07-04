@@ -5,6 +5,11 @@ import { either } from '../src/either'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('either', () => {
+  it('name', () => {
+    const T = either(t.string, t.number, 'T')
+    assert.strictEqual(T.name, 'T')
+  })
+
   it('is', () => {
     const T = either(t.string, t.number)
     assert.strictEqual(T.is(right(1)), true)
