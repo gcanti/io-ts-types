@@ -5,6 +5,8 @@ const None = t.strict({
   _tag: t.literal('None')
 })
 
+const someLiteral = t.literal('Some')
+
 /**
  * Given a codec representing a type `A`, returns a codec representing `Option<A>` that is able to deserialize
  * the JSON representation of an `Option`.
@@ -35,7 +37,7 @@ export function option<C extends t.Mixed>(codec: C, name: string = `Option<${cod
       None,
       t.strict(
         {
-          _tag: t.literal('Some'),
+          _tag: someLiteral,
           value: codec
         },
         `Some<${codec.name}>`
