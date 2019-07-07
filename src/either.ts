@@ -1,6 +1,10 @@
 import * as t from 'io-ts'
 import { Either } from 'fp-ts/lib/Either'
 
+const leftLiteral = t.literal('Left')
+
+const rightLiteral = t.literal('Right')
+
 /**
  * @since 0.5.0
  */
@@ -34,14 +38,14 @@ export function either<L extends t.Mixed, R extends t.Mixed>(
     [
       t.strict(
         {
-          _tag: t.literal('Left'),
+          _tag: leftLiteral,
           left: leftCodec
         },
         `Left<${leftCodec.name}>`
       ),
       t.strict(
         {
-          _tag: t.literal('Right'),
+          _tag: rightLiteral,
           right: rightCodec
         },
         `Right<${leftCodec.name}>`
