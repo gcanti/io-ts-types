@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "7.0.4",
-    "docs-ts": "0.0.3",
+    "docs-ts": "^0.1.0",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.0.0",
     "io-ts": "^2.0.0",
@@ -63,34 +63,5 @@
     "fp-ts",
     "monocle-ts",
     "newtype-ts"
-  ],
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "skipBabel": true
-      }
-    },
-    "collectCoverage": true,
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "test",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "testPathIgnorePatterns": [
-      "helpers.ts"
-    ],
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 0
-      }
-    }
-  },
-  "dependencies": {}
+  ]
 }
