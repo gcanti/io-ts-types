@@ -6,6 +6,7 @@ import { NumberFromString } from '../../src/NumberFromString'
 import { option } from '../../src/option'
 import { optionFromNullable } from '../../src/optionFromNullable'
 import { setFromArray } from '../../src/setFromArray'
+import { getEq } from '../../src/getEq'
 
 //
 // either
@@ -46,3 +47,14 @@ type OFNO = t.OutputOf<typeof OFN> // $ExpectType string | null
 const SFA = setFromArray(NumberFromString, ordNumber)
 type SFAA = t.TypeOf<typeof SFA> // $ExpectType Set<number>
 type SFAO = t.OutputOf<typeof SFA> // $ExpectType string[]
+
+//
+// getEq
+//
+
+const Person = t.type({
+  name: t.string,
+  age: t.number,
+  tags: t.array(t.string)
+})
+const eqPerson = getEq(Person) // $ExpectType Eq<{ name: string; age: number; tags: string[]; }>
