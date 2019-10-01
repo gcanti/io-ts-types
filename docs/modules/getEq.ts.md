@@ -19,20 +19,31 @@ parent: Modules
 
 ```ts
 export type HasEq =
+  | t.UnknownType
+  | t.UndefinedType
+  | t.NullType
+  | t.VoidType
   | t.StringType
   | t.NumberType
   | t.BooleanType
-  | ArrayCodec
-  | RecordCodec
-  | StructCodec<any>
-  | ExactCodec
+  | t.KeyofType<Record<string, unknown>>
+  | t.LiteralType<any>
+  | ArrayType
+  | RecordType
+  | StructType
+  | ExactType
+  | TupleType
+  | PartialType
+  | UnionType
+  | IntersectionType
+  | BrandedType
 ```
 
-Added in v0.5.2
+Added in v0.6.0
 
 # getEq (function)
 
-Return an `Eq` instance for the provided io-ts codec.
+Returns an `Eq` instance for the provided io-ts codec.
 
 **Signature**
 
@@ -59,4 +70,4 @@ assert.strictEqual(
 )
 ```
 
-Added in v0.5.2
+Added in v0.6.0

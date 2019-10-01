@@ -7,6 +7,7 @@ import { option } from '../../src/option'
 import { optionFromNullable } from '../../src/optionFromNullable'
 import { setFromArray } from '../../src/setFromArray'
 import { getEq } from '../../src/getEq'
+import { DateFromISOString } from '../../src/DateFromISOString'
 
 //
 // either
@@ -58,3 +59,5 @@ const Person = t.type({
   tags: t.array(t.string)
 })
 const eqPerson = getEq(Person) // $ExpectType Eq<{ name: string; age: number; tags: string[]; }>
+
+const unsupportedEq = getEq(DateFromISOString) // $ExpectError

@@ -8,13 +8,13 @@ interface RecordType extends t.DictionaryType<t.StringType, HasEq> {}
 interface StructType extends t.InterfaceType<Record<string, t.TypeOf<HasEq>>> {}
 interface ExactType extends t.ExactType<HasEq> {}
 interface TupleType extends t.TupleType<Array<HasEq>> {}
-interface PartialType extends t.PartialType<HasEq> {}
+interface PartialType extends t.PartialType<Record<string, HasEq>> {}
 interface UnionType extends t.UnionType<Array<HasEq>> {}
 interface IntersectionType extends t.IntersectionType<Array<HasEq>> {}
 interface BrandedType extends t.RefinementType<HasEq> {}
 
 /**
- * @since 0.5.2
+ * @since 0.6.0
  */
 export type HasEq =
   | t.UnknownType
@@ -47,7 +47,7 @@ function getProps(codec: t.InterfaceType<any> | t.ExactType<any> | t.PartialType
 }
 
 /**
- * Return an `Eq` instance for the provided io-ts codec.
+ * Returns an `Eq` instance for the provided io-ts codec.
  *
  * @example
  * import * as t from 'io-ts'
@@ -68,7 +68,7 @@ function getProps(codec: t.InterfaceType<any> | t.ExactType<any> | t.PartialType
  *   true
  * )
  *
- * @since 0.5.2
+ * @since 0.6.0
  */
 export function getEq<T extends HasEq>(codec: T): Eq<t.TypeOf<T>> {
   const c: HasEq = codec as any
