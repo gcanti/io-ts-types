@@ -1,28 +1,45 @@
 import * as t from 'io-ts'
 import { getEq as getArrayEq } from 'fp-ts/lib/Array'
 import { getEq as getRecordEq, record } from 'fp-ts/lib/Record'
-import { eqString, eqNumber, getStructEq, Eq, eqBoolean } from 'fp-ts/lib/Eq'
+import { eqString, eqNumber, getStructEq, Eq, eqBoolean, fromEquals, strictEqual, getTupleEq } from 'fp-ts/lib/Eq'
 
-interface ArrayCodec extends t.ArrayType<HasEq> {}
-interface RecordCodec extends t.DictionaryType<t.StringType, HasEq> {}
-interface StructCodec<P extends Record<string, t.TypeOf<t.HasProps>>> extends t.InterfaceType<P> {}
-interface ExactCodec extends t.ExactType<HasEq> {}
+interface ArrayType extends t.ArrayType<HasEq> {}
+interface RecordType extends t.DictionaryType<t.StringType, HasEq> {}
+interface StructType extends t.InterfaceType<Record<string, t.TypeOf<HasEq>>> {}
+interface ExactType extends t.ExactType<HasEq> {}
+interface TupleType extends t.TupleType<Array<HasEq>> {}
+interface PartialType extends t.PartialType<HasEq> {}
+interface UnionType extends t.UnionType<Array<HasEq>> {}
+interface IntersectionType extends t.IntersectionType<Array<HasEq>> {}
+interface BrandedType extends t.RefinementType<HasEq> {}
 
 /**
  * @since 0.5.2
  */
 export type HasEq =
+  | t.UnknownType
+  | t.UndefinedType
+  | t.NullType
+  | t.VoidType
   | t.StringType
   | t.NumberType
   | t.BooleanType
-  | ArrayCodec
-  | RecordCodec
-  | StructCodec<any>
-  | ExactCodec
+  | t.KeyofType<Record<string, unknown>>
+  | t.LiteralType<any>
+  | ArrayType
+  | RecordType
+  | StructType
+  | ExactType
+  | TupleType
+  | PartialType
+  | UnionType
+  | IntersectionType
+  | BrandedType
 
-function getProps(codec: t.InterfaceType<any> | t.ExactType<any>): t.Props {
+function getProps(codec: t.InterfaceType<any> | t.ExactType<any> | t.PartialType<any>): t.Props {
   switch (codec._tag) {
     case 'InterfaceType':
+    case 'PartialType':
       return codec.props
     case 'ExactType':
       return getProps(codec.type)
@@ -56,18 +73,34 @@ function getProps(codec: t.InterfaceType<any> | t.ExactType<any>): t.Props {
 export function getEq<T extends HasEq>(codec: T): Eq<t.TypeOf<T>> {
   const c: HasEq = codec as any
   switch (c._tag) {
+    case 'UnknownType':
+    case 'UndefinedType':
+    case 'NullType':
+    case 'VoidType':
+    case 'LiteralType':
+      return fromEquals(strictEqual)
     case 'StringType':
-      return eqString
+    case 'KeyofType':
+      return eqString as any
     case 'NumberType':
-      return eqNumber
+      return eqNumber as any
     case 'BooleanType':
-      return eqBoolean
+      return eqBoolean as any
     case 'ArrayType':
-      return getArrayEq(getEq(c.type))
+      return getArrayEq(getEq(c.type)) as any
     case 'DictionaryType':
-      return getRecordEq(getEq(c.codomain))
+      return getRecordEq(getEq(c.codomain)) as any
     case 'ExactType':
     case 'InterfaceType':
-      return getStructEq(record.map(getProps(c), getEq as any))
+    case 'PartialType':
+      return getStructEq(record.map(getProps(c), getEq as any) as any)
+    case 'TupleType':
+      return getTupleEq(...c.types.map(getEq)) as any
+    case 'UnionType':
+      return fromEquals((a, b) => c.types.map(getEq).some(eq => eq.equals(a, b)))
+    case 'IntersectionType':
+      return fromEquals((a, b) => c.types.map(getEq).every(eq => eq.equals(a, b)))
+    case 'RefinementType':
+      return getEq(c.type)
   }
 }
