@@ -40,8 +40,8 @@
     "@types/node": "7.0.4",
     "docs-ts": "^0.1.0",
     "dtslint": "github:gcanti/dtslint",
-    "fp-ts": "^2.0.0",
-    "io-ts": "^2.0.0",
+    "fp-ts": "^2.1.0",
+    "io-ts": "^2.0.1",
     "jest": "^24.8.0",
     "mocha": "^5.2.0",
     "monocle-ts": "^2.0.0",
@@ -50,7 +50,7 @@
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.5.2"
+    "typescript": "^3.6.3"
   },
   "tags": [
     "io-ts",
