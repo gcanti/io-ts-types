@@ -19,10 +19,10 @@ Returns a codec from a newtype
 **Signature**
 
 ```ts
-export const fromNewtype = <N extends AnyNewtype = never>(
+export function fromNewtype<N extends AnyNewtype = never>(
   codec: t.Type<CarrierOf<N>>,
   name = `fromNewtype(${codec.name})`
-) => ...
+): t.Type<N, CarrierOf<N>, unknown> { ... }
 ```
 
 **Example**
@@ -42,4 +42,4 @@ assert.deepStrictEqual(T.decode('sometoken'), right(iso<Token>().wrap('sometoken
 assert.deepStrictEqual(PathReporter.report(T.decode(42)), ['Invalid value 42 supplied to : fromNewtype(string)'])
 ```
 
-Added in v0.6.0
+Added in v0.5.2
