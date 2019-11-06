@@ -19,14 +19,14 @@ import { either } from 'fp-ts/lib/Either'
  * assert.deepStrictEqual(T.decode('sometoken'), right(iso<Token>().wrap('sometoken')))
  * assert.deepStrictEqual(PathReporter.report(T.decode(42)), ['Invalid value 42 supplied to : fromNewtype(string)'])
  *
- * @since 0.6.0
+ * @since 0.5.2
  */
-export const fromNewtype = <N extends AnyNewtype = never>(
+export function fromNewtype<N extends AnyNewtype = never>(
   codec: t.Type<CarrierOf<N>>,
   name = `fromNewtype(${codec.name})`
-) => {
+): t.Type<N, CarrierOf<N>, unknown> {
   const i = iso<N>()
-  return new t.Type<N, CarrierOf<N>, unknown>(
+  return new t.Type(
     name,
     (u): u is N => codec.is(u),
     (u, c) => either.map(codec.validate(u, c), i.wrap),
