@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.3
+
+- **New Feature**
+  - Provide version with ES modules (@OliverJAsh)
+
 # 0.5.2
 
 - **New Feature**
