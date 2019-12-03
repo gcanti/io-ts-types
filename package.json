@@ -3,7 +3,8 @@
   "version": "0.5.2",
   "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
-    "lib"
+    "lib",
+    "es6"
   ],
   "main": "lib/index.js",
   "module": "es6/index.js",
@@ -14,7 +15,7 @@
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "jest": "jest --ci",
     "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
-    "clean": "rm -rf lib/*",
+    "clean": "rm -rf lib/* es6/*",
     "build": "npm run clean && tsc && tsc -p ./tsconfig.es6.json",
     "prepublish": "npm run build",
     "dtslint": "dtslint dtslint",
