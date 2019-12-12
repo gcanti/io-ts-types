@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.4.8
+
+- **Polish**
+  - fix TS2440 in 0.4.x branch when using TypeScript 3.7, #119 (@YBogomolov)
+
 # 0.4.7
 
 - **Bug Fix**
