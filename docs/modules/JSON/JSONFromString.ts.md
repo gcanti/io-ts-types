@@ -9,9 +9,9 @@ parent: Modules
 <h2 class="text-delta">Table of contents</h2>
 
 - [JSONFromStringC (interface)](#jsonfromstringc-interface)
-- [JSONType (type alias)](#jsontype-type-alias)
 - [JSONFromStringType (class)](#jsonfromstringtype-class)
 - [JSONFromString (constant)](#jsonfromstring-constant)
+- [JSONType (export)](#jsontype-export)
 
 ---
 
@@ -21,14 +21,6 @@ parent: Modules
 
 ```ts
 export interface JSONFromStringC extends JSONFromStringType {}
-```
-
-# JSONType (type alias)
-
-**Signature**
-
-```ts
-export type JSONType = JSONType
 ```
 
 # JSONFromStringType (class)
@@ -57,4 +49,12 @@ import { JSONFromString } from 'io-ts-types/lib/JSON/JSONFromString'
 import { right } from 'fp-ts/lib/Either'
 
 assert.deepStrictEqual(JSONFromString.decode('{"name":"Giulio"}'), right({ name: 'Giulio' }))
+```
+
+# JSONType (export)
+
+**Signature**
+
+```ts
+export { JSONType } from './JSONTypeRT'
 ```
