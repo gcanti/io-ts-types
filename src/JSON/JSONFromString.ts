@@ -2,7 +2,7 @@ import * as t from 'io-ts'
 import { JSONType, JSONTypeRT } from './JSONTypeRT'
 import { tryCatch } from 'fp-ts/lib/Either'
 
-export type JSONType = JSONType
+export { JSONType } from './JSONTypeRT'
 
 export class JSONFromStringType extends t.Type<JSONType> {
   readonly _tag: 'JSONFromStringType' = 'JSONFromStringType'
