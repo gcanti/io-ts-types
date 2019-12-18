@@ -26,7 +26,9 @@ describe('alt', () => {
 
   it('should encode with first codec provided', () => {
     const T = alt(DateFromISOString, date)
-    const d = new Date(1988, 11, 10)
-    assert.strictEqual(T.encode(d), '1988-12-09T20:30:00.000Z')
+
+    const d = new Date(Date.UTC(1988, 10, 10, 0, 0, 0))
+
+    assert.strictEqual(T.encode(d), '1988-11-10T00:00:00.000Z')
   })
 })
