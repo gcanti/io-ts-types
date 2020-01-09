@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
     "lib",
@@ -20,7 +20,8 @@
     "prepublish": "npm run build",
     "dtslint": "dtslint dtslint",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "docs": "docs-ts"
+    "docs": "docs-ts",
+    "postbuild": "import-path-rewrite"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "docs-ts": "^0.1.0",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.0.0",
+    "import-path-rewrite": "github:gcanti/import-path-rewrite",
     "io-ts": "^2.0.0",
     "jest": "^24.8.0",
     "mocha": "^5.2.0",
