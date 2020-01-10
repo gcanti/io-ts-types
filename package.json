@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
     "lib",
@@ -9,6 +9,7 @@
   "main": "lib/index.js",
   "module": "es6/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
