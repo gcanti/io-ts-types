@@ -4,12 +4,16 @@ nav_order: 5
 parent: Modules
 ---
 
+# DateFromNumber overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [DateFromNumberC (interface)](#datefromnumberc-interface)
-- [DateFromNumber (constant)](#datefromnumber-constant)
+- [DateFromNumber](#datefromnumber)
 
 ---
 
@@ -23,7 +27,7 @@ export interface DateFromNumberC extends t.Type<Date, number, unknown> {}
 
 Added in v0.5.0
 
-# DateFromNumber (constant)
+# DateFromNumber
 
 **Signature**
 

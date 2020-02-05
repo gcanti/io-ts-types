@@ -4,12 +4,16 @@ nav_order: 17
 parent: Modules
 ---
 
+# NumberFromString overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [NumberFromStringC (interface)](#numberfromstringc-interface)
-- [NumberFromString (constant)](#numberfromstring-constant)
+- [NumberFromString](#numberfromstring)
 
 ---
 
@@ -23,7 +27,7 @@ export interface NumberFromStringC extends t.Type<number, string, unknown> {}
 
 Added in v0.5.0
 
-# NumberFromString (constant)
+# NumberFromString
 
 **Signature**
 

@@ -4,12 +4,16 @@ nav_order: 4
 parent: Modules
 ---
 
+# DateFromISOString overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [DateFromISOStringC (interface)](#datefromisostringc-interface)
-- [DateFromISOString (constant)](#datefromisostring-constant)
+- [DateFromISOString](#datefromisostring)
 
 ---
 
@@ -23,7 +27,7 @@ export interface DateFromISOStringC extends t.Type<Date, string, unknown> {}
 
 Added in v0.5.0
 
-# DateFromISOString (constant)
+# DateFromISOString
 
 **Signature**
 

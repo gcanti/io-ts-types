@@ -4,12 +4,16 @@ nav_order: 19
 parent: Modules
 ---
 
+# optionFromNullable overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [OptionFromNullableC (interface)](#optionfromnullablec-interface)
-- [optionFromNullable (function)](#optionfromnullable-function)
+- [optionFromNullable](#optionfromnullable)
 
 ---
 
@@ -24,7 +28,7 @@ export interface OptionFromNullableC<C extends t.Mixed>
 
 Added in v0.5.0
 
-# optionFromNullable (function)
+# optionFromNullable
 
 **Signature**
 

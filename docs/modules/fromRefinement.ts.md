@@ -4,15 +4,19 @@ nav_order: 10
 parent: Modules
 ---
 
+# fromRefinement overview
+
+Added in v0.4.4
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [fromRefinement (function)](#fromrefinement-function)
+- [fromRefinement](#fromrefinement)
 
 ---
 
-# fromRefinement (function)
+# fromRefinement
 
 Returns a codec from a refinement
 

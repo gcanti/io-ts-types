@@ -1,3 +1,6 @@
+/**
+ * @since 0.4.3
+ */
 import * as t from 'io-ts'
 import { withValidate } from './withValidate'
 import { mapLeft } from 'fp-ts/lib/Either'

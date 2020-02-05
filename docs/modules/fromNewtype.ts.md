@@ -4,15 +4,19 @@ nav_order: 8
 parent: Modules
 ---
 
+# fromNewtype overview
+
+Added in v0.5.2
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [fromNewtype (function)](#fromnewtype-function)
+- [fromNewtype](#fromnewtype)
 
 ---
 
-# fromNewtype (function)
+# fromNewtype
 
 Returns a codec from a newtype
 

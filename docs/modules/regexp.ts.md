@@ -4,12 +4,16 @@ nav_order: 20
 parent: Modules
 ---
 
+# regexp overview
+
+Added in v0.4.4
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [RegExpC (interface)](#regexpc-interface)
-- [regexp (constant)](#regexp-constant)
+- [regexp](#regexp)
 
 ---
 
@@ -21,7 +25,9 @@ parent: Modules
 export interface RegExpC extends t.Type<RegExp, RegExp, unknown> {}
 ```
 
-# regexp (constant)
+Added in v0.4.4
+
+# regexp
 
 **Signature**
 

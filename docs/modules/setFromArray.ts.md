@@ -4,12 +4,16 @@ nav_order: 21
 parent: Modules
 ---
 
+# setFromArray overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [SetFromArrayC (interface)](#setfromarrayc-interface)
-- [setFromArray (function)](#setfromarray-function)
+- [setFromArray](#setfromarray)
 
 ---
 
@@ -21,7 +25,9 @@ parent: Modules
 export interface SetFromArrayC<C extends t.Mixed> extends t.Type<Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 ```
 
-# setFromArray (function)
+Added in v0.5.0
+
+# setFromArray
 
 **Signature**
 
@@ -32,3 +38,5 @@ export function setFromArray<C extends t.Mixed>(
   name: string = `Set<${codec.name}>`
 ): SetFromArrayC<C> { ... }
 ```
+
+Added in v0.5.0

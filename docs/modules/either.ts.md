@@ -4,12 +4,16 @@ nav_order: 7
 parent: Modules
 ---
 
+# either overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [EitherC (interface)](#eitherc-interface)
-- [either (function)](#either-function)
+- [either](#either)
 
 ---
 
@@ -24,7 +28,7 @@ export interface EitherC<L extends t.Mixed, R extends t.Mixed>
 
 Added in v0.5.0
 
-# either (function)
+# either
 
 Given a codec representing a type `L` and a codec representing a type `A`, returns a codec representing `Either<L, A>` that is able to deserialize
 the JSON representation of an `Either`.

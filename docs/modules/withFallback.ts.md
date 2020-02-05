@@ -4,15 +4,19 @@ nav_order: 23
 parent: Modules
 ---
 
+# withFallback overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [withFallback (function)](#withfallback-function)
+- [withFallback](#withfallback)
 
 ---
 
-# withFallback (function)
+# withFallback
 
 Returns a clone of the given codec that always succeed using the given value `a` if the original codec fails
 

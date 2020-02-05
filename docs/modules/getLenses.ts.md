@@ -4,13 +4,17 @@ nav_order: 11
 parent: Modules
 ---
 
+# getLenses overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [ExactHasLenses (interface)](#exacthaslenses-interface)
 - [HasLenses (type alias)](#haslenses-type-alias)
-- [getLenses (function)](#getlenses-function)
+- [getLenses](#getlenses)
 
 ---
 
@@ -34,7 +38,7 @@ export type HasLenses = t.InterfaceType<any> | ExactHasLenses
 
 Added in v0.5.0
 
-# getLenses (function)
+# getLenses
 
 Return a `Lens` for each prop
 

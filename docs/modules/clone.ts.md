@@ -4,15 +4,19 @@ nav_order: 2
 parent: Modules
 ---
 
+# clone overview
+
+Added in v0.4.3
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [clone (function)](#clone-function)
+- [clone](#clone)
 
 ---
 
-# clone (function)
+# clone
 
 Returns a clone of the given codec
 

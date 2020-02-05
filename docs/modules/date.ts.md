@@ -4,12 +4,16 @@ nav_order: 3
 parent: Modules
 ---
 
+# date overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [DateC (interface)](#datec-interface)
-- [date (constant)](#date-constant)
+- [date](#date)
 
 ---
 
@@ -23,7 +27,7 @@ export interface DateC extends t.Type<Date, Date, unknown> {}
 
 Added in v0.5.0
 
-# date (constant)
+# date
 
 **Signature**
 

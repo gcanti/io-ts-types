@@ -4,6 +4,10 @@ nav_order: 16
 parent: Modules
 ---
 
+# NonEmptyString overview
+
+Added in v0.4.5
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
@@ -11,7 +15,7 @@ parent: Modules
 - [NonEmptyStringBrand (interface)](#nonemptystringbrand-interface)
 - [NonEmptyStringC (interface)](#nonemptystringc-interface)
 - [NonEmptyString (type alias)](#nonemptystring-type-alias)
-- [NonEmptyString (constant)](#nonemptystring-constant)
+- [NonEmptyString](#nonemptystring)
 
 ---
 
@@ -25,6 +29,8 @@ export interface NonEmptyStringBrand {
 }
 ```
 
+Added in v0.4.5
+
 # NonEmptyStringC (interface)
 
 **Signature**
@@ -32,6 +38,8 @@ export interface NonEmptyStringBrand {
 ```ts
 export interface NonEmptyStringC extends t.Type<NonEmptyString, string, unknown> {}
 ```
+
+Added in v0.4.5
 
 # NonEmptyString (type alias)
 
@@ -41,7 +49,9 @@ export interface NonEmptyStringC extends t.Type<NonEmptyString, string, unknown>
 export type NonEmptyString = t.Branded<string, NonEmptyStringBrand>
 ```
 
-# NonEmptyString (constant)
+Added in v0.4.5
+
+# NonEmptyString
 
 A codec that succeeds if a string is not empty
 

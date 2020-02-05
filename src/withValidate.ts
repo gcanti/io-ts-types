@@ -1,3 +1,6 @@
+/**
+ * @since 0.4.3
+ */
 import * as t from 'io-ts'
 import { clone } from './clone'
 

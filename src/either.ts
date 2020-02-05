@@ -1,3 +1,6 @@
+/**
+ * @since 0.5.0
+ */
 import * as t from 'io-ts'
 import { Either } from 'fp-ts/lib/Either'
 

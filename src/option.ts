@@ -1,3 +1,6 @@
+/**
+ * @since 0.5.0
+ */
 import * as t from 'io-ts'
 import { Option } from 'fp-ts/lib/Option'
 

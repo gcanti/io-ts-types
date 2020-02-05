@@ -4,12 +4,16 @@ nav_order: 15
 parent: Modules
 ---
 
+# nonEmptyArray overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [NonEmptyArrayC (interface)](#nonemptyarrayc-interface)
-- [nonEmptyArray (function)](#nonemptyarray-function)
+- [nonEmptyArray](#nonemptyarray)
 
 ---
 
@@ -24,7 +28,7 @@ export interface NonEmptyArrayC<C extends t.Mixed>
 
 Added in v0.5.0
 
-# nonEmptyArray (function)
+# nonEmptyArray
 
 **Signature**
 

@@ -4,12 +4,16 @@ nav_order: 1
 parent: Modules
 ---
 
+# BooleanFromString overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [BooleanFromStringC (interface)](#booleanfromstringc-interface)
-- [BooleanFromString (constant)](#booleanfromstring-constant)
+- [BooleanFromString](#booleanfromstring)
 
 ---
 
@@ -23,7 +27,7 @@ export interface BooleanFromStringC extends t.Type<boolean, string, unknown> {}
 
 Added in v0.5.0
 
-# BooleanFromString (constant)
+# BooleanFromString
 
 **Signature**
 

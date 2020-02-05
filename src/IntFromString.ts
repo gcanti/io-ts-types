@@ -1,3 +1,6 @@
+/**
+ * @since 0.4.4
+ */
 import * as t from 'io-ts'
 import { NumberFromString } from './NumberFromString'
 import { either } from 'fp-ts/lib/Either'

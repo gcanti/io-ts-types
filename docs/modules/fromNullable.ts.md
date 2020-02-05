@@ -4,15 +4,19 @@ nav_order: 9
 parent: Modules
 ---
 
+# fromNullable overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [fromNullable (function)](#fromnullable-function)
+- [fromNullable](#fromnullable)
 
 ---
 
-# fromNullable (function)
+# fromNullable
 
 Returns a clone of the given codec that replace a nullable input with the given value `a`
 

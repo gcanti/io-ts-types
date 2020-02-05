@@ -1,10 +1,19 @@
+/**
+ * @since 0.5.0
+ */
 import { Ord } from 'fp-ts/lib/Ord'
 import { every, fromArray, toArray } from 'fp-ts/lib/Set'
 import * as t from 'io-ts'
 import { either } from 'fp-ts/lib/Either'
 
+/**
+ * @since 0.5.0
+ */
 export interface SetFromArrayC<C extends t.Mixed> extends t.Type<Set<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
 
+/**
+ * @since 0.5.0
+ */
 export function setFromArray<C extends t.Mixed>(
   codec: C,
   O: Ord<t.TypeOf<C>>,

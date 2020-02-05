@@ -4,15 +4,19 @@ nav_order: 25
 parent: Modules
 ---
 
+# withValidate overview
+
+Added in v0.4.3
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [withValidate (function)](#withvalidate-function)
+- [withValidate](#withvalidate)
 
 ---
 
-# withValidate (function)
+# withValidate
 
 Returns a clone of the given codec which uses the given `validate` function
 

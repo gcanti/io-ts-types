@@ -4,12 +4,16 @@ nav_order: 13
 parent: Modules
 ---
 
+# IntFromString overview
+
+Added in v0.4.4
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [IntFromStringC (interface)](#intfromstringc-interface)
-- [IntFromString (constant)](#intfromstring-constant)
+- [IntFromString](#intfromstring)
 
 ---
 
@@ -23,7 +27,7 @@ export interface IntFromStringC extends t.Type<t.Int, string, unknown> {}
 
 Added in v0.4.4
 
-# IntFromString (constant)
+# IntFromString
 
 A codec that succeeds if a string can be parsed to an integer
 

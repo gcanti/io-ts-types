@@ -4,15 +4,19 @@ nav_order: 24
 parent: Modules
 ---
 
+# withMessage overview
+
+Added in v0.4.3
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [withMessage (function)](#withmessage-function)
+- [withMessage](#withmessage)
 
 ---
 
-# withMessage (function)
+# withMessage
 
 Returns a clone of the given codec that sets the given string as error messsage
 

@@ -4,12 +4,16 @@ nav_order: 18
 parent: Modules
 ---
 
+# option overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [OptionC (interface)](#optionc-interface)
-- [option (function)](#option-function)
+- [option](#option)
 
 ---
 
@@ -44,7 +48,7 @@ assert.deepStrictEqual(PathReporter.report(T.decode(some('a'))), [
 
 Added in v0.5.0
 
-# option (function)
+# option
 
 **Signature**
 

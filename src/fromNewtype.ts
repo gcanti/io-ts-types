@@ -1,3 +1,6 @@
+/**
+ * @since 0.5.2
+ */
 import { AnyNewtype, CarrierOf, iso } from 'newtype-ts'
 import * as t from 'io-ts'
 import { either } from 'fp-ts/lib/Either'

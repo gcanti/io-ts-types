@@ -1,3 +1,6 @@
+/**
+ * @since 0.4.4
+ */
 import * as t from 'io-ts'
 
 /**

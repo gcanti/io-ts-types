@@ -4,13 +4,17 @@ nav_order: 22
 parent: Modules
 ---
 
+# UUID overview
+
+Added in v0.4.6
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [UUIDBrand (interface)](#uuidbrand-interface)
 - [UUID (type alias)](#uuid-type-alias)
-- [UUID (constant)](#uuid-constant)
+- [UUID](#uuid)
 
 ---
 
@@ -36,12 +40,12 @@ export type UUID = t.Branded<string, UUIDBrand>
 
 Added in v0.4.6
 
-# UUID (constant)
+# UUID
 
 **Signature**
 
 ```ts
-export const UUID = ...
+export const UUID: t.BrandC<t.StringC, UUIDBrand> = ...
 ```
 
 **Example**

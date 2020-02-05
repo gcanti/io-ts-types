@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "7.0.4",
-    "docs-ts": "^0.1.0",
+    "docs-ts": "^0.3.4",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.0.0",
     "import-path-rewrite": "github:gcanti/import-path-rewrite",

@@ -4,12 +4,16 @@ nav_order: 6
 parent: Modules
 ---
 
+# DateFromUnixTime overview
+
+Added in v0.5.0
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
 - [DateFromUnixTimeC (interface)](#datefromunixtimec-interface)
-- [DateFromUnixTime (constant)](#datefromunixtime-constant)
+- [DateFromUnixTime](#datefromunixtime)
 
 ---
 
@@ -23,7 +27,7 @@ export interface DateFromUnixTimeC extends t.Type<Date, number, unknown> {}
 
 Added in v0.5.0
 
-# DateFromUnixTime (constant)
+# DateFromUnixTime
 
 **Signature**
 

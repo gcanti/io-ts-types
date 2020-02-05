@@ -4,15 +4,19 @@ nav_order: 14
 parent: Modules
 ---
 
+# mapOutput overview
+
+Added in v0.3.2
+
 ---
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [mapOutput (function)](#mapoutput-function)
+- [mapOutput](#mapoutput)
 
 ---
 
-# mapOutput (function)
+# mapOutput
 
 Changes the output type of the given runtime type
 

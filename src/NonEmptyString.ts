@@ -1,11 +1,23 @@
+/**
+ * @since 0.4.5
+ */
 import * as t from 'io-ts'
 
+/**
+ * @since 0.4.5
+ */
 export interface NonEmptyStringBrand {
   readonly NonEmptyString: unique symbol
 }
 
+/**
+ * @since 0.4.5
+ */
 export type NonEmptyString = t.Branded<string, NonEmptyStringBrand>
 
+/**
+ * @since 0.4.5
+ */
 export interface NonEmptyStringC extends t.Type<NonEmptyString, string, unknown> {}
 
 /**
