@@ -13,6 +13,14 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.6
+
+- **Polish**
+  - `fromNewtype`
+    - add support for branded types, #123 (@mlegenhausen)
+- **Internal**
+  - upgrade to `typescript@3.8` (@gcanti)
+
 # 0.5.5
 
 - **Bug Fix**

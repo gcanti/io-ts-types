@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
     "lib",
@@ -57,7 +57,7 @@
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.8.2"
   },
   "tags": [
     "io-ts",
