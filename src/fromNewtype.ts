@@ -25,7 +25,7 @@ import { either } from 'fp-ts/lib/Either'
  * @since 0.5.2
  */
 export function fromNewtype<N extends AnyNewtype = never>(
-  codec: t.Type<CarrierOf<N>>,
+  codec: t.Type<CarrierOf<N>, t.OutputOf<CarrierOf<N>>>,
   name = `fromNewtype(${codec.name})`
 ): t.Type<N, CarrierOf<N>, unknown> {
   const i = iso<N>()
