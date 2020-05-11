@@ -1,6 +1,6 @@
 ---
 title: either.ts
-nav_order: 7
+nav_order: 24
 parent: Modules
 ---
 

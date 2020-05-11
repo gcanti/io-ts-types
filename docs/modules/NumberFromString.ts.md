@@ -1,6 +1,6 @@
 ---
 title: NumberFromString.ts
-nav_order: 17
+nav_order: 40
 parent: Modules
 ---
 
