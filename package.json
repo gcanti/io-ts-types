@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "description": "A collection of codecs and combinators for use with io-ts",
   "files": [
     "lib",
@@ -11,7 +11,7 @@
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "lint": "tslint -p tsconfig.json src/**/*.ts test/**/*.ts",
+    "lint": "tslint -p .",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\" || { echo \"Failure due to formatting, please run 'npm run fix-prettier' to fix this issue\"; exit 1; }",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "jest": "jest --ci",
@@ -36,7 +36,7 @@
   "homepage": "https://github.com/gcanti/io-ts-types",
   "peerDependencies": {
     "fp-ts": "^2.0.0",
-    "io-ts": "^2.0.0",
+    "io-ts": "^2.2.0",
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2"
   },
@@ -47,7 +47,7 @@
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.0.0",
     "import-path-rewrite": "github:gcanti/import-path-rewrite",
-    "io-ts": "^2.0.0",
+    "io-ts": "^2.2.2",
     "jest": "^24.8.0",
     "mocha": "^5.2.0",
     "monocle-ts": "^2.0.0",

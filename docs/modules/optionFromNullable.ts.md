@@ -1,6 +1,6 @@
 ---
 title: optionFromNullable.ts
-nav_order: 19
+nav_order: 42
 parent: Modules
 ---
 

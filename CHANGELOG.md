@@ -13,6 +13,38 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.6.0
+
+- **Breaking Change**
+  - upgrade `io-ts` to `2.2.0+` (@gcanti)
+- **Experimental**
+  - add `Decoder` folder
+    - `BooleanFromString` (@gcanti)
+    - `Date` (@gcanti)
+    - `DateFromNumber` (@gcanti)
+    - `DateFromString` (@gcanti)
+    - `either` (@gcanti)
+    - `fromNullable` (@gcanti)
+    - `Int` (@gcanti)
+    - `IntFromString` (@gcanti)
+    - `nonEmptyArray` (@gcanti)
+    - `NonEmptyString` (@gcanti)
+    - `NumberFromString` (@gcanti)
+    - `option` (@gcanti)
+    - `optionFromNullable` (@gcanti)
+    - `RegExp` (@gcanti)
+    - `setFromArray` (@gcanti)
+    - `UUID` (@gcanti)
+    - `withFalback` (@gcanti)
+  - add `Encoder` folder
+    - `DateToISOString` (@gcanti)
+  - add `Guard` folder
+    - `Date` (@gcanti)
+    - `Int` (@gcanti)
+    - `NonEmptyString` (@gcanti)
+    - `RegExp` (@gcanti)
+    - `UUID` (@gcanti)
+
 # 0.5.6
 
 - **Polish**

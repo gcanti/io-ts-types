@@ -1,6 +1,6 @@
 ---
 title: regexp.ts
-nav_order: 20
+nav_order: 43
 parent: Modules
 ---
 
