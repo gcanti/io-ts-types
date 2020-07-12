@@ -1,4 +1,4 @@
-import { date } from '../src/date'
+import { date } from '../src'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('Date', () => {

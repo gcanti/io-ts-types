@@ -1,4 +1,4 @@
-import { BooleanFromString } from '../src/BooleanFromString'
+import { BooleanFromString } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 
 describe('BooleanFromString', () => {

@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import * as t from 'io-ts'
-import { withFallback } from '../src/withFallback'
+import { withFallback } from '../src'
 import { assertSuccess } from './helpers'
 
 describe('withFallback', () => {

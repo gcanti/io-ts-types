@@ -1,5 +1,5 @@
 import { assertSuccess, assertFailure } from './helpers'
-import { NumberFromString } from '../src/NumberFromString'
+import { NumberFromString } from '../src'
 
 describe('NumberFromString', () => {
   it('decode', () => {

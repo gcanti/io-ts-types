@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { DateFromISOString } from '../src/DateFromISOString'
+import { DateFromISOString } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 
 const d = new Date(1973, 10, 30)

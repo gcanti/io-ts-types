@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { NonEmptyString } from '../src/NonEmptyString'
+import { NonEmptyString } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 
 describe('NonEmptyString', () => {

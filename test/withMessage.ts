@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
 import { assertFailure } from './helpers'
-import { withMessage } from '../src/withMessage'
+import { withMessage } from '../src'
 
 describe('withMessage', () => {
   it('should set the error message', () => {
