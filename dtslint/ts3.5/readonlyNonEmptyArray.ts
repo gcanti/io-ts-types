@@ -1,5 +1,5 @@
 import * as t from 'io-ts'
-import { readonlyNonEmptyArray } from '../../src/readonlyNonEmptyArray'
+import { readonlyNonEmptyArray } from '../../src'
 
 const RNAS = readonlyNonEmptyArray(t.string)
 
