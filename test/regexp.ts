@@ -1,4 +1,4 @@
-import { regexp } from '../src/regexp'
+import { regexp } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 
 describe('RegExp', () => {

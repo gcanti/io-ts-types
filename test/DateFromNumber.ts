@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { DateFromNumber } from '../src/DateFromNumber'
+import { DateFromNumber } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 import { either } from 'fp-ts/lib/Either'
 

@@ -1,8 +1,8 @@
 import * as assert from 'assert'
 import { none, some } from 'fp-ts/lib/Option'
 import * as t from 'io-ts'
-import { NumberFromString } from '../src/NumberFromString'
-import { option } from '../src/option'
+import { NumberFromString } from '../src'
+import { option } from '../src'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('option', () => {

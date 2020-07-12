@@ -1,4 +1,4 @@
-import { UUID } from '../src/UUID'
+import { UUID } from '../src'
 import { assertFailure, assertSuccess } from './helpers'
 
 describe('UUID', () => {

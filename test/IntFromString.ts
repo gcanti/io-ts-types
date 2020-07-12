@@ -1,4 +1,4 @@
-import { IntFromString } from '../src/IntFromString'
+import { IntFromString } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 import * as t from 'io-ts'
 

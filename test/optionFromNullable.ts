@@ -1,8 +1,8 @@
 import { assertSuccess, assertFailure } from './helpers'
-import { optionFromNullable } from '../src/optionFromNullable'
+import { optionFromNullable } from '../src'
 import * as t from 'io-ts'
 import * as assert from 'assert'
-import { NumberFromString } from '../src/NumberFromString'
+import { NumberFromString } from '../src'
 import { none, some } from 'fp-ts/lib/Option'
 
 describe('optionFromNullable', () => {

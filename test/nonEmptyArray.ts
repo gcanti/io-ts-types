@@ -1,4 +1,4 @@
-import { nonEmptyArray } from '../src/nonEmptyArray'
+import { nonEmptyArray } from '../src'
 import * as t from 'io-ts'
 import { cons } from 'fp-ts/lib/NonEmptyArray'
 import * as assert from 'assert'

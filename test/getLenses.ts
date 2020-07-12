@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import * as t from 'io-ts'
-import { getLenses } from '../src/getLenses'
+import { getLenses } from '../src'
 import { Lens } from 'monocle-ts'
 
 describe('getLenses', () => {

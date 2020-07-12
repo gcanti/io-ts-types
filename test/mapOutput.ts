@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import * as t from 'io-ts'
-import { mapOutput } from '../src/mapOutput'
+import { mapOutput } from '../src'
 
 describe('mapOutput', () => {
   it('name', () => {

@@ -1,4 +1,4 @@
-import { readonlySetFromArray } from '../src/readonlySetFromArray'
+import { readonlySetFromArray } from '../src'
 import * as t from 'io-ts'
 import * as assert from 'assert'
 import { assertFailure, assertSuccess } from './helpers'
