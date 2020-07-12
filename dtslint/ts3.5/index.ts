@@ -1,11 +1,6 @@
 import { ordNumber } from 'fp-ts/lib/Ord'
 import * as t from 'io-ts'
-import { either } from '../../src/either'
-import { nonEmptyArray } from '../../src/nonEmptyArray'
-import { NumberFromString } from '../../src/NumberFromString'
-import { option } from '../../src/option'
-import { optionFromNullable } from '../../src/optionFromNullable'
-import { setFromArray } from '../../src/setFromArray'
+import { either, nonEmptyArray, NumberFromString, option, optionFromNullable, setFromArray } from '../../src'
 
 //
 // either
