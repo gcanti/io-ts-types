@@ -6,7 +6,7 @@ parent: Modules
 
 # index overview
 
-Added in v0.5.0
+Added in v0.5.7
 
 ---
 
