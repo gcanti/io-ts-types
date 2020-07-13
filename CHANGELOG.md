@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.8
+
+- **New Feature**
+  - export each module's exports from the library entrypoint, closes #129 (@waynevanson)
+
 # 0.5.7
 
 - **New Feature**
