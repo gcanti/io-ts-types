@@ -3,7 +3,7 @@
  */
 import * as t from 'io-ts'
 import { withValidate } from './withValidate'
-import { mapLeft } from 'fp-ts/lib/Either'
+import { mapLeft } from 'fp-ts/Either'
 
 /**
  * Returns a clone of the given codec that sets the given string as error messsage
@@ -12,7 +12,7 @@ import { mapLeft } from 'fp-ts/lib/Either'
  * import { withMessage } from 'io-ts-types/lib/withMessage'
  * import * as t from 'io-ts'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
- * import { right } from 'fp-ts/lib/Either'
+ * import { right } from 'fp-ts/Either'
  *
  * const T = withMessage(t.number, () => 'Invalid number')
  *

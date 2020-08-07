@@ -11,7 +11,7 @@ import { clone } from './clone'
  * import { withValidate } from 'io-ts-types/lib/withValidate'
  * import * as t from 'io-ts'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
- * import { either, right } from 'fp-ts/lib/Either'
+ * import { either, right } from 'fp-ts/Either'
  *
  * const T = withValidate(t.number, (u, c) => either.map(t.number.validate(u, c), n => n * 2))
  *

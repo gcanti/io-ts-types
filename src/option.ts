@@ -2,7 +2,7 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { Option } from 'fp-ts/lib/Option'
+import { Option } from 'fp-ts/Option'
 
 const None = t.strict({
   _tag: t.literal('None')
@@ -16,8 +16,8 @@ const someLiteral = t.literal('Some')
  *
  * @example
  * import { option } from 'io-ts-types/lib/option'
- * import { right } from 'fp-ts/lib/Either'
- * import { none, some } from 'fp-ts/lib/Option'
+ * import { right } from 'fp-ts/Either'
+ * import { none, some } from 'fp-ts/Option'
  * import * as t from 'io-ts'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *

@@ -2,7 +2,7 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { Either } from 'fp-ts/lib/Either'
+import { Either } from 'fp-ts/Either'
 
 const leftLiteral = t.literal('Left')
 
@@ -20,7 +20,7 @@ export interface EitherC<L extends t.Mixed, R extends t.Mixed>
  *
  * @example
  * import { either } from 'io-ts-types/lib/either'
- * import { left, right } from 'fp-ts/lib/Either'
+ * import { left, right } from 'fp-ts/Either'
  * import * as t from 'io-ts'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *

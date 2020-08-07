@@ -1,6 +1,6 @@
 import * as t from 'io-ts'
 import { readonlySetFromArray } from '../../src'
-import { ordString } from 'fp-ts/lib/Ord'
+import { ordString } from 'fp-ts/Ord'
 
 const RS = readonlySetFromArray(t.string, ordString)
 

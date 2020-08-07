@@ -39,7 +39,7 @@ export const DateFromISOString: DateFromISOStringC = ...
 
 ```ts
 import { DateFromISOString } from 'io-ts-types/lib/DateFromISOString'
-import { right } from 'fp-ts/lib/Either'
+import { right } from 'fp-ts/Either'
 
 const date = new Date(1973, 10, 30)
 const input = date.toISOString()

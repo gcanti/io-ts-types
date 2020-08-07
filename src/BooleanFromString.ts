@@ -2,7 +2,7 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { either } from 'fp-ts/Either'
 
 /**
  * @since 0.5.0
