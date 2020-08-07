@@ -39,7 +39,7 @@ export const DateFromNumber: DateFromNumberC = ...
 
 ```ts
 import { DateFromNumber } from 'io-ts-types/lib/DateFromNumber'
-import { right } from 'fp-ts/lib/Either'
+import { right } from 'fp-ts/Either'
 
 const date = new Date(1973, 10, 30)
 const input = date.getTime()

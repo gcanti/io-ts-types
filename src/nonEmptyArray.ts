@@ -2,10 +2,10 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { NonEmptyArray, fromArray } from 'fp-ts/lib/NonEmptyArray'
-import { isNonEmpty } from 'fp-ts/lib/Array'
-import { either } from 'fp-ts/lib/Either'
-import { isNone } from 'fp-ts/lib/Option'
+import { NonEmptyArray, fromArray } from 'fp-ts/NonEmptyArray'
+import { isNonEmpty } from 'fp-ts/Array'
+import { either } from 'fp-ts/Either'
+import { isNone } from 'fp-ts/Option'
 
 /**
  * @since 0.5.0

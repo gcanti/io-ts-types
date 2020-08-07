@@ -39,7 +39,7 @@ export const DateFromUnixTime: DateFromUnixTimeC = ...
 
 ```ts
 import { DateFromUnixTime } from 'io-ts-types/lib/DateFromUnixTime'
-import { right } from 'fp-ts/lib/Either'
+import { right } from 'fp-ts/Either'
 
 const date = new Date(1973, 10, 30)
 const input = date.getTime() / 1000

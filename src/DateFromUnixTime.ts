@@ -2,7 +2,7 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { either } from 'fp-ts/Either'
 
 /**
  * @since 0.5.0
@@ -12,7 +12,7 @@ export interface DateFromUnixTimeC extends t.Type<Date, number, unknown> {}
 /**
  * @example
  * import { DateFromUnixTime } from 'io-ts-types/lib/DateFromUnixTime'
- * import { right } from 'fp-ts/lib/Either'
+ * import { right } from 'fp-ts/Either'
  *
  * const date = new Date(1973, 10, 30)
  * const input = date.getTime() / 1000

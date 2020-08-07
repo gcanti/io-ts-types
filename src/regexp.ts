@@ -14,7 +14,7 @@ export interface RegExpC extends t.Type<RegExp, RegExp, unknown> {}
 /**
  * @example
  * import { regexp } from 'io-ts-types/lib/regexp'
- * import { right } from 'fp-ts/lib/Either'
+ * import { right } from 'fp-ts/Either'
  *
  * const input1 = /\w+/
  * const input2 = new RegExp('\\w+')

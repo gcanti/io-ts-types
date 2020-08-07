@@ -1,7 +1,7 @@
 import * as assert from 'assert'
 import { DateFromUnixTime } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
-import { either } from 'fp-ts/lib/Either'
+import { either } from 'fp-ts/Either'
 
 const d = new Date(1973, 10, 30)
 const n = d.getTime()

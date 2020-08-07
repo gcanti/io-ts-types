@@ -32,8 +32,8 @@ export interface OptionC<C extends t.Mixed> extends t.Type<Option<t.TypeOf<C>>, 
 
 ```ts
 import { option } from 'io-ts-types/lib/option'
-import { right } from 'fp-ts/lib/Either'
-import { none, some } from 'fp-ts/lib/Option'
+import { right } from 'fp-ts/Either'
+import { none, some } from 'fp-ts/Option'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
 

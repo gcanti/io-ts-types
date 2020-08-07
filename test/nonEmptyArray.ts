@@ -1,6 +1,6 @@
 import { nonEmptyArray } from '../src'
 import * as t from 'io-ts'
-import { cons } from 'fp-ts/lib/NonEmptyArray'
+import { cons } from 'fp-ts/NonEmptyArray'
 import * as assert from 'assert'
 import { assertFailure, assertSuccess } from './helpers'
 
