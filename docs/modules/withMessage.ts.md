@@ -23,7 +23,7 @@ Returns a clone of the given codec that sets the given string as error messsage
 **Signature**
 
 ```ts
-export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>) => string): C { ... }
+export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>, c: t.Context) => string): C { ... }
 ```
 
 **Example**

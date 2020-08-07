@@ -21,13 +21,13 @@ import { mapLeft } from 'fp-ts/lib/Either'
  *
  * @since 0.4.3
  */
-export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>) => string): C {
+export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>, c: t.Context) => string): C {
   return withValidate(codec, (i, c) =>
     mapLeft(() => [
       {
         value: i,
         context: c,
-        message: message(i),
+        message: message(i, c),
         actual: i
       }
     ])(codec.validate(i, c))
