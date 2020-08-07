@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "peerDependencies": {
-    "fp-ts": "^2.0.0",
+    "fp-ts": "^2.8.0",
     "io-ts": "^2.0.0",
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2"
@@ -45,7 +45,7 @@
     "@types/node": "7.0.4",
     "docs-ts": "^0.3.4",
     "dtslint": "github:gcanti/dtslint",
-    "fp-ts": "^2.0.0",
+    "fp-ts": "^2.8.0",
     "import-path-rewrite": "github:gcanti/import-path-rewrite",
     "io-ts": "^2.0.0",
     "jest": "^24.8.0",
