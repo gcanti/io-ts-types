@@ -2,10 +2,6 @@
   "name": "io-ts-types",
   "version": "0.5.8",
   "description": "A collection of codecs and combinators for use with io-ts",
-  "files": [
-    "lib",
-    "es6"
-  ],
   "main": "lib/index.js",
   "module": "es6/index.js",
   "typings": "lib/index.d.ts",
@@ -16,13 +12,14 @@
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "jest": "jest --ci",
     "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
-    "clean": "rm -rf lib/* es6/*",
-    "build": "npm run clean && tsc && tsc -p ./tsconfig.es6.json",
-    "prepublish": "npm run build",
+    "clean": "rm -rf ./dist",
+    "prebuild": "npm run clean",
+    "build": "tsc -p ./tsconfig.build.json && tsc -p ./tsconfig.build-es6.json && ts-node scripts/build",
+    "postbuild": "prettier --loglevel=silent --write \"./dist/**/*.ts\"",
+    "prepublishOnly": "ts-node scripts/pre-publish",
     "dtslint": "dtslint dtslint",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "docs": "docs-ts",
-    "postbuild": "import-path-rewrite"
+    "docs": "docs-ts"
   },
   "repository": {
     "type": "git",
@@ -46,7 +43,6 @@
     "docs-ts": "^0.3.4",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.8.0",
-    "import-path-rewrite": "github:gcanti/import-path-rewrite",
     "io-ts": "^2.0.0",
     "jest": "^24.8.0",
     "mocha": "^5.2.0",
