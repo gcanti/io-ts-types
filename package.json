@@ -19,7 +19,9 @@
     "prepublishOnly": "ts-node scripts/pre-publish",
     "dtslint": "dtslint dtslint",
     "mocha": "mocha -r ts-node/register test/*.ts",
-    "docs": "docs-ts"
+    "docs": "docs-ts",
+    "prerelease": "npm run build",
+    "release": "ts-node scripts/release"
   },
   "repository": {
     "type": "git",
