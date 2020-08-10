@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/gcanti/io-ts-types",
   "peerDependencies": {
-    "fp-ts": "^2.8.0",
+    "fp-ts": "^2.0.0",
     "io-ts": "^2.0.0",
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2"
