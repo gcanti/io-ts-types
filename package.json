@@ -14,14 +14,15 @@
     "test": "npm run build && npm run lint && npm run dtslint && npm run prettier && npm run jest && npm run docs",
     "clean": "rm -rf ./dist",
     "prebuild": "npm run clean",
-    "build": "tsc -p ./tsconfig.build.json && tsc -p ./tsconfig.build-es6.json && ts-node scripts/build",
+    "build": "tsc -p ./tsconfig.build.json && tsc -p ./tsconfig.build-es6.json && npm run import-path-rewrite && ts-node scripts/build",
     "postbuild": "prettier --loglevel=silent --write \"./dist/**/*.ts\"",
     "prepublishOnly": "ts-node scripts/pre-publish",
     "dtslint": "dtslint dtslint",
     "mocha": "mocha -r ts-node/register test/*.ts",
     "docs": "docs-ts",
     "prerelease": "npm run build",
-    "release": "ts-node scripts/release"
+    "release": "ts-node scripts/release",
+    "import-path-rewrite": "import-path-rewrite"
   },
   "repository": {
     "type": "git",
@@ -55,7 +56,8 @@
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "import-path-rewrite": "github:gcanti/import-path-rewrite"
   },
   "tags": [
     "io-ts",
