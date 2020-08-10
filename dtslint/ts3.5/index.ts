@@ -1,4 +1,4 @@
-import { ordNumber } from 'fp-ts/Ord'
+import { ordNumber } from 'fp-ts/lib/Ord'
 import * as t from 'io-ts'
 import { either, nonEmptyArray, NumberFromString, option, optionFromNullable, setFromArray } from '../../src'
 

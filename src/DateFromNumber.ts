@@ -2,7 +2,7 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/Either'
+import { either } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -12,7 +12,7 @@ export interface DateFromNumberC extends t.Type<Date, number, unknown> {}
 /**
  * @example
  * import { DateFromNumber } from 'io-ts-types/lib/DateFromNumber'
- * import { right } from 'fp-ts/Either'
+ * import { right } from 'fp-ts/lib/Either'
  *
  * const date = new Date(1973, 10, 30)
  * const input = date.getTime()

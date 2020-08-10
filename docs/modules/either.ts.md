@@ -47,7 +47,7 @@ export function either<L extends t.Mixed, R extends t.Mixed>(
 
 ```ts
 import { either } from 'io-ts-types/lib/either'
-import { left, right } from 'fp-ts/Either'
+import { left, right } from 'fp-ts/lib/Either'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
 

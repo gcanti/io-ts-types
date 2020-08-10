@@ -3,7 +3,7 @@
  */
 import * as t from 'io-ts'
 import { withValidate } from './withValidate'
-import { orElse } from 'fp-ts/Either'
+import { orElse } from 'fp-ts/lib/Either'
 
 /**
  * Returns a clone of the given codec that always succeed using the given value `a` if the original codec fails
@@ -11,7 +11,7 @@ import { orElse } from 'fp-ts/Either'
  * @example
  * import { withFallback } from 'io-ts-types/lib/withFallback'
  * import * as t from 'io-ts'
- * import { right } from 'fp-ts/Either'
+ * import { right } from 'fp-ts/lib/Either'
  *
  * const T = withFallback(t.number, -1)
  *

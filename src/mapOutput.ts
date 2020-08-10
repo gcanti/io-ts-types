@@ -10,7 +10,7 @@ import * as t from 'io-ts'
  * import * as t from 'io-ts'
  * import { mapOutput } from 'io-ts-types/lib/mapOutput'
  * import { optionFromNullable } from 'io-ts-types/lib/optionFromNullable'
- * import { none, some } from 'fp-ts/Option'
+ * import { none, some } from 'fp-ts/lib/Option'
  *
  * // Input: t.Type<Option<number>, number | null, t.mixed>
  * const Input = optionFromNullable(t.number)

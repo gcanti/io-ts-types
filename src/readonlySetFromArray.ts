@@ -1,7 +1,7 @@
 /**
  * @since 0.5.7
  */
-import { Ord } from 'fp-ts/Ord'
+import { Ord } from 'fp-ts/lib/Ord'
 import * as t from 'io-ts'
 import { setFromArray } from './setFromArray'
 

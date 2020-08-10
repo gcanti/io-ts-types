@@ -1,10 +1,10 @@
 /**
  * @since 0.5.0
  */
-import { Ord } from 'fp-ts/Ord'
-import { every, fromArray, toArray } from 'fp-ts/Set'
+import { Ord } from 'fp-ts/lib/Ord'
+import { every, fromArray, toArray } from 'fp-ts/lib/Set'
 import * as t from 'io-ts'
-import { either } from 'fp-ts/Either'
+import { either } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
