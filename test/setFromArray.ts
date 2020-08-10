@@ -2,7 +2,7 @@ import { setFromArray } from '../src'
 import * as t from 'io-ts'
 import * as assert from 'assert'
 import { assertFailure, assertSuccess } from './helpers'
-import { ordNumber } from 'fp-ts/Ord'
+import { ordNumber } from 'fp-ts/lib/Ord'
 
 describe('setFromArray', () => {
   it('name', () => {

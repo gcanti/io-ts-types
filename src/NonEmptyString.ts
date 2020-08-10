@@ -25,7 +25,7 @@ export interface NonEmptyStringC extends t.Type<NonEmptyString, string, unknown>
  *
  * @example
  * import { NonEmptyString } from 'io-ts-types/lib/NonEmptyString'
- * import { right } from 'fp-ts/Either'
+ * import { right } from 'fp-ts/lib/Either'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *
  * assert.deepStrictEqual(NonEmptyString.decode('a'), right('a'))

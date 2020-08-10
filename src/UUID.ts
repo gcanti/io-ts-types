@@ -20,7 +20,7 @@ export type UUID = t.Branded<string, UUIDBrand>
 /**
  * @example
  * import { UUID } from 'io-ts-types/lib/UUID'
- * import { right } from 'fp-ts/Either'
+ * import { right } from 'fp-ts/lib/Either'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *
  * assert.deepStrictEqual(UUID.decode('00000000-0000-0000-0000-000000000000'), right('00000000-0000-0000-0000-000000000000'))

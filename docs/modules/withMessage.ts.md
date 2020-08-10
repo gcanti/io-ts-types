@@ -32,7 +32,7 @@ export function withMessage<C extends t.Any>(codec: C, message: (i: t.InputOf<C>
 import { withMessage } from 'io-ts-types/lib/withMessage'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
-import { right } from 'fp-ts/Either'
+import { right } from 'fp-ts/lib/Either'
 
 const T = withMessage(t.number, () => 'Invalid number')
 

@@ -31,7 +31,7 @@ export function withFallback<C extends t.Any>(codec: C, a: t.TypeOf<C>, name = `
 ```ts
 import { withFallback } from 'io-ts-types/lib/withFallback'
 import * as t from 'io-ts'
-import { right } from 'fp-ts/Either'
+import { right } from 'fp-ts/lib/Either'
 
 const T = withFallback(t.number, -1)
 

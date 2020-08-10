@@ -3,7 +3,7 @@ import { optionFromNullable } from '../src'
 import * as t from 'io-ts'
 import * as assert from 'assert'
 import { NumberFromString } from '../src'
-import { none, some } from 'fp-ts/Option'
+import { none, some } from 'fp-ts/lib/Option'
 
 describe('optionFromNullable', () => {
   it('name', () => {

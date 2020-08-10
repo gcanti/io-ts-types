@@ -34,7 +34,7 @@ export function fromNewtype<N extends AnyNewtype = never>(
 ```ts
 import { fromNewtype } from 'io-ts-types/lib/fromNewtype'
 import * as t from 'io-ts'
-import { right } from 'fp-ts/Either'
+import { right } from 'fp-ts/lib/Either'
 import { PathReporter } from 'io-ts/lib/PathReporter'
 import { Newtype, iso } from 'newtype-ts'
 
