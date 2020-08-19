@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.10
+
+- **Polish**
+  - expose modules without lib/es6 prefix, #137 (@osdiab)
+
 # 0.5.9
 
 - **Polish**
