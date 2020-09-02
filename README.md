@@ -14,7 +14,7 @@ npm i io-ts-types
 - [`io-ts`](https://github.com/gcanti/io-ts)
 - [`monocle-ts`](https://github.com/gcanti/monocle-ts)
 
-starting from `0.5.0` you must install `fp-ts`, `io-ts` and `monocle-ts` manually (`fp-ts`, `io-ts` and `monocle-ts` are listed in `peerDependency`)
+starting from `0.5.0` you must install `fp-ts`, `io-ts`, `newtype-ts` and `monocle-ts` manually (`fp-ts`, `io-ts`, `newtype-ts` and `monocle-ts` are listed in `peerDependency`)
 
 # TypeScript compatibility
 
