@@ -19,11 +19,10 @@ starting from `0.5.0` you must install `fp-ts`, `io-ts`, `newtype-ts` and `monoc
 
 # TypeScript compatibility
 
-The stable version is tested against TypeScript 3.2.2, but should run with TypeScript 3.0.1+ too
-
-**Note**. If you are running `< typescript@3.0.1` you have to polyfill `unknown`.
-
-You can use [unknown-ts](https://github.com/gcanti/unknown-ts) as a polyfill.
+| `io-ts-types` version | required `typescript` version |
+| --------------------- | ----------------------------- |
+| 0.5.x                 | 3.5+                          |
+| 0.4.x                 | 3.1+                          |
 
 # Documentation
 
