@@ -127,3 +127,8 @@ export * from './IntFromString'
  * @since 0.5.8
  */
 export * from './either'
+
+/**
+ * @since 0.5.11
+ */
+export * from './BigIntFromString'
