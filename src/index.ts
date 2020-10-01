@@ -132,3 +132,8 @@ export * from './either'
  * @since 0.5.11
  */
 export * from './BigIntFromString'
+
+/**
+ * @since 0.5.12
+ */
+export * from './BufferFromBase64String'
