@@ -13,7 +13,7 @@ export interface BufferFromBase64StringC extends t.Type<Buffer, string, unknown>
 
 /**
  * @example
- * import { BufferFromBase64String } from 'io-ts-types/lib/BigIntFromString'
+ * import { BufferFromBase64String } from 'io-ts-types/lib/BufferFromBase64String'
  * import { right } from 'fp-ts/lib/Either'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *
