@@ -133,7 +133,5 @@ export * from './either'
  */
 export * from './BigIntFromString'
 
-/**
- * @since 0.5.12
- */
+export * from './withEncode'
 export * from './BufferFromBase64String'
