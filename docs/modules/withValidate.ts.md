@@ -29,15 +29,22 @@ export function withValidate<C extends t.Any>(codec: C, validate: C['validate'],
 **Example**
 
 ```ts
+import { pipe } from 'fp-ts/lib/function'
 import { withValidate } from 'io-ts-types/lib/withValidate'
 import * as t from 'io-ts'
 import { PathReporter } from 'io-ts/lib/PathReporter'
-import { either, right } from 'fp-ts/lib/Either'
+import * as E from 'fp-ts/lib/Either'
 
-const T = withValidate(t.number, (u, c) => either.map(t.number.validate(u, c), n => n * 2))
+const minString = (min: number) =>
+  withValidate(t.string, (u, c) =>
+    pipe(
+      t.string.validate(u, c),
+      E.chain(x => (x.length >= min ? t.success(x) : t.failure(u, c, `string must be at least ${min} characters`)))
+    )
+  )
 
-assert.deepStrictEqual(T.decode(1), right(2))
-assert.deepStrictEqual(PathReporter.report(T.decode(null)), ['Invalid value null supplied to : number'])
+assert.deepStrictEqual(minString(3).decode('test'), E.right('test'))
+assert.deepStrictEqual(PathReporter.report(minString(3).decode('te')), ['string must be at least 3 characters'])
 ```
 
 Added in v0.4.3
