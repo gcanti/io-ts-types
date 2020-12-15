@@ -46,6 +46,7 @@
     "docs-ts": "^0.3.4",
     "dtslint": "github:gcanti/dtslint",
     "fp-ts": "^2.8.0",
+    "import-path-rewrite": "github:gcanti/import-path-rewrite",
     "io-ts": "^2.0.0",
     "jest": "^24.8.0",
     "mocha": "^5.2.0",
@@ -56,8 +57,7 @@
     "ts-node": "3.2.1",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.9.3",
-    "import-path-rewrite": "github:gcanti/import-path-rewrite"
+    "typescript": "^3.9.3"
   },
   "tags": [
     "io-ts",
