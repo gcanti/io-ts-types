@@ -23,7 +23,7 @@ Added in v0.5.0
 
 ```ts
 export interface OptionFromNullableC<C extends t.Mixed>
-  extends t.Type<Option<t.TypeOf<C>>, t.OutputOf<C> | null, unknown> {}
+  extends t.Type<O.Option<t.TypeOf<C>>, t.OutputOf<C> | null, unknown> {}
 ```
 
 Added in v0.5.0

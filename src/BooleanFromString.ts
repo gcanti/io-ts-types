@@ -2,7 +2,8 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -25,8 +26,9 @@ export const BooleanFromString: BooleanFromStringC = new t.Type<boolean, string,
   'BooleanFromString',
   t.boolean.is,
   (u, c) =>
-    either.chain(t.string.validate(u, c), s =>
-      s === 'true' ? t.success(true) : s === 'false' ? t.success(false) : t.failure(u, c)
+    pipe(
+      t.string.validate(u, c),
+      chain(s => (s === 'true' ? t.success(true) : s === 'false' ? t.success(false) : t.failure(u, c)))
     ),
   String
 )

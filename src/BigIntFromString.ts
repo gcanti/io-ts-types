@@ -2,7 +2,8 @@
  * @since 0.5.11
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 import { NonEmptyString } from './NonEmptyString'
 
 /**
@@ -28,15 +29,18 @@ export const BigIntFromString: BigIntFromStringC = new t.Type<bigint, string, un
   // tslint:disable-next-line
   (u): u is bigint => typeof u === 'bigint',
   (u, c) =>
-    either.chain(t.string.validate(u, c), s => {
-      if (!NonEmptyString.is(s.trim())) {
-        return t.failure(u, c)
-      }
-      try {
-        return t.success(BigInt(s))
-      } catch (error) {
-        return t.failure(u, c)
-      }
-    }),
+    pipe(
+      t.string.validate(u, c),
+      chain(s => {
+        if (!NonEmptyString.is(s.trim())) {
+          return t.failure(u, c)
+        }
+        try {
+          return t.success(BigInt(s))
+        } catch (error) {
+          return t.failure(u, c)
+        }
+      })
+    ),
   String
 )

@@ -2,7 +2,8 @@
  * @since 0.5.13
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { map } from 'fp-ts/Either'
 
 /**
  * @since 0.5.13
@@ -25,6 +26,10 @@ export interface BooleanFromNumberC extends t.Type<boolean, number, unknown> {}
 export const BooleanFromNumber: BooleanFromNumberC = new t.Type<boolean, number, unknown>(
   'BooleanFromNumber',
   t.boolean.is,
-  (u, c) => either.chain(t.number.validate(u, c), n => t.success(n !== 0)),
+  (u, c) =>
+    pipe(
+      t.number.validate(u, c),
+      map(n => n !== 0)
+    ),
   Number
 )

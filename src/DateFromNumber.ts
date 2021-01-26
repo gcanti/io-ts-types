@@ -2,7 +2,8 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -24,9 +25,12 @@ export const DateFromNumber: DateFromNumberC = new t.Type<Date, number, unknown>
   'DateFromNumber',
   (u): u is Date => u instanceof Date,
   (u, c) =>
-    either.chain(t.number.validate(u, c), n => {
-      const d = new Date(n)
-      return isNaN(d.getTime()) ? t.failure(u, c) : t.success(d)
-    }),
+    pipe(
+      t.number.validate(u, c),
+      chain(n => {
+        const d = new Date(n)
+        return isNaN(d.getTime()) ? t.failure(u, c) : t.success(d)
+      })
+    ),
   a => a.getTime()
 )

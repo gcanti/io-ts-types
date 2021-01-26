@@ -3,7 +3,8 @@
  */
 import { AnyNewtype, CarrierOf, iso } from 'newtype-ts'
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { map } from 'fp-ts/lib/Either'
 
 /**
  * Returns a codec from a newtype
@@ -32,7 +33,11 @@ export function fromNewtype<N extends AnyNewtype = never>(
   return new t.Type(
     name,
     (u): u is N => codec.is(u),
-    (u, c) => either.map(codec.validate(u, c), i.wrap),
+    (u, c) =>
+      pipe(
+        codec.validate(u, c),
+        map(i.wrap)
+      ),
     a => codec.encode(i.unwrap(a))
   )
 }

@@ -3,7 +3,8 @@
  */
 import * as t from 'io-ts'
 import { NumberFromString } from './NumberFromString'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.4.4
@@ -26,6 +27,10 @@ export interface IntFromStringC extends t.Type<t.Int, string, unknown> {}
 export const IntFromString: IntFromStringC = new t.Type<t.Int, string, unknown>(
   'IntFromString',
   t.Int.is,
-  (u, c) => either.chain(NumberFromString.validate(u, c), n => (t.Int.is(n) ? t.success(n) : t.failure(u, c))),
+  (u, c) =>
+    pipe(
+      NumberFromString.validate(u, c),
+      chain(n => (t.Int.is(n) ? t.success(n) : t.failure(u, c)))
+    ),
   NumberFromString.encode
 )

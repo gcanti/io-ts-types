@@ -4,7 +4,8 @@
 import { Ord } from 'fp-ts/lib/Ord'
 import { every, fromArray, toArray } from 'fp-ts/lib/Set'
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -26,10 +27,13 @@ export function setFromArray<C extends t.Mixed>(
     name,
     (u): u is Set<t.TypeOf<C>> => u instanceof Set && every(codec.is)(u),
     (u, c) =>
-      either.chain(arr.validate(u, c), as => {
-        const set = fromArrayO(as)
-        return set.size !== as.length ? t.failure(u, c) : t.success(set)
-      }),
+      pipe(
+        arr.validate(u, c),
+        chain(as => {
+          const set = fromArrayO(as)
+          return set.size !== as.length ? t.failure(u, c) : t.success(set)
+        })
+      ),
     set => arr.encode(toArrayO(set))
   )
 }

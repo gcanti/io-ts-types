@@ -2,7 +2,8 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -22,9 +23,12 @@ export const NumberFromString: NumberFromStringC = new t.Type<number, string, un
   'NumberFromString',
   t.number.is,
   (u, c) =>
-    either.chain(t.string.validate(u, c), s => {
-      const n = +s
-      return isNaN(n) || s.trim() === '' ? t.failure(u, c) : t.success(n)
-    }),
+    pipe(
+      t.string.validate(u, c),
+      chain(s => {
+        const n = +s
+        return isNaN(n) || s.trim() === '' ? t.failure(u, c) : t.success(n)
+      })
+    ),
   String
 )

@@ -2,7 +2,8 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { either } from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/pipeable'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.0
@@ -24,9 +25,12 @@ export const DateFromISOString: DateFromISOStringC = new t.Type<Date, string, un
   'DateFromISOString',
   (u): u is Date => u instanceof Date,
   (u, c) =>
-    either.chain(t.string.validate(u, c), s => {
-      const d = new Date(s)
-      return isNaN(d.getTime()) ? t.failure(u, c) : t.success(d)
-    }),
+    pipe(
+      t.string.validate(u, c),
+      chain(s => {
+        const d = new Date(s)
+        return isNaN(d.getTime()) ? t.failure(u, c) : t.success(d)
+      })
+    ),
   a => a.toISOString()
 )
