@@ -137,3 +137,8 @@ export * from './BigIntFromString'
  * @since 0.5.12
  */
 export * from './withEncode'
+
+/**
+ * @since 0.5.13
+ */
+export * from './BooleanFromNumber'
