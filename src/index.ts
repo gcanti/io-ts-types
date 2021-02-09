@@ -124,6 +124,11 @@ export * from './setFromArray'
 export * from './IntFromString'
 
 /**
+ * @since 0.5.14
+ */
+export * from './JsonFromString'
+
+/**
  * @since 0.5.8
  */
 export * from './either'
