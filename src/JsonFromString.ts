@@ -29,8 +29,8 @@ const Json: t.Type<Json> = t.union([t.boolean, t.number, t.string, t.null, JsonA
 /**
  * @since 0.5.14
  */
-export const JSONFromString = new t.Type<Json, string, string>(
-  'JSONFromString',
+export const JsonFromString = new t.Type<Json, string, string>(
+  'JsonFromString',
   Json.is,
   (s, c) => {
     try {
