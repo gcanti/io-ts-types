@@ -15,7 +15,7 @@ Added in v0.5.14
 - [JsonArray (interface)](#jsonarray-interface)
 - [JsonRecord (interface)](#jsonrecord-interface)
 - [Json (type alias)](#json-type-alias)
-- [JSONFromString](#jsonfromstring)
+- [JsonFromString](#jsonfromstring)
 
 ---
 
@@ -53,12 +53,12 @@ export type Json = boolean | number | string | null | JsonArray | JsonRecord
 
 Added in v0.5.14
 
-# JSONFromString
+# JsonFromString
 
 **Signature**
 
 ```ts
-export const JSONFromString: t.Type<Json, string, string> = ...
+export const JsonFromString: t.Type<Json, string, string> = ...
 ```
 
 Added in v0.5.14
