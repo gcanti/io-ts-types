@@ -1,6 +1,7 @@
 import * as assert from 'assert'
-import { JsonFromString } from '../src'
+import { JsonFromString, JsonArray } from '../src'
 import { assertFailure, assertSuccess } from './helpers'
+import * as t from 'io-ts'
 
 describe('JSONFromString', () => {
   it('is', () => {
@@ -33,5 +34,15 @@ describe('JSONFromString', () => {
   it('encode', () => {
     const T = JsonFromString
     assert.deepEqual(T.encode({}), '{}')
+  })
+
+  it('#156', () => {
+    const C = JsonFromString.pipe(
+      t.type({
+        a: JsonArray
+      })
+    )
+    assertSuccess(C.decode('{"a":[]}'), { a: [] })
+    assertFailure(C, '{"a":1}', ['Invalid value 1 supplied to : pipe(JsonFromString, { a: JsonArray })/a: JsonArray'])
   })
 })

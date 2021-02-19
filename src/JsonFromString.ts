@@ -22,9 +22,20 @@ export interface JsonRecord {
  */
 export interface JsonArray extends ReadonlyArray<Json> {}
 
-const JsonArray: t.Type<JsonArray> = t.recursion('JsonArray', () => t.readonlyArray(Json))
-const JsonRecord: t.Type<JsonRecord> = t.recursion('JsonRecord', () => t.record(t.string, Json))
-const Json: t.Type<Json> = t.union([t.boolean, t.number, t.string, t.null, JsonArray, JsonRecord], 'Json')
+/**
+ * @since 0.5.15
+ */
+export const JsonArray: t.Type<JsonArray> = t.recursion('JsonArray', () => t.readonlyArray(Json))
+
+/**
+ * @since 0.5.15
+ */
+export const JsonRecord: t.Type<JsonRecord> = t.recursion('JsonRecord', () => t.record(t.string, Json))
+
+/**
+ * @since 0.5.15
+ */
+export const Json: t.Type<Json> = t.union([t.boolean, t.number, t.string, t.null, JsonArray, JsonRecord], 'Json')
 
 /**
  * @since 0.5.14
