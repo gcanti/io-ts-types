@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.15
+
+- **Polish**
+  - export `Json`, `JsonRecord`, `JsonArray` codecs from `JsonFromString` module, closes #156 (@gcanti)
+
 # 0.5.14
 
 - **New Feature**
