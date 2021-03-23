@@ -32,5 +32,5 @@ export const DateFromUnixTime: DateFromUnixTimeC = new t.Type<Date, number, unkn
         return isNaN(d.getTime()) ? t.failure(u, c) : t.success(d)
       })
     ),
-  a => a.getTime() / 1000
+  a => Math.floor(a.getTime() / 1000)
 )
