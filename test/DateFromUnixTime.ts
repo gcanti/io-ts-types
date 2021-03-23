@@ -3,9 +3,8 @@ import { DateFromUnixTime } from '../src'
 import { assertSuccess, assertFailure } from './helpers'
 import { either } from 'fp-ts/lib/Either'
 
-const d = new Date(1973, 10, 30)
-const n = d.getTime()
-const seconds = n / 1000
+const d = new Date(1973, 10, 30, 12, 12, 12, 12)
+const seconds = Math.floor(d.getTime() / 1000)
 
 describe('DateFromUnixTime', () => {
   it('is', () => {
@@ -16,8 +15,8 @@ describe('DateFromUnixTime', () => {
 
   it('decode', () => {
     const T = DateFromUnixTime
-    assertSuccess(T.decode(seconds), d)
-    assertSuccess(either.map(T.decode(seconds), d => d.getTime()), n)
+    assertSuccess(T.decode(seconds), new Date(seconds * 1000))
+    assertSuccess(either.map(T.decode(seconds), d => d.getTime()), seconds * 1000)
     assertFailure(T, NaN, ['Invalid value NaN supplied to : DateFromUnixTime'])
     assertFailure(T, '', ['Invalid value "" supplied to : DateFromUnixTime'])
     assertFailure(T, 1.2345678901234568e79, ['Invalid value 1.2345678901234568e+79 supplied to : DateFromUnixTime'])
