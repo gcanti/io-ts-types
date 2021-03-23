@@ -13,6 +13,11 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.16
+
+- **Bug Fix**
+  - fix `DateFromUnixTime.encode` returning a floating point number, #160 (@saevarb)
+
 # 0.5.15
 
 - **Polish**
