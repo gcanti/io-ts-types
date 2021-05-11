@@ -46,7 +46,7 @@
     },
     "newtype-ts": {
       "optional": true
-    },
+    }
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
