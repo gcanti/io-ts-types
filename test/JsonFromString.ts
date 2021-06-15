@@ -27,8 +27,8 @@ describe('JSONFromString', () => {
     assertSuccess(T.decode('false'), false)
     assertSuccess(T.decode('[]'), [])
     assertSuccess(T.decode('{}'), {})
-    assertFailure(T, '{', ['Invalid value "{" supplied to : JsonFromString'])
-    assertFailure(T, '{"a":undefined}', ['Invalid value "{\\"a\\":undefined}" supplied to : JsonFromString'])
+    assertFailure(T, '{', ['Unexpected end of JSON input'])
+    assertFailure(T, '{"a":undefined}', ['Unexpected token u in JSON at position 5'])
   })
 
   it('encode', () => {
