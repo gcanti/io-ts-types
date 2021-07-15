@@ -20,6 +20,9 @@ describe('BigIntFromString', () => {
   })
   it('encode', () => {
     const T = URLFromString
-    assert.deepStrictEqual(T.encode(new URL('https://gcanti.github.io/io-ts-types/')), 'https://gcanti.github.io/io-ts-types/')
+    assert.deepStrictEqual(
+      T.encode(new URL('https://gcanti.github.io/io-ts-types/')),
+      'https://gcanti.github.io/io-ts-types/'
+    )
   })
 })

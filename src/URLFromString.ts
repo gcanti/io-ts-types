@@ -4,6 +4,7 @@
 import * as t from 'io-ts'
 import { pipe } from 'fp-ts/lib/pipeable'
 import { chain } from 'fp-ts/lib/Either'
+import { URL } from 'url'
 
 /**
  * @since 0.5.17
@@ -15,10 +16,10 @@ export interface URLFromStringC extends t.Type<URL, string, unknown> {}
  * import { URLFromString } from 'io-ts-types/lib/url'
  * import { right } from 'fp-ts/lib/Either'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
- * 
+ *
  * assert.deepStrictEqual(URLFromString.decode('https://gcanti.github.io/io-ts-types/'), right(new URL('https://gcanti.github.io/io-ts-types/')))
- * assert.deepStrictEqual(PathReporter.report(URLFromString.decode('/djulio')), ['Invalid value "/djulio" supplied to : url'])
- * 
+ * assert.deepStrictEqual(PathReporter.report(URLFromString.decode('/djulio')), ['Invalid value "/djulio" supplied to : URLFromString'])
+ *
  *
  * @since 0.5.17
  */
