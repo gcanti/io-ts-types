@@ -13,7 +13,7 @@ export interface URLFromStringC extends t.Type<URL, string, unknown> {}
 
 /**
  * @example
- * import { URLFromString } from 'io-ts-types/lib/url'
+ * import { URLFromString } from 'io-ts-types/lib/URLFromString'
  * import { right } from 'fp-ts/lib/Either'
  * import { PathReporter } from 'io-ts/lib/PathReporter'
  *
