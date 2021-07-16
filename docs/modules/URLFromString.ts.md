@@ -22,7 +22,7 @@ Added in v0.5.17
 **Signature**
 
 ```ts
-export interface URLFromStringC extends t.Type<URL, string, unknown> {}
+export interface URLFromStringC extends t.Type<typeof URL, string, unknown> {}
 ```
 
 Added in v0.5.17

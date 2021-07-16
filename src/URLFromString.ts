@@ -4,12 +4,15 @@
 import * as t from 'io-ts'
 import { pipe } from 'fp-ts/lib/pipeable'
 import { chain } from 'fp-ts/lib/Either'
-import { URL } from 'url'
+import * as nodeURL from 'url'
+
+declare const window: any // tslint:disable-next-line
+/* istanbul ignore next */ const URL = typeof window === 'undefined' ? nodeURL.URL : window.URL
 
 /**
  * @since 0.5.17
  */
-export interface URLFromStringC extends t.Type<URL, string, unknown> {}
+export interface URLFromStringC extends t.Type<typeof URL, string, unknown> {}
 
 /**
  * @example
@@ -23,9 +26,9 @@ export interface URLFromStringC extends t.Type<URL, string, unknown> {}
  *
  * @since 0.5.17
  */
-export const URLFromString: URLFromStringC = new t.Type<URL, string, unknown>(
+export const URLFromString: URLFromStringC = new t.Type<typeof URL, string, unknown>(
   'URLFromString',
-  (u): u is URL => u instanceof URL,
+  (u): u is typeof URL => u instanceof URL,
   (u, c) =>
     pipe(
       t.string.validate(u, c),
