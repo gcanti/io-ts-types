@@ -4,10 +4,8 @@
 import * as t from 'io-ts'
 import { pipe } from 'fp-ts/lib/pipeable'
 import { chain } from 'fp-ts/lib/Either'
-import * as nodeURL from 'url'
 
-declare const window: any // tslint:disable-next-line
-/* istanbul ignore next */ const URL = typeof window === 'undefined' ? nodeURL.URL : window.URL
+declare const URL: any
 
 /**
  * @since 0.5.17
