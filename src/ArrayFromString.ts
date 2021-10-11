@@ -35,6 +35,6 @@ export function ArrayFromString<C extends t.Mixed>(
         t.string.validate(u, c),
         chain(str => arr.validate(str.split(decoderSeparator), c))
       ),
-    (a: Array<t.TypeOf<C>>) => arr.encode(a).join(encoderSeparator)
+    a => arr.encode(a).join(encoderSeparator)
   )
 }
