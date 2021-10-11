@@ -3,8 +3,7 @@
  */
 import * as t from 'io-ts'
 import { pipe } from 'fp-ts/lib/pipeable'
-import { map, Traversable } from 'fp-ts/lib/Array'
-import { chain, Applicative } from 'fp-ts/lib/Either'
+import { chain } from 'fp-ts/lib/Either'
 
 /**
  * @since 0.5.17
@@ -27,21 +26,15 @@ export function ArrayFromString<C extends t.Mixed>(
   encoderSeparator = '',
   name = `ArrayFromString<${codec.name}>`
 ): ArrayFromStringC<C> {
+  const arr = t.array(codec)
   return new t.Type<Array<t.TypeOf<C>>, string, unknown>(
     name,
-    (u): u is Array<t.TypeOf<C>> => u instanceof Array && u.every(codec.is),
+    arr.is,
     (u, c) =>
       pipe(
         t.string.validate(u, c),
-        chain((str: string) =>
-          pipe(
-            str.split(decoderSeparator),
-            map(codec.decode),
-            Traversable.sequence(Applicative)
-          )
-        ),
-        chain(t.success)
+        chain(str => arr.validate(str.split(decoderSeparator), c))
       ),
-    (a: Array<t.TypeOf<C>>) => map(codec.encode)(a).join(encoderSeparator)
+    (a: Array<t.TypeOf<C>>) => arr.encode(a).join(encoderSeparator)
   )
 }

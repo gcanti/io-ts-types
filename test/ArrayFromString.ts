@@ -18,9 +18,12 @@ describe('ArrayFromString', () => {
     assertSuccess(T.decode('1,2,3'), [1, 2, 3])
     assertSuccess(T.decode('1, 2, 3'), [1, 2, 3])
     assertFailure(T, 1, ['Invalid value 1 supplied to : ArrayFromString<NumberFromString>'])
-    assertFailure(T, 'a', ['Invalid value "a" supplied to : NumberFromString'])
-    assertFailure(T, '1,a', ['Invalid value "a" supplied to : NumberFromString'])
-    assertFailure(T, '[1,2]', ['Invalid value "[1" supplied to : NumberFromString'])
+    assertFailure(T, 'a', ['Invalid value "a" supplied to : ArrayFromString<NumberFromString>/0: NumberFromString'])
+    assertFailure(T, '1,a', ['Invalid value "a" supplied to : ArrayFromString<NumberFromString>/1: NumberFromString'])
+    assertFailure(T, '[1,2]', [
+      'Invalid value "[1" supplied to : ArrayFromString<NumberFromString>/0: NumberFromString',
+      'Invalid value "2]" supplied to : ArrayFromString<NumberFromString>/1: NumberFromString'
+    ])
   })
   it('encode', () => {
     const T = ArrayFromString(NumberFromString)
