@@ -8,7 +8,7 @@ import { chain } from 'fp-ts/lib/Either'
 /**
  * @since 0.5.17
  */
-export interface ArrayFromStringC<C extends t.Mixed> extends t.Type<Array<t.TypeOf<C>>, string, unknown> {}
+export interface ArrayFromStringC<C extends t.Type<any, string>> extends t.Type<Array<t.TypeOf<C>>, string> {}
 
 /**
  * @example
@@ -20,14 +20,14 @@ export interface ArrayFromStringC<C extends t.Mixed> extends t.Type<Array<t.Type
  * assert.deepStrictEqual(ArrayFromString(NumberFromString, /[\s,]+/).decode("1, 2, 3"), right([1,2,3]))
  * @since 0.5.17
  */
-export function ArrayFromString<C extends t.Mixed>(
+export function ArrayFromString<C extends t.Type<any, string>>(
   codec: C,
   decoderSeparator: string | RegExp = '',
   encoderSeparator = '',
   name = `ArrayFromString<${codec.name}>`
 ): ArrayFromStringC<C> {
   const arr = t.array(codec)
-  return new t.Type<Array<t.TypeOf<C>>, string, unknown>(
+  return new t.Type<Array<t.TypeOf<C>>, string>(
     name,
     arr.is,
     (u, c) =>

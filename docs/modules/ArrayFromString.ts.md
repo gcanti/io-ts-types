@@ -22,7 +22,7 @@ Added in v0.5.17
 **Signature**
 
 ```ts
-export interface ArrayFromStringC<C extends t.Mixed> extends t.Type<Array<t.TypeOf<C>>, string, unknown> {}
+export interface ArrayFromStringC<C extends t.Type<any, string>> extends t.Type<Array<t.TypeOf<C>>, string> {}
 ```
 
 Added in v0.5.17
@@ -32,7 +32,7 @@ Added in v0.5.17
 **Signature**
 
 ```ts
-export function ArrayFromString<C extends t.Mixed>(
+export function ArrayFromString<C extends t.Type<any, string>>(
   codec: C,
   decoderSeparator: string | RegExp = '',
   encoderSeparator = '',
