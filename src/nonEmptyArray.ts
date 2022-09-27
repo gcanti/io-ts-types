@@ -2,12 +2,11 @@
  * @since 0.5.0
  */
 import * as t from 'io-ts'
-import { NonEmptyArray, fromArray } from 'fp-ts/lib/NonEmptyArray'
+import { NonEmptyArray, fromArray, map } from 'fp-ts/lib/NonEmptyArray'
 import { isNonEmpty } from 'fp-ts/lib/Array'
 import { pipe } from 'fp-ts/lib/pipeable'
 import { chain } from 'fp-ts/lib/Either'
 import { isNone } from 'fp-ts/lib/Option'
-import { identity } from 'fp-ts/lib/function'
 
 /**
  * @since 0.5.0
@@ -34,6 +33,6 @@ export function nonEmptyArray<C extends t.Mixed>(
           return isNone(onea) ? t.failure(u, c) : t.success(onea.value)
         })
       ),
-    identity
+    map(codec.encode)
   )
 }
