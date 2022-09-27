@@ -36,7 +36,7 @@ Added in v0.5.7
 
 ```ts
 export interface ReadonlyNonEmptyArrayC<C extends t.Mixed>
-  extends t.Type<ReadonlyNonEmptyArray<t.TypeOf<C>>, ReadonlyArray<t.OutputOf<C>>, unknown> {}
+  extends t.Type<ReadonlyNonEmptyArray<t.TypeOf<C>>, ReadonlyNonEmptyArray<t.OutputOf<C>>, unknown> {}
 ```
 
 Added in v0.5.7

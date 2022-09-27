@@ -16,7 +16,9 @@ type EO = t.OutputOf<typeof E> // $ExpectType Either<string, string>
 
 const NEA = nonEmptyArray(NumberFromString)
 type NEAA = t.TypeOf<typeof NEA> // $ExpectType NonEmptyArray<number>
-type NEAO = t.OutputOf<typeof NEA> // $ExpectType string[]
+type NEAO = t.OutputOf<typeof NEA> // $ExpectType NonEmptyArray<string>
+
+nonEmptyArray(t.unknown).pipe(nonEmptyArray(t.unknown))
 
 //
 // option

@@ -23,7 +23,7 @@ Added in v0.5.0
 
 ```ts
 export interface NonEmptyArrayC<C extends t.Mixed>
-  extends t.Type<NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
+  extends t.Type<NonEmptyArray<t.TypeOf<C>>, NonEmptyArray<t.OutputOf<C>>, unknown> {}
 ```
 
 Added in v0.5.0

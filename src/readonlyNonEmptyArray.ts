@@ -15,7 +15,7 @@ export interface ReadonlyNonEmptyArray<A> extends ReadonlyArray<A> {
  * @since 0.5.7
  */
 export interface ReadonlyNonEmptyArrayC<C extends t.Mixed>
-  extends t.Type<ReadonlyNonEmptyArray<t.TypeOf<C>>, ReadonlyArray<t.OutputOf<C>>, unknown> {}
+  extends t.Type<ReadonlyNonEmptyArray<t.TypeOf<C>>, ReadonlyNonEmptyArray<t.OutputOf<C>>, unknown> {}
 
 /**
  * @since 0.5.7
