@@ -7,12 +7,13 @@ import { isNonEmpty } from 'fp-ts/lib/Array'
 import { pipe } from 'fp-ts/lib/pipeable'
 import { chain } from 'fp-ts/lib/Either'
 import { isNone } from 'fp-ts/lib/Option'
+import { identity } from 'fp-ts/lib/function'
 
 /**
  * @since 0.5.0
  */
 export interface NonEmptyArrayC<C extends t.Mixed>
-  extends t.Type<NonEmptyArray<t.TypeOf<C>>, Array<t.OutputOf<C>>, unknown> {}
+  extends t.Type<NonEmptyArray<t.TypeOf<C>>, NonEmptyArray<t.OutputOf<C>>, unknown> {}
 
 /**
  * @since 0.5.0
@@ -33,6 +34,6 @@ export function nonEmptyArray<C extends t.Mixed>(
           return isNone(onea) ? t.failure(u, c) : t.success(onea.value)
         })
       ),
-    nea => arr.encode(nea)
+    identity
   )
 }
