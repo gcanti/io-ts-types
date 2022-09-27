@@ -1,4 +1,4 @@
-import { nonEmptyArray } from '../src'
+import { nonEmptyArray, NumberFromString } from '../src'
 import * as t from 'io-ts'
 import { cons } from 'fp-ts/lib/NonEmptyArray'
 import * as assert from 'assert'
@@ -29,5 +29,7 @@ describe('nonEmptyArray', () => {
     const T = nonEmptyArray(t.number)
     assert.deepStrictEqual(T.encode(cons(1, [2, 3])), [1, 2, 3])
     assert.deepStrictEqual(T.encode(cons(1, [])), [1])
+    const T2 = nonEmptyArray(NumberFromString)
+    assert.deepStrictEqual(T2.encode(cons(1, [])), ['1'])
   })
 })
