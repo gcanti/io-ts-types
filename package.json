@@ -1,6 +1,6 @@
 {
   "name": "io-ts-types",
-  "version": "0.5.16",
+  "version": "0.5.17",
   "description": "A collection of codecs and combinators for use with io-ts",
   "main": "lib/index.js",
   "module": "es6/index.js",

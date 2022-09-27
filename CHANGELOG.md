@@ -15,6 +15,12 @@ high state of flux, you're at risk of it changing without notice.
 
 # 0.5.16
 
+- **Polish**
+  - `nonEmptyArray`: change output type from `Array` to `NonEmptyArray`, #170 (@OliverJAsh)
+  - `readonlyNonEmptyArray`: change output type from `ReadonlyArray` to `ReadonlyNonEmptyArray`, #170 (@OliverJAsh)
+
+# 0.5.16
+
 - **Bug Fix**
   - fix `DateFromUnixTime.encode` returning a floating point number, #160 (@saevarb)
 
