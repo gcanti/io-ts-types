@@ -8,7 +8,7 @@ import { either, nonEmptyArray, NumberFromString, option, optionFromNullable, se
 
 const E = either(t.string, NumberFromString)
 type EA = t.TypeOf<typeof E> // $ExpectType Either<string, number>
-type EO = t.OutputOf<typeof E> // $ExpectType Either<string, string>
+type EO = t.OutputOf<typeof E> // $ExpectType EitherOutput<string, string>
 
 //
 // nonEmptyArray
@@ -26,7 +26,7 @@ nonEmptyArray(t.unknown).pipe(nonEmptyArray(t.unknown))
 
 const O = option(NumberFromString)
 type OA = t.TypeOf<typeof O> // $ExpectType Option<number>
-type OO = t.OutputOf<typeof O> // $ExpectType Option<string>
+type OO = t.OutputOf<typeof O> // $ExpectType OptionOutput<string>
 
 //
 // optionFromNullable
