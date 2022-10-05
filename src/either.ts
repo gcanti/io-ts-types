@@ -1,18 +1,33 @@
 /**
  * @since 0.5.0
  */
-import * as t from 'io-ts'
 import { Either } from 'fp-ts/lib/Either'
+import * as t from 'io-ts'
 
 const leftLiteral = t.literal('Left')
 
 const rightLiteral = t.literal('Right')
 
 /**
+ * @since 0.5.18
+ */
+export type LeftOutput<L> = { _tag: 'Left'; left: L }
+
+/**
+ * @since 0.5.18
+ */
+export type RightOutput<R> = { _tag: 'Right'; right: R }
+
+/**
+ * @since 0.5.18
+ */
+export type EitherOutput<L, R> = LeftOutput<L> | RightOutput<R>
+
+/**
  * @since 0.5.0
  */
 export interface EitherC<L extends t.Mixed, R extends t.Mixed>
-  extends t.Type<Either<t.TypeOf<L>, t.TypeOf<R>>, Either<t.OutputOf<L>, t.OutputOf<R>>, unknown> {}
+  extends t.Type<Either<t.TypeOf<L>, t.TypeOf<R>>, EitherOutput<t.OutputOf<L>, t.OutputOf<R>>, unknown> {}
 
 /**
  * Given a codec representing a type `L` and a codec representing a type `A`, returns a codec representing `Either<L, A>` that is able to deserialize

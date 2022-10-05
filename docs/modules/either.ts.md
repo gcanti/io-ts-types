@@ -13,6 +13,9 @@ Added in v0.5.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [EitherC (interface)](#eitherc-interface)
+- [EitherOutput (type alias)](#eitheroutput-type-alias)
+- [LeftOutput (type alias)](#leftoutput-type-alias)
+- [RightOutput (type alias)](#rightoutput-type-alias)
 - [either](#either)
 
 ---
@@ -23,10 +26,40 @@ Added in v0.5.0
 
 ```ts
 export interface EitherC<L extends t.Mixed, R extends t.Mixed>
-  extends t.Type<Either<t.TypeOf<L>, t.TypeOf<R>>, Either<t.OutputOf<L>, t.OutputOf<R>>, unknown> {}
+  extends t.Type<Either<t.TypeOf<L>, t.TypeOf<R>>, EitherOutput<t.OutputOf<L>, t.OutputOf<R>>, unknown> {}
 ```
 
 Added in v0.5.0
+
+# EitherOutput (type alias)
+
+**Signature**
+
+```ts
+export type EitherOutput<L, R> = LeftOutput<L> | RightOutput<R>
+```
+
+Added in v0.5.18
+
+# LeftOutput (type alias)
+
+**Signature**
+
+```ts
+export type LeftOutput<L> = { _tag: 'Left'; left: L }
+```
+
+Added in v0.5.18
+
+# RightOutput (type alias)
+
+**Signature**
+
+```ts
+export type RightOutput<R> = { _tag: 'Right'; right: R }
+```
+
+Added in v0.5.18
 
 # either
 

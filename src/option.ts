@@ -1,14 +1,29 @@
 /**
  * @since 0.5.0
  */
-import * as t from 'io-ts'
 import { Option } from 'fp-ts/lib/Option'
+import * as t from 'io-ts'
 
 const None = t.strict({
   _tag: t.literal('None')
 })
 
 const someLiteral = t.literal('Some')
+
+/**
+ * @since 0.5.18
+ */
+export type NoneOutput = t.OutputOf<typeof None>
+
+/**
+ * @since 0.5.18
+ */
+export type SomeOutput<A> = { _tag: 'Some'; value: A }
+
+/**
+ * @since 0.5.18
+ */
+export type OptionOutput<A> = NoneOutput | SomeOutput<A>
 
 /**
  * Given a codec representing a type `A`, returns a codec representing `Option<A>` that is able to deserialize
@@ -29,7 +44,7 @@ const someLiteral = t.literal('Some')
  *
  * @since 0.5.0
  */
-export interface OptionC<C extends t.Mixed> extends t.Type<Option<t.TypeOf<C>>, Option<t.OutputOf<C>>, unknown> {}
+export interface OptionC<C extends t.Mixed> extends t.Type<Option<t.TypeOf<C>>, OptionOutput<t.OutputOf<C>>, unknown> {}
 
 /**
  * @since 0.5.0

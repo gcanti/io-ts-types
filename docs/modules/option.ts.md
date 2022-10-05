@@ -13,6 +13,9 @@ Added in v0.5.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [OptionC (interface)](#optionc-interface)
+- [NoneOutput (type alias)](#noneoutput-type-alias)
+- [OptionOutput (type alias)](#optionoutput-type-alias)
+- [SomeOutput (type alias)](#someoutput-type-alias)
 - [option](#option)
 
 ---
@@ -25,7 +28,7 @@ the JSON representation of an `Option`.
 **Signature**
 
 ```ts
-export interface OptionC<C extends t.Mixed> extends t.Type<Option<t.TypeOf<C>>, Option<t.OutputOf<C>>, unknown> {}
+export interface OptionC<C extends t.Mixed> extends t.Type<Option<t.TypeOf<C>>, OptionOutput<t.OutputOf<C>>, unknown> {}
 ```
 
 **Example**
@@ -47,6 +50,36 @@ assert.deepStrictEqual(PathReporter.report(T.decode(some('a'))), [
 ```
 
 Added in v0.5.0
+
+# NoneOutput (type alias)
+
+**Signature**
+
+```ts
+export type NoneOutput = t.OutputOf<typeof None>
+```
+
+Added in v0.5.18
+
+# OptionOutput (type alias)
+
+**Signature**
+
+```ts
+export type OptionOutput<A> = NoneOutput | SomeOutput<A>
+```
+
+Added in v0.5.18
+
+# SomeOutput (type alias)
+
+**Signature**
+
+```ts
+export type SomeOutput<A> = { _tag: 'Some'; value: A }
+```
+
+Added in v0.5.18
 
 # option
 
