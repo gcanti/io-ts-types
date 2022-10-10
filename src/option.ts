@@ -4,9 +4,12 @@
 import { Option } from 'fp-ts/lib/Option'
 import * as t from 'io-ts'
 
-const None = t.strict({
-  _tag: t.literal('None')
-})
+const None = t.strict(
+  {
+    _tag: t.literal('None')
+  },
+  'None'
+)
 
 const someLiteral = t.literal('Some')
 
