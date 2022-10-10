@@ -147,3 +147,13 @@ export * from './withEncode'
  * @since 0.5.13
  */
 export * from './BooleanFromNumber'
+
+/**
+ * @since 0.5.18
+ */
+export * from './mapFromPairs'
+
+/**
+ * @since 0.5.18
+ */
+export * from './readonlyMapFromPairs'
