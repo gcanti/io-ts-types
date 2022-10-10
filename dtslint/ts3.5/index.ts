@@ -1,6 +1,6 @@
 import { ordNumber } from 'fp-ts/lib/Ord'
 import * as t from 'io-ts'
-import { either, nonEmptyArray, NumberFromString, option, optionFromNullable, setFromArray } from '../../src'
+import { either, nonEmptyArray, NumberFromString, option, optionFromNullable, setFromArray, Json } from '../../src'
 
 //
 // either
@@ -43,3 +43,9 @@ type OFNO = t.OutputOf<typeof OFN> // $ExpectType string | null
 const SFA = setFromArray(NumberFromString, ordNumber)
 type SFAA = t.TypeOf<typeof SFA> // $ExpectType Set<number>
 type SFAO = t.OutputOf<typeof SFA> // $ExpectType string[]
+
+//
+// Json.pipe
+//
+const JO = Json.pipe(option(t.string)) // $ExpectType Type<Option<string>, Json, unknown>
+const JE = Json.pipe(either(t.string, t.number)) // $ExpectType Type<Either<string, number>, Json, unknown>
