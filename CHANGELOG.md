@@ -13,7 +13,12 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
-# 0.5.16
+# 0.5.18
+
+- **Polish**
+  - add output indexed types to option and either #171 (@mlegenhausen)
+
+# 0.5.17
 
 - **Polish**
   - `nonEmptyArray`: change output type from `Array` to `NonEmptyArray`, #170 (@OliverJAsh)
