@@ -1,18 +1,18 @@
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 import { Ord } from 'fp-ts/lib/Ord'
 import * as t from 'io-ts'
 import { mapFromEntries } from './mapFromEntries'
 
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 export interface ReadonlyMapFromEntriesC<K extends t.Mixed, V extends t.Mixed>
   extends t.Type<ReadonlyMap<t.TypeOf<K>, t.TypeOf<V>>, ReadonlyArray<[t.OutputOf<K>, t.OutputOf<V>]>, unknown> {}
 
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 export function readonlyMapFromEntries<K extends t.Mixed, V extends t.Mixed>(
   keyCodec: K,

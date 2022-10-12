@@ -6,7 +6,7 @@ parent: Modules
 
 # mapFromEntries overview
 
-Added in v0.5.18
+Added in v0.5.19
 
 ---
 
@@ -26,7 +26,7 @@ export interface MapFromEntriesC<K extends t.Mixed, V extends t.Mixed>
   extends t.Type<Map<t.TypeOf<K>, t.TypeOf<V>>, Array<[t.OutputOf<K>, t.OutputOf<V>]>, unknown> {}
 ```
 
-Added in v0.5.18
+Added in v0.5.19
 
 # mapFromEntries
 
@@ -41,4 +41,4 @@ export function mapFromEntries<K extends t.Mixed, V extends t.Mixed>(
 ): MapFromEntriesC<K, V> { ... }
 ```
 
-Added in v0.5.18
+Added in v0.5.19

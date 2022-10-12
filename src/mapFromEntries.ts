@@ -1,5 +1,5 @@
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 import * as A from 'fp-ts/lib/Array'
 import { chain } from 'fp-ts/lib/Either'
@@ -26,13 +26,13 @@ const every = <K, V>(pk: Predicate<K>, pv: Predicate<V>) => (ma: Map<K, V>): boo
 }
 
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 export interface MapFromEntriesC<K extends t.Mixed, V extends t.Mixed>
   extends t.Type<Map<t.TypeOf<K>, t.TypeOf<V>>, Array<[t.OutputOf<K>, t.OutputOf<V>]>, unknown> {}
 
 /**
- * @since 0.5.18
+ * @since 0.5.19
  */
 export function mapFromEntries<K extends t.Mixed, V extends t.Mixed>(
   keyCodec: K,

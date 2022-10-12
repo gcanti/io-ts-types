@@ -6,7 +6,7 @@ parent: Modules
 
 # readonlyMapFromEntries overview
 
-Added in v0.5.18
+Added in v0.5.19
 
 ---
 
@@ -26,7 +26,7 @@ export interface ReadonlyMapFromEntriesC<K extends t.Mixed, V extends t.Mixed>
   extends t.Type<ReadonlyMap<t.TypeOf<K>, t.TypeOf<V>>, ReadonlyArray<[t.OutputOf<K>, t.OutputOf<V>]>, unknown> {}
 ```
 
-Added in v0.5.18
+Added in v0.5.19
 
 # readonlyMapFromEntries
 
@@ -41,4 +41,4 @@ export function readonlyMapFromEntries<K extends t.Mixed, V extends t.Mixed>(
 ): ReadonlyMapFromEntriesC<K, V> { ... }
 ```
 
-Added in v0.5.18
+Added in v0.5.19

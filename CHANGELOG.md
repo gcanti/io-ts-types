@@ -13,10 +13,15 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.5.19
+
+- **New Feature**
+  - add `mapFromEntries`, `readonlyMapFromEntries` codecs, #172 (@mlegenhausen)
+
 # 0.5.18
 
 - **Polish**
-  - add output indexed types to option and either #171 (@mlegenhausen)
+  - add output indexed types to option and either, #171 (@mlegenhausen)
 
 # 0.5.17
 
