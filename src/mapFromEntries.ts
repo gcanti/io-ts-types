@@ -28,18 +28,18 @@ const every = <K, V>(pk: Predicate<K>, pv: Predicate<V>) => (ma: Map<K, V>): boo
 /**
  * @since 0.5.18
  */
-export interface MapFromPairsC<K extends t.Mixed, V extends t.Mixed>
+export interface MapFromEntriesC<K extends t.Mixed, V extends t.Mixed>
   extends t.Type<Map<t.TypeOf<K>, t.TypeOf<V>>, Array<[t.OutputOf<K>, t.OutputOf<V>]>, unknown> {}
 
 /**
  * @since 0.5.18
  */
-export function mapFromPairs<K extends t.Mixed, V extends t.Mixed>(
+export function mapFromEntries<K extends t.Mixed, V extends t.Mixed>(
   keyCodec: K,
   KO: Ord<t.TypeOf<K>>,
   valueCodec: V,
   name: string = `Map<${keyCodec.name}, ${valueCodec.name}>`
-): MapFromPairsC<K, V> {
+): MapFromEntriesC<K, V> {
   const arr = t.array(t.tuple([keyCodec, valueCodec]))
   const toArrayO = toArray(KO)
   const fromArrayO = fromFoldable(KO, getLastSemigroup<t.TypeOf<V>>(), A.Foldable)

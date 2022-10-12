@@ -4,19 +4,19 @@ import { Ord, ordString, contramap } from 'fp-ts/Ord'
 import * as t from 'io-ts'
 import { assertSuccess, assertFailure } from './helpers'
 
-import { readonlyMapFromPairs } from '../src/readonlyMapFromPairs'
+import { readonlyMapFromEntries } from '../src/readonlyMapFromEntries'
 
-describe('readonlyMapFromPairs', () => {
+describe('readonlyMapFromEntries', () => {
   const K = t.type({ a: t.string })
   const KO: Ord<t.TypeOf<typeof K>> = pipe(
     ordString,
     contramap(m => m.a)
   )
   const C = t.type({ b: t.number })
-  const T = readonlyMapFromPairs(K, KO, C)
+  const T = readonlyMapFromEntries(K, KO, C)
 
   it('name', () => {
-    const T = readonlyMapFromPairs(K, KO, C, 'T')
+    const T = readonlyMapFromEntries(K, KO, C, 'T')
     assert.strictEqual(T.name, 'T')
   })
 

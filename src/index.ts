@@ -151,9 +151,9 @@ export * from './BooleanFromNumber'
 /**
  * @since 0.5.18
  */
-export * from './mapFromPairs'
+export * from './mapFromEntries'
 
 /**
  * @since 0.5.18
  */
-export * from './readonlyMapFromPairs'
+export * from './readonlyMapFromEntries'
