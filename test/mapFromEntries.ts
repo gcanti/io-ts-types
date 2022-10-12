@@ -4,19 +4,19 @@ import { Ord, ordString, contramap } from 'fp-ts/Ord'
 import * as t from 'io-ts'
 import { assertSuccess, assertFailure } from './helpers'
 
-import { mapFromPairs } from '../src/mapFromPairs'
+import { mapFromEntries } from '../src/mapFromEntries'
 
-describe('mapFromPairs', () => {
+describe('mapFromEntries', () => {
   const K = t.type({ a: t.string })
   const KO: Ord<t.TypeOf<typeof K>> = pipe(
     ordString,
     contramap(m => m.a)
   )
   const C = t.type({ b: t.number })
-  const T = mapFromPairs(K, KO, C)
+  const T = mapFromEntries(K, KO, C)
 
   it('name', () => {
-    const T = mapFromPairs(K, KO, C, 'T')
+    const T = mapFromEntries(K, KO, C, 'T')
     assert.strictEqual(T.name, 'T')
   })
 
