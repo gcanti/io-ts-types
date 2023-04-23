@@ -40,6 +40,14 @@
     "monocle-ts": "^2.0.0",
     "newtype-ts": "^0.3.2"
   },
+  "peerDependenciesMeta": {
+    "monocle-ts": {
+      "optional": true
+    },
+    "newtype-ts": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "^14.0.27",
